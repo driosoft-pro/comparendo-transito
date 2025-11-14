@@ -103,9 +103,9 @@ Authorization: Bearer <tu_token>
 
 ---
 
-## 🗄️ Motores de Base de Datos
+## Motores de Base de Datos
 
-### 🔷 Supabase (SQL principal)
+### Supabase (SQL principal)
 Usado para:
 - Personas  
 - Automotores  
@@ -113,7 +113,7 @@ Usado para:
 - Infracciones  
 - Propietarios  
 
-### 🟣 MongoDB (motor alterno)
+### MongoDB (motor alterno)
 Usado para:
 - Quejas ciudadanas  
 - Auditoría de acciones  
@@ -121,7 +121,7 @@ Usado para:
 
 ---
 
-## 🚀 Instalación
+## Instalación
 
 ### 1. Clonar repositorio
 ```
@@ -173,19 +173,114 @@ npm start
 | GET    | `/api/personas`    | Listar personas     |
 | GET    | `/api/automotores` | Listar automotores  |
 | POST   | `/api/quejas`      | Crear queja (Mongo) |
+| POST   | `/api/auth/login` | Login de usuario   |
+
+## LOGIN JWT - Supabase
+| Método | Endpoint          | Descripción                           |
+|--------|-------------------|---------------------------------------|
+| POST   | `/api/auth/login` | Login de usuario                      |
+| GET    | `/api/auth/login` | Información del usuario autenticado   |
+
+## CRUD USUARIOS
+| Método | Endpoint            | Descripción               |
+|--------|---------------------|---------------------------|
+| GET    | `/api/usuarios`     | Listar usuarios           |
+| GET    | `/api/usuarios/:id` | Obtener usuario por ID    |
+| PUT    | `/api/usuarios/:id` | Actualizar usuario por ID |
+| DELETE | `/api/usuarios/:id` | Eliminar usuario por ID   |  
+
 ---
 
 ## 📦 Scripts NPM
 
-```
-npm run dev      # Nodemon
-npm start        # Producción
-npm test         # Tests
+
+```bash
+npm init -y
 ```
 
----
+```bash
+npm install express cors morgan dotenv helmet jsonwebtoken @supabase/supabase-js mongoose winston && npm install -D nodemon jest
+```
 
-## 🧪 Motor alterno: MongoDB
+# comandos disponibles:
+#### Desarrollo (con nodemon - recarga automática)
+```bash
+npm run dev
+```
+
+#### Producción (sin nodemon)
+```bash
+npm start
+```
+
+#### Tests (ejecutar una vez)
+```bash
+npm test
+```
+
+#### Tests en modo watch (ejecuta automáticamente al guardar)
+```bash
+npm run test:watch
+```
+
+#### Tests con cobertura de código
+```bash
+npm run test:coverage
+```
+
+# Comandos adicionales útiles:
+
+#### Motor alterno: MongoDB
+##### Ver todas las dependencias instaladas
+```bash
+npm list --depth=0
+```
+
+#### Actualizar dependencias
+```bash
+npm update
+```
+
+#### Verificar dependencias vulnerables
+```bash
+npm audit
+```
+
+#### Limpiar caché de npm
+```bash
+npm cache clean --force
+```
+
+#### Reinstalar todo desde cero
+```bash
+rm -rf node_modules package-lock.json
+npm install
+```
+
+### 1. Clonar o iniciar proyecto
+```bash
+cd tu-proyecto
+```
+
+### 2. Instalar dependencias
+```bash
+npm install
+```
+
+### 3. Copiar variables de entorno
+```bash
+cp .env.example .env
+```
+
+### 4. Editar .env con tus credenciales
+```bash
+nano .env
+```
+
+#### 5. Ejecutar en desarrollo
+```bash
+npm run dev
+```
 
 Justificación:
 - Excelente para almacenar documentos de quejas (texto largo, adjuntos, historial)
