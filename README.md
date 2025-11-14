@@ -9,11 +9,28 @@ Backend oficial del proyecto académico basado en **Comparendos de Tránsito**, 
 
 ---
 
+## MER
+
+![MER_COMPARENDO_TRNASITO.png](docs/img/MER_COMPARENDO_TRANSITO.png)
+
+![MER_FULL.png](docs/img/MER_FULL.png)
+
+---
+
 ## 📁 Estructura del Proyecto
 
 ```
 /api-comparendos-backend
 │
+├── docs                           # Documentación y diagramas
+│   └── db
+│       ├── EntidadesComparendoTransito.pdf  
+│       └── RequerimientosComparendoTrancito.pdf
+├── scripts                        # Scripts útiles
+│   └── db
+│       ├── quejas.sql  
+│       ├── auditoria.sql
+│       └── supabase.sql    
 ├── src
 │   ├── config
 │   │   ├── supabase.js            # Conexión a Supabase
@@ -32,6 +49,7 @@ Backend oficial del proyecto académico basado en **Comparendos de Tránsito**, 
 │   │   └── quejas.controller.js
 │   │
 │   ├── routes                     # Rutas REST
+│   │   ├── index.js
 │   │   ├── usuarios.routes.js
 │   │   ├── comparendos.routes.js
 │   │   ├── personas.routes.js
@@ -40,6 +58,7 @@ Backend oficial del proyecto académico basado en **Comparendos de Tránsito**, 
 │   │   └── quejas.routes.js
 │   │
 │   ├── models                     # Modelos (Supabase, Mongo)
+│   │   ├── server.js
 │   │   ├── usuario.model.js
 │   │   ├── comparendo.model.js
 │   │   ├── infraccion.model.js
@@ -52,8 +71,12 @@ Backend oficial del proyecto académico basado en **Comparendos de Tránsito**, 
 │   │   └── errorHandler.js        # Manejo global de errores
 │   │
 │   └── app.js                     # Configuración express
-│
-├── tests                          # Tests opcionales
+│    
+├── test                           # Pruebas unitarias e integración
+│   └── db
+│       ├── quejas.sql  
+│       ├── auditoria.sql
+│       └── supabase.sql                 
 │
 ├── .env.example                   # Variables necesarias
 ├── .gitignore                     # Ignorar archivos sensibles
@@ -102,8 +125,8 @@ Usado para:
 
 ### 1. Clonar repositorio
 ```
-git clone https://github.com/tu_usuario/api-comparendos-backend.git
-cd api-comparendos-backend
+git clone git@github.com:driosoft-pro/comparendo-transito.git
+cd comparendo-transito
 ```
 
 ### 2. Instalar dependencias
@@ -141,16 +164,15 @@ npm start
 
 ## 📚 Endpoints principales
 
-| Método | Endpoint | Descripción |
-|--------|---------|-------------|
-| POST | `/api/auth/login` | Login de usuario |
-| POST | `/api/usuarios` | Crear usuario |
-| GET | `/api/comparendos` | Listar comparendos |
-| POST | `/api/comparendos` | Crear comparendo |
-| GET | `/api/personas` | Listar personas |
-| GET | `/api/automotores` | Listar automotores |
-| POST | `/api/quejas` | Crear queja (Mongo) |
-
+| Método | Endpoint           | Descripción         |
+|--------|--------------------|---------------------|
+| POST   | `/api/auth/login`  | Login de usuario    |
+| POST   | `/api/usuarios`    | Crear usuario       |
+| GET    | `/api/comparendos` | Listar comparendos  |
+| POST   | `/api/comparendos` | Crear comparendo    |
+| GET    | `/api/personas`    | Listar personas     |
+| GET    | `/api/automotores` | Listar automotores  |
+| POST   | `/api/quejas`      | Crear queja (Mongo) |
 ---
 
 ## 📦 Scripts NPM
@@ -174,10 +196,10 @@ Justificación:
 
 ## 🛠️ TODO
 
-- [ ] Validación de categorías de licencia
-- [ ] Endpoints para múltiples infracciones por comparendo
-- [ ] Sincronización entre Mongo ↔ Supabase
-- [ ] Archivo OpenAPI/Swagger
+- Validación de categorías de licencia
+- Endpoints para múltiples infracciones por comparendo
+- Sincronización entre Mongo ↔ Supabase
+- Swagger
 
 ---
 
