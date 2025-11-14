@@ -103,9 +103,9 @@ Authorization: Bearer <tu_token>
 
 ---
 
-## 🗄️ Motores de Base de Datos
+## Motores de Base de Datos
 
-### 🔷 Supabase (SQL principal)
+### Supabase (SQL principal)
 Usado para:
 - Personas  
 - Automotores  
@@ -113,7 +113,7 @@ Usado para:
 - Infracciones  
 - Propietarios  
 
-### 🟣 MongoDB (motor alterno)
+### MongoDB (motor alterno)
 Usado para:
 - Quejas ciudadanas  
 - Auditoría de acciones  
@@ -121,7 +121,7 @@ Usado para:
 
 ---
 
-## 🚀 Instalación
+## Instalación
 
 ### 1. Clonar repositorio
 ```
@@ -173,6 +173,22 @@ npm start
 | GET    | `/api/personas`    | Listar personas     |
 | GET    | `/api/automotores` | Listar automotores  |
 | POST   | `/api/quejas`      | Crear queja (Mongo) |
+| POST   | `/api/auth/login` | Login de usuario   |
+
+## LOGIN JWT - Supabase
+| Método | Endpoint          | Descripción                           |
+|--------|-------------------|---------------------------------------|
+| POST   | `/api/auth/login` | Login de usuario                      |
+| GET    | `/api/auth/login` | Información del usuario autenticado   |
+
+## CRUD USUARIOS
+| Método | Endpoint            | Descripción               |
+|--------|---------------------|---------------------------|
+| GET    | `/api/usuarios`     | Listar usuarios           |
+| GET    | `/api/usuarios/:id` | Obtener usuario por ID    |
+| PUT    | `/api/usuarios/:id` | Actualizar usuario por ID |
+| DELETE | `/api/usuarios/:id` | Eliminar usuario por ID   |  
+
 ---
 
 ## 📦 Scripts NPM
