@@ -1,19 +1,10 @@
 -- =========================================================================
 -- Script de Inserción de Datos de Prueba
 -- Sistema de Comparendos de Tránsito - Santiago de Cali
--- Base de datos: PostgreSQL
--- Fecha: 2025-11-14
 -- =========================================================================
 
--- Limpiar datos existentes (opcional, comentar si no se desea)
--- TRUNCATE TABLE comparendo_infraccion, comparendo, licencia_categoria, 
---   licencia_conduccion, propiedad_automotor, propietario_automotor, 
---   automotor, personas, policia_transito, usuarios, municipio, 
---   secretaria_transito, infraccion, categoria_licencia, cargo_policial, queja 
--- RESTART IDENTITY CASCADE;
-
 -- =========================================================================
--- 1. CARGO_POLICIAL - Rangos de policía de tránsito
+-- 1. CARGO_POLICIAL (sin dependencias)
 -- =========================================================================
 INSERT INTO cargo_policial (nombre_cargo, descripcion, grado) VALUES
 ('Agente de Tránsito', 'Agente operativo en campo', 'Agente'),
@@ -28,7 +19,7 @@ INSERT INTO cargo_policial (nombre_cargo, descripcion, grado) VALUES
 ('Teniente Coronel', 'Director regional de tránsito', 'Teniente Coronel');
 
 -- =========================================================================
--- 2. CATEGORIA_LICENCIA - Categorías de licencias de conducción
+-- 2. CATEGORIA_LICENCIA (sin dependencias)
 -- =========================================================================
 INSERT INTO categoria_licencia (codigo, descripcion) VALUES
 ('A1', 'Motocicletas, motociclos y mototriciclos hasta 125 c.c.'),
@@ -43,7 +34,7 @@ INSERT INTO categoria_licencia (codigo, descripcion) VALUES
 ('B4', 'Vehículos de emergencia y especiales');
 
 -- =========================================================================
--- 3. INFRACCION - Catálogo de infracciones de tránsito
+-- 3. INFRACCION (sin dependencias)
 -- =========================================================================
 INSERT INTO infraccion (codigo_infraccion, descripcion, tipo_infraccion, valor_base, puntos_descuento) VALUES
 ('C01', 'Exceso de velocidad hasta 20 km/h', 'Grave', 234000, 2),
@@ -58,7 +49,7 @@ INSERT INTO infraccion (codigo_infraccion, descripcion, tipo_infraccion, valor_b
 ('C10', 'Usar celular mientras conduce', 'Grave', 468000, 3);
 
 -- =========================================================================
--- 4. SECRETARIA_TRANSITO - Secretarías de tránsito
+-- 4. SECRETARIA_TRANSITO (sin dependencias)
 -- =========================================================================
 INSERT INTO secretaria_transito (nombre_secretaria, direccion, telefono, email) VALUES
 ('Secretaría de Movilidad de Cali', 'Calle 5 #32-50, Cali', '6023337700', 'contacto@movilidadcali.gov.co'),
@@ -73,7 +64,7 @@ INSERT INTO secretaria_transito (nombre_secretaria, direccion, telefono, email) 
 ('Punto de Atención Menga', 'Carrera 28 #1A-60, Cali', '6023338000', 'menga@movilidadcali.gov.co');
 
 -- =========================================================================
--- 5. MUNICIPIO - Municipios (centrado en Santiago de Cali)
+-- 5. MUNICIPIO (depende de secretaria_transito)
 -- =========================================================================
 INSERT INTO municipio (nombre_municipio, departamento, codigo_dane, direccion_oficina_principal, id_secretaria_transito) VALUES
 ('Santiago de Cali', 'Valle del Cauca', '76001', 'Calle 5 #32-50, Cali', 1),
@@ -88,7 +79,7 @@ INSERT INTO municipio (nombre_municipio, departamento, codigo_dane, direccion_of
 ('Buga', 'Valle del Cauca', '76111', 'Calle 4 #13-45, Buga', 10);
 
 -- =========================================================================
--- 6. USUARIOS - Usuarios del sistema
+-- 6. USUARIOS (sin dependencias)
 -- =========================================================================
 INSERT INTO usuarios (username, contrasena, rol, estado) VALUES
 ('admin.cali', '$2b$10$abcdefghijklmnopqrstuvwxyz123456', 'administrador', 1),
@@ -100,23 +91,17 @@ INSERT INTO usuarios (username, contrasena, rol, estado) VALUES
 ('supervisor.ramirez', '$2b$10$abcdefghijklmnopqrstuvwxyz123456', 'supervisor', 1),
 ('operador.castro', '$2b$10$abcdefghijklmnopqrstuvwxyz123456', 'operador', 1),
 ('auditor.torres', '$2b$10$abcdefghijklmnopqrstuvwxyz123456', 'auditor', 1),
-('ciudadano.sanchez', '$2b$10$abcdefghijklmnopqrstuvwxyz123456', 'ciudadano', 1);
-
--- =========================================================================
--- 7. POLICIA_TRANSITO - Agentes de policía de tránsito
--- =========================================================================
-
--- Primero, necesitamos crear usuarios adicionales para los policías
-INSERT INTO usuarios (username, contrasena, rol, estado) VALUES
+('ciudadano.sanchez', '$2b$10$abcdefghijklmnopqrstuvwxyz123456', 'ciudadano', 1),
 ('policia.castro', '$2b$10$abcdefghijklmnopqrstuvwxyz123456', 'policia_transito', 1),
-('policia.torres', '$2b$10$abcdefghijklmnopqrstuvwxyz123456', 'policia_transito', 1),
+('policia.torres.p', '$2b$10$abcdefghijklmnopqrstuvwxyz123456', 'policia_transito', 1),
 ('policia.munoz', '$2b$10$abcdefghijklmnopqrstuvwxyz123456', 'policia_transito', 1),
 ('policia.valencia', '$2b$10$abcdefghijklmnopqrstuvwxyz123456', 'policia_transito', 1),
 ('policia.herrera', '$2b$10$abcdefghijklmnopqrstuvwxyz123456', 'policia_transito', 1),
 ('policia.morales', '$2b$10$abcdefghijklmnopqrstuvwxyz123456', 'policia_transito', 1);
 
--- Ahora insertamos los policías con usuarios únicos
--- Nota: Los IDs de usuario ahora serán 11-16 (después de los 10 usuarios iniciales)
+-- =========================================================================
+-- 7. POLICIA_TRANSITO (depende de usuarios, secretaria_transito, cargo_policial)
+-- =========================================================================
 INSERT INTO policia_transito (codigo_policia, nombres, apellidos, genero, fecha_nacimiento, fecha_vinculacion, salario, id_secretaria_transito, id_cargo_policial, id_supervisor, id_usuario) VALUES
 ('PT-001', 'Carlos Alberto', 'Rodríguez Méndez', 'Masculino', '1985-03-15', '2010-01-10', 3500000, 1, 5, NULL, 2),
 ('PT-002', 'María Fernanda', 'Martínez López', 'Femenino', '1990-07-22', '2015-03-15', 2800000, 1, 3, 1, 3),
@@ -130,7 +115,7 @@ INSERT INTO policia_transito (codigo_policia, nombres, apellidos, genero, fecha_
 ('PT-010', 'Patricia', 'Morales Aguilar', 'Femenino', '1994-08-19', '2019-05-15', 2400000, 4, 1, 9, 16);
 
 -- =========================================================================
--- 8. LICENCIA_CONDUCCION - Licencias de conducción
+-- 8. LICENCIA_CONDUCCION (sin dependencias inicialmente)
 -- =========================================================================
 INSERT INTO licencia_conduccion (numero_licencia, fecha_expedicion, fecha_vencimiento, organismo_transito_expedidor, estado) VALUES
 ('76001234567890', '2020-01-15', '2030-01-15', 'Secretaría de Movilidad de Cali', 'ACTIVA'),
@@ -145,7 +130,7 @@ INSERT INTO licencia_conduccion (numero_licencia, fecha_expedicion, fecha_vencim
 ('76001234567899', '2021-07-15', '2031-07-15', 'Secretaría de Movilidad de Cali', 'ACTIVA');
 
 -- =========================================================================
--- 9. PERSONAS - Ciudadanos y conductores
+-- 9. PERSONAS (depende de municipio, licencia_conduccion, usuarios)
 -- =========================================================================
 INSERT INTO personas (tipo_doc, num_doc, nombre, apellidos, fecha_nacimiento, genero, direccion, telefono, email, id_municipio, id_licencia_conduccion, id_usuario) VALUES
 ('CC', '1144567890', 'Jorge Luis', 'Pérez González', '1985-05-20', 'Masculino', 'Calle 15 #100-45, Cali', '3201234567', 'jorge.perez@email.com', 1, 1, 5),
@@ -159,7 +144,9 @@ INSERT INTO personas (tipo_doc, num_doc, nombre, apellidos, fecha_nacimiento, ge
 ('CC', '1144567898', 'Javier Andrés', 'Ospina Vargas', '1986-12-05', 'Masculino', 'Calle 26 #35-15, Cali', '3176543210', 'javier.ospina@email.com', 1, 9, NULL),
 ('CC', '1144567899', 'María José', 'Cárdenas Ruiz', '1993-06-22', 'Femenino', 'Carrera 8 #40-25, Cali', '3189012345', 'maria.cardenas@email.com', 1, 10, NULL);
 
--- Actualizar relación inversa de licencias con personas
+-- =========================================================================
+-- 10. Actualizar relación inversa de licencias con personas
+-- =========================================================================
 UPDATE licencia_conduccion SET id_persona = 1 WHERE id_licencia = 1;
 UPDATE licencia_conduccion SET id_persona = 2 WHERE id_licencia = 2;
 UPDATE licencia_conduccion SET id_persona = 3 WHERE id_licencia = 3;
@@ -172,22 +159,22 @@ UPDATE licencia_conduccion SET id_persona = 9 WHERE id_licencia = 9;
 UPDATE licencia_conduccion SET id_persona = 10 WHERE id_licencia = 10;
 
 -- =========================================================================
--- 10. LICENCIA_CATEGORIA - Categorías asignadas a licencias
+-- 11. LICENCIA_CATEGORIA (depende de licencia_conduccion y categoria_licencia)
 -- =========================================================================
 INSERT INTO licencia_categoria (id_licencia_conduccion, id_categoria_licencia) VALUES
-(1, 3), (1, 1), -- Jorge: B1 y A1
-(2, 3), (2, 2), -- Diana: B1 y A2
-(3, 3),         -- Roberto: B1
-(4, 3), (4, 1), -- Liliana: B1 y A1
-(5, 4), (5, 3), -- Mauricio: B2 y B1
-(6, 3),         -- Andrea: B1
-(7, 3), (7, 2), -- Fernando: B1 y A2
-(8, 6), (8, 3), -- Claudia: C1 y B1
-(9, 4), (9, 3), -- Javier: B2 y B1
-(10, 3), (10, 1); -- María: B1 y A1
+(1, 3), (1, 1),
+(2, 3), (2, 2),
+(3, 3),
+(4, 3), (4, 1),
+(5, 4), (5, 3),
+(6, 3),
+(7, 3), (7, 2),
+(8, 6), (8, 3),
+(9, 4), (9, 3),
+(10, 3), (10, 1);
 
 -- =========================================================================
--- 11. AUTOMOTOR - Vehículos registrados
+-- 12. AUTOMOTOR (depende de municipio)
 -- =========================================================================
 INSERT INTO automotor (placa, tipo_vehiculo, marca, linea_modelo, cilindraje, modelo_ano, color, clase_servicio, id_municipio) VALUES
 ('ABC123', 'Automóvil', 'Chevrolet', 'Spark GT', '1200', 2020, 'Blanco', 'Particular', 1),
@@ -202,22 +189,22 @@ INSERT INTO automotor (placa, tipo_vehiculo, marca, linea_modelo, cilindraje, mo
 ('BCD890', 'Camioneta', 'Nissan', 'Frontier', '2500', 2020, 'Gris', 'Particular', 1);
 
 -- =========================================================================
--- 12. PROPIETARIO_AUTOMOTOR - Propietarios de vehículos
+-- 13. PROPIETARIO_AUTOMOTOR (depende de personas y automotor)
 -- =========================================================================
 INSERT INTO propietario_automotor (id_persona, id_automotor, es_principal) VALUES
-(1, 1, 1),  -- Jorge dueño de ABC123
-(2, 2, 1),  -- Diana dueña de DEF456
-(3, 3, 1),  -- Roberto dueño de GHI789
-(4, 4, 1),  -- Liliana dueña de JKL012
-(5, 5, 1),  -- Mauricio dueño de MNO345
-(6, 6, 1),  -- Andrea dueña de PQR678
-(7, 7, 1),  -- Fernando dueño de STU901
-(8, 8, 1),  -- Claudia dueña de VWX234
-(9, 9, 1),  -- Javier dueño de YZA567
-(10, 10, 1); -- María dueña de BCD890
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1),
+(4, 4, 1),
+(5, 5, 1),
+(6, 6, 1),
+(7, 7, 1),
+(8, 8, 1),
+(9, 9, 1),
+(10, 10, 1);
 
 -- =========================================================================
--- 13. PROPIEDAD_AUTOMOTOR - Historial de propiedad
+-- 14. PROPIEDAD_AUTOMOTOR (depende de automotor y personas)
 -- =========================================================================
 INSERT INTO propiedad_automotor (id_automotor, id_persona, fecha_inicio, fecha_fin, es_propietario_principal, responsable_impuestos) VALUES
 (1, 1, '2020-05-15', NULL, 1, 1),
@@ -232,7 +219,7 @@ INSERT INTO propiedad_automotor (id_automotor, id_persona, fecha_inicio, fecha_f
 (10, 10, '2020-12-20', NULL, 1, 1);
 
 -- =========================================================================
--- 14. COMPARENDO - Comparendos de tránsito
+-- 15. COMPARENDO (depende de municipio, personas, licencia_conduccion, policia_transito, automotor)
 -- =========================================================================
 INSERT INTO comparendo (numero_comparendo, fecha_hora_registro, direccion_infraccion, coordenadas_gps, observaciones, estado, id_municipio, id_persona, id_licencia_conduccion, id_policia_transito, id_automotor) VALUES
 ('COMP-2025-001', '2025-11-01 08:30:00', 'Calle 5 con Carrera 50, Cali', '3.4372,-76.5225', 'Conductor excedió velocidad permitida en zona escolar', 'PENDIENTE', 1, 1, 1, 1, 1),
@@ -247,7 +234,7 @@ INSERT INTO comparendo (numero_comparendo, fecha_hora_registro, direccion_infrac
 ('COMP-2025-010', '2025-11-10 13:25:00', 'Carrera 1 con Calle 25, Cali', '3.4195,-76.5123', 'Múltiples infracciones detectadas', 'PENDIENTE', 1, 10, 10, 2, 10);
 
 -- =========================================================================
--- 15. COMPARENDO_INFRACCION - Infracciones por comparendo
+-- 16. COMPARENDO_INFRACCION (depende de comparendo e infraccion)
 -- =========================================================================
 INSERT INTO comparendo_infraccion (id_comparendo, id_infraccion, valor_calculado, observaciones) VALUES
 (1, 1, 234000, 'Exceso de velocidad 15 km/h sobre límite'),
@@ -263,7 +250,7 @@ INSERT INTO comparendo_infraccion (id_comparendo, id_infraccion, valor_calculado
 (10, 10, 468000, 'Uso de celular simultáneo');
 
 -- =========================================================================
--- 16. QUEJA - Quejas contra policías
+-- 17. QUEJA (depende de comparendo y personas)
 -- =========================================================================
 INSERT INTO queja (fecha_radicacion, texto_queja, estado, medio_radicacion, id_comparendo, id_persona) VALUES
 ('2025-11-05 16:00:00', 'El agente fue grosero y no explicó correctamente la infracción', 'RADICADA', 'web', 1, 1),
@@ -278,10 +265,9 @@ INSERT INTO queja (fecha_radicacion, texto_queja, estado, medio_radicacion, id_c
 ('2025-11-14 10:00:00', 'No se respetó el debido proceso durante la imposición', 'RADICADA', 'correo', 9, 9);
 
 -- =========================================================================
--- VERIFICACIÓN DE DATOS INSERTADOS
+-- VERIFICACIÓN DE DATOS
 -- =========================================================================
 
--- Verificar conteo de registros por tabla
 SELECT 'cargo_policial' AS tabla, COUNT(*) AS registros FROM cargo_policial
 UNION ALL
 SELECT 'categoria_licencia', COUNT(*) FROM categoria_licencia
