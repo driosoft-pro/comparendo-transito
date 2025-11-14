@@ -2,6 +2,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 
+import { notFoundHandler, errorHandler } from "../utils/errorHandler.js";
 import { connectionNoSQL, closeMongo } from "../config/mongo.js";   
 import { verifySupabase } from "../config/supabase.js";            
 
@@ -33,6 +34,12 @@ class Server {
 
     // Finalmente las rutas
     this.routes();
+
+    // Manejo de errores
+    this.app.use(notFoundHandler);
+    
+    // Middleware central de manejo de errores
+    this.app.use(errorHandler);
 
     // Manejo de cierre graceful
     this.setupGracefulShutdown();
