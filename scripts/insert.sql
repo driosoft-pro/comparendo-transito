@@ -5,6 +5,13 @@
 -- Fecha: 2025-11-14
 -- =========================================================================
 
+-- Limpiar datos existentes (opcional, comentar si no se desea)
+-- TRUNCATE TABLE comparendo_infraccion, comparendo, licencia_categoria, 
+--   licencia_conduccion, propiedad_automotor, propietario_automotor, 
+--   automotor, personas, policia_transito, usuarios, municipio, 
+--   secretaria_transito, infraccion, categoria_licencia, cargo_policial, queja 
+-- RESTART IDENTITY CASCADE;
+
 -- =========================================================================
 -- 1. CARGO_POLICIAL - Rangos de policía de tránsito
 -- =========================================================================
@@ -98,17 +105,29 @@ INSERT INTO usuarios (username, contrasena, rol, estado) VALUES
 -- =========================================================================
 -- 7. POLICIA_TRANSITO - Agentes de policía de tránsito
 -- =========================================================================
+
+-- Primero, necesitamos crear usuarios adicionales para los policías
+INSERT INTO usuarios (username, contrasena, rol, estado) VALUES
+('policia.castro', '$2b$10$abcdefghijklmnopqrstuvwxyz123456', 'policia_transito', 1),
+('policia.torres', '$2b$10$abcdefghijklmnopqrstuvwxyz123456', 'policia_transito', 1),
+('policia.munoz', '$2b$10$abcdefghijklmnopqrstuvwxyz123456', 'policia_transito', 1),
+('policia.valencia', '$2b$10$abcdefghijklmnopqrstuvwxyz123456', 'policia_transito', 1),
+('policia.herrera', '$2b$10$abcdefghijklmnopqrstuvwxyz123456', 'policia_transito', 1),
+('policia.morales', '$2b$10$abcdefghijklmnopqrstuvwxyz123456', 'policia_transito', 1);
+
+-- Ahora insertamos los policías con usuarios únicos
+-- Nota: Los IDs de usuario ahora serán 11-16 (después de los 10 usuarios iniciales)
 INSERT INTO policia_transito (codigo_policia, nombres, apellidos, genero, fecha_nacimiento, fecha_vinculacion, salario, id_secretaria_transito, id_cargo_policial, id_supervisor, id_usuario) VALUES
 ('PT-001', 'Carlos Alberto', 'Rodríguez Méndez', 'Masculino', '1985-03-15', '2010-01-10', 3500000, 1, 5, NULL, 2),
 ('PT-002', 'María Fernanda', 'Martínez López', 'Femenino', '1990-07-22', '2015-03-15', 2800000, 1, 3, 1, 3),
 ('PT-003', 'Juan Pablo', 'Gómez Vargas', 'Masculino', '1988-11-05', '2012-06-20', 3000000, 1, 4, 1, 4),
 ('PT-004', 'Ana Lucía', 'Ramírez Soto', 'Femenino', '1992-05-18', '2016-08-10', 2600000, 1, 2, 3, 7),
-('PT-005', 'Diego Fernando', 'Castro Jiménez', 'Masculino', '1987-09-30', '2011-04-05', 3200000, 2, 4, 1, 8),
-('PT-006', 'Sandra Milena', 'Torres Pérez', 'Femenino', '1991-02-14', '2017-01-12', 2700000, 2, 2, 5, 9),
-('PT-007', 'Andrés Felipe', 'Muñoz Díaz', 'Masculino', '1989-12-08', '2013-09-18', 2900000, 3, 3, 1, 2),
-('PT-008', 'Carolina', 'Valencia Ríos', 'Femenino', '1993-06-25', '2018-02-22', 2500000, 3, 1, 7, 3),
-('PT-009', 'Luis Eduardo', 'Herrera Cardona', 'Masculino', '1986-04-12', '2010-11-30', 3400000, 4, 5, NULL, 4),
-('PT-010', 'Patricia', 'Morales Aguilar', 'Femenino', '1994-08-19', '2019-05-15', 2400000, 4, 1, 9, 7);
+('PT-005', 'Diego Fernando', 'Castro Jiménez', 'Masculino', '1987-09-30', '2011-04-05', 3200000, 2, 4, 1, 11),
+('PT-006', 'Sandra Milena', 'Torres Pérez', 'Femenino', '1991-02-14', '2017-01-12', 2700000, 2, 2, 5, 12),
+('PT-007', 'Andrés Felipe', 'Muñoz Díaz', 'Masculino', '1989-12-08', '2013-09-18', 2900000, 3, 3, 1, 13),
+('PT-008', 'Carolina', 'Valencia Ríos', 'Femenino', '1993-06-25', '2018-02-22', 2500000, 3, 1, 7, 14),
+('PT-009', 'Luis Eduardo', 'Herrera Cardona', 'Masculino', '1986-04-12', '2010-11-30', 3400000, 4, 5, NULL, 15),
+('PT-010', 'Patricia', 'Morales Aguilar', 'Femenino', '1994-08-19', '2019-05-15', 2400000, 4, 1, 9, 16);
 
 -- =========================================================================
 -- 8. LICENCIA_CONDUCCION - Licencias de conducción
@@ -244,7 +263,7 @@ INSERT INTO comparendo_infraccion (id_comparendo, id_infraccion, valor_calculado
 (10, 10, 468000, 'Uso de celular simultáneo');
 
 -- =========================================================================
--- 16. QUEJA - Quejas contra policías (en PostgreSQL)
+-- 16. QUEJA - Quejas contra policías
 -- =========================================================================
 INSERT INTO queja (fecha_radicacion, texto_queja, estado, medio_radicacion, id_comparendo, id_persona) VALUES
 ('2025-11-05 16:00:00', 'El agente fue grosero y no explicó correctamente la infracción', 'RADICADA', 'web', 1, 1),
@@ -257,7 +276,6 @@ INSERT INTO queja (fecha_radicacion, texto_queja, estado, medio_radicacion, id_c
 ('2025-11-12 12:10:00', 'Solicito revisión del procedimiento por irregularidades', 'RADICADA', 'presencial', 5, 5),
 ('2025-11-13 16:40:00', 'Comportamiento inapropiado del agente de tránsito', 'EN_TRAMITE', 'web', 10, 10),
 ('2025-11-14 10:00:00', 'No se respetó el debido proceso durante la imposición', 'RADICADA', 'correo', 9, 9);
-
 
 -- =========================================================================
 -- VERIFICACIÓN DE DATOS INSERTADOS
@@ -296,6 +314,7 @@ SELECT 'comparendo_infraccion', COUNT(*) FROM comparendo_infraccion
 UNION ALL
 SELECT 'queja', COUNT(*) FROM queja
 ORDER BY tabla;
+
 
 -- =========================================================================
 -- SCRIPT COMPLETADO EXITOSAMENTE
