@@ -1,32 +1,46 @@
-import crypto from 'node:crypto';
+import bcrypt from 'bcryptjs';
 
-// Genera hash tipo: sha256$<salt_hex>$<digest_hex>
+/**
+ * Genera hash bcrypt de una contraseña
+ * @param {string} plainPassword - Contraseña en texto plano
+ * @returns {string} Hash bcrypt
+ */
 export const hashPassword = (plainPassword) => {
-  const salt = crypto.randomBytes(16);
-  const digest = crypto
-    .createHash('sha256')
-    .update(Buffer.concat([salt, Buffer.from(plainPassword)]))
-    .digest('hex');
-
-  return `sha256$${salt.toString('hex')}$${digest}`;
+  if (!plainPassword) {
+    throw new Error('La contraseña no puede estar vacía');
+  }
+  
+  const salt = bcrypt.genSaltSync(10);
+  const hash = bcrypt.hashSync(plainPassword, salt);
+  
+  console.log('🔐 Hash generado:', hash);
+  return hash;
 };
 
-// Verifica hash tipo: sha256$<salt_hex>$<digest_hex>
+/**
+ * Verifica si una contraseña coincide con un hash bcrypt
+ * @param {string} plainPassword - Contraseña en texto plano
+ * @param {string} storedHash - Hash almacenado en BD
+ * @returns {boolean} True si coinciden
+ */
 export const verifyPassword = (plainPassword, storedHash) => {
-  if (!storedHash || !storedHash.startsWith('sha256$')) {
+  if (!plainPassword || !storedHash) {
+    console.log('❌ Password o hash vacío');
     return false;
   }
 
-  const parts = storedHash.split('$');
-  if (parts.length !== 3) return false;
+  // Verificar que el hash tenga formato bcrypt válido
+  if (!storedHash.startsWith('$2a$') && !storedHash.startsWith('$2b$') && !storedHash.startsWith('$2y$')) {
+    console.log('❌ Hash no es formato bcrypt válido:', storedHash.substring(0, 20));
+    return false;
+  }
 
-  const [, saltHex, digestHex] = parts;
-
-  const salt = Buffer.from(saltHex, 'hex');
-  const hash = crypto
-    .createHash('sha256')
-    .update(Buffer.concat([salt, Buffer.from(plainPassword)]))
-    .digest('hex');
-
-  return crypto.timingSafeEqual(Buffer.from(hash, 'hex'), Buffer.from(digestHex, 'hex'));
+  try {
+    const isValid = bcrypt.compareSync(plainPassword, storedHash);
+    console.log('🔐 Verificación:', isValid ? '✅ Correcta' : '❌ Incorrecta');
+    return isValid;
+  } catch (error) {
+    console.error('❌ Error al verificar password:', error.message);
+    return false;
+  }
 };

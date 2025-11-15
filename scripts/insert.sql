@@ -83,28 +83,28 @@ INSERT INTO municipio (nombre_municipio, departamento, codigo_dane, direccion_of
 -- =========================================================================
 INSERT INTO usuarios (username, contrasena, rol, estado) VALUES
 -- Administrador (contraseña: Admin123!)
-('admin.cali', '$2b$10$YQvZ8QNqX7LGxV5p5Zj3a.xQKZmJ8vxGCcPFqE4nJ5K9L7MN8O9PQ', 'administrador', 1),
+('admin.cali', '$2b$10$WrOITdkPUB2bXZWOt/uXOeemDzvy22vgoslTVY1hI./5Wdw.tbNDC', 'administrador', 1),
 
 -- Policías de Tránsito (contraseña: Policia123!)
-('policia.rodriguez', '$2b$10$XRsT9UvW0xY1zABC2DEF3.GH4IJ5KL6MN7OP8QR9ST0UV1WX2YZ3a', 'policia_transito', 1),
-('policia.martinez', '$2b$10$XRsT9UvW0xY1zABC2DEF3.GH4IJ5KL6MN7OP8QR9ST0UV1WX2YZ3a', 'policia_transito', 1),
-('policia.gomez', '$2b$10$XRsT9UvW0xY1zABC2DEF3.GH4IJ5KL6MN7OP8QR9ST0UV1WX2YZ3a', 'policia_transito', 1),
-('policia.castro', '$2b$10$XRsT9UvW0xY1zABC2DEF3.GH4IJ5KL6MN7OP8QR9ST0UV1WX2YZ3a', 'policia_transito', 1),
-('policia.torres.p', '$2b$10$XRsT9UvW0xY1zABC2DEF3.GH4IJ5KL6MN7OP8QR9ST0UV1WX2YZ3a', 'policia_transito', 1),
-('policia.munoz', '$2b$10$XRsT9UvW0xY1zABC2DEF3.GH4IJ5KL6MN7OP8QR9ST0UV1WX2YZ3a', 'policia_transito', 1),
-('policia.valencia', '$2b$10$XRsT9UvW0xY1zABC2DEF3.GH4IJ5KL6MN7OP8QR9ST0UV1WX2YZ3a', 'policia_transito', 1),
-('policia.herrera', '$2b$10$XRsT9UvW0xY1zABC2DEF3.GH4IJ5KL6MN7OP8QR9ST0UV1WX2YZ3a', 'policia_transito', 1),
-('policia.morales', '$2b$10$XRsT9UvW0xY1zABC2DEF3.GH4IJ5KL6MN7OP8QR9ST0UV1WX2YZ3a', 'policia_transito', 1),
+('policia.rodriguez', '$2b$10$zE7sG4L8TVNmA5xVLLCdPO1drP.FePQmpIQ8WSz.B0fKt3ajS3vBi', 'policia_transito', 1),
+('policia.martinez', '$2b$10$zE7sG4L8TVNmA5xVLLCdPO1drP.FePQmpIQ8WSz.B0fKt3ajS3vBi', 'policia_transito', 1),
+('policia.gomez', '$2b$10$zE7sG4L8TVNmA5xVLLCdPO1drP.FePQmpIQ8WSz.B0fKt3ajS3vBi', 'policia_transito', 1),
+('policia.castro', '$2b$10$zE7sG4L8TVNmA5xVLLCdPO1drP.FePQmpIQ8WSz.B0fKt3ajS3vBi', 'policia_transito', 1),
+('policia.torres.p', '$2b$10$zE7sG4L8TVNmA5xVLLCdPO1drP.FePQmpIQ8WSz.B0fKt3ajS3vBi', 'policia_transito', 1),
+('policia.munoz', '$2b$10$zE7sG4L8TVNmA5xVLLCdPO1drP.FePQmpIQ8WSz.B0fKt3ajS3vBi', 'policia_transito', 1),
+('policia.valencia', '$2b$10$zE7sG4L8TVNmA5xVLLCdPO1drP.FePQmpIQ8WSz.B0fKt3ajS3vBi', 'policia_transito', 1),
+('policia.herrera', '$2b$10$zE7sG4L8TVNmA5xVLLCdPO1drP.FePQmpIQ8WSz.B0fKt3ajS3vBi', 'policia_transito', 1),
+('policia.morales', '$2b$10$zE7sG4L8TVNmA5xVLLCdPO1drP.FePQmpIQ8WSz.B0fKt3ajS3vBi', 'policia_transito', 1),
 
 -- Ciudadanos (contraseña: Ciudadano123!)
-('ciudadano.perez', '$2b$10$ABcD1EfG2HiJ3KlM4NoP5.QrS6TuV7WxY8ZaB9CdE0FgH1IjK2LmN', 'ciudadano', 1),
-('ciudadano.lopez', '$2b$10$ABcD1EfG2HiJ3KlM4NoP5.QrS6TuV7WxY8ZaB9CdE0FgH1IjK2LmN', 'ciudadano', 1),
-('ciudadano.sanchez', '$2b$10$ABcD1EfG2HiJ3KlM4NoP5.QrS6TuV7WxY8ZaB9CdE0FgH1IjK2LmN', 'ciudadano', 1),
+('ciudadano.perez', '$2b$10$2UoHF7xy/3faHkmnl25n7O3NpmRfxE50HMskE0Epo2ujmtNYoL7HO', 'ciudadano', 1),
+('ciudadano.lopez', '$2b$10$2UoHF7xy/3faHkmnl25n7O3NpmRfxE50HMskE0Epo2ujmtNYoL7HO', 'ciudadano', 1),
+('ciudadano.sanchez', '$2b$10$2UoHF7xy/3faHkmnl25n7O3NpmRfxE50HMskE0Epo2ujmtNYoL7HO', 'ciudadano', 1),
 
 -- Personal Administrativo
-('supervisor.ramirez', '$2b$10$MNOp3QrS4TuV5WxY6ZaB7.CdE8FgH9IjK0LmN1OpQ2RsT3UvW4XyZ', 'supervisor', 1),
-('operador.castro', '$2b$10$OpQ5RsT6UvW7XyZ8AbC9D.EfG0HiJ1KlM2NoP3QrS4TuV5WxY6ZaB', 'operador', 1),
-('auditor.torres', '$2b$10$RsT7UvW8XyZ9AbC0DeF1G.HiJ2KlM3NoP4QrS5TuV6WxY7ZaB8CdE', 'auditor', 1);
+('supervisor.ramirez', '$2b$10$kU4k1cRYNngwfI6XQbQjsuKgQEarfXZINNiqup5R9jCC.1uqbZvsm', 'supervisor', 1),
+('operador.castro', '$2b$10$9m.y2cVn58IJn4Bnv0F/a.OKlLTkBgb/eMU/w3ospDL18AbUyQHA6', 'operador', 1),
+('auditor.torres', '$2b$10$IWRffB3zDUgixbI1Fjbg2.5n/z4igsBszUNiJ4ZbyA6/eP.fkvEPK', 'auditor', 1);
 
 -- =========================================================================
 -- 7. POLICIA_TRANSITO (depende de usuarios, secretaria_transito, cargo_policial)

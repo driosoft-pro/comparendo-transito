@@ -7,6 +7,8 @@ import { notFoundHandler, errorHandler } from "../utils/errorHandler.js";
 import { connectionNoSQL, closeMongo } from "../config/mongo.js";   
 import { verifySupabase } from "../config/supabase.js";            
 
+const app = express();
+
 // Cargar variables de entorno sin logs
 dotenv.config({ quiet: true });
 
