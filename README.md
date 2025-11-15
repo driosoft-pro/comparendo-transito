@@ -162,6 +162,53 @@ npm start
 
 ---
 
+## Datos
+### Listado de Usuarios
+#### Administrador
+| Usuario     | Contraseña        | Rol               |ID  |
+|-------------|-------------------|-------------------|----|
+| admin.cali  | Admin123!         | administrador     |1   |
+
+#### Policías de Tránsito
+| Usuario          | Contraseña   | Rol               |ID  |
+|------------------|--------------|-------------------|----|
+| policia.rodriguez| Policia123!  | policia_transito  |2   |
+| policia.martinez | Policia123!  | policia_transito  |3   |
+| policia.gomez    | Policia123!  | policia_transito  |4   |
+| policia.castro   | Policia123!  | policia_transito  |11  |
+| policia.torres.p | Policia123!  | policia_transito  |12  |
+| policia.munoz    | Policia123!  | policia_transito  |13  |
+| policia.herrera  | Policia123!  | policia_transito  |14  |
+| policia.morales  | Policia123!  | policia_transito  |16  |
+
+#### Ciudadanos
+| Usuario          | Contraseña    | Rol              |ID  |
+|------------------|-------------- |------------------|----|
+| ciudadano.perez  | Ciudadano123! | ciudadano        |5   |
+| ciudadano.lopez  | Ciudadano123! | ciudadano        |6   |
+| ciudadano.sanchez| Ciudadano123! | ciudadano        |10  |
+
+#### Personal Administrativo
+| Usuario            | Contraseña      | Rol          |ID  |
+|--------------------|-----------------|--------------|----|
+| supervisor.ramirez | Supervisor123!  | supervisor   |7   |
+| operador.castro    | Operador123!    | operador     |8   |
+| auditor.torres     | Auditor123!     | auditor      |9   |
+
+#### Resumen de contraseñas por rol
+| Rol                 | Contraseña      |  Cantidad de usuarios  |
+|---------------------|-----------------|------------------------|
+| Administrador       | Admin123!       |             1          |
+| Policía de Tránsito | Policia123!     |             9          |
+| Ciudadano           | Ciudadano123!   |             3          |
+| Supervisor          | Supervisor123!  |             1          |
+| Operador            | Operador123!    |             1          |
+| Auditor             | Auditor123!     |             1          |
+
+
+
+---
+
 ## 📚 Endpoints principales
 
 | Método | Endpoint           | Descripción         |
