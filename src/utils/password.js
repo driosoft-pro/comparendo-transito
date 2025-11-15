@@ -1,48 +1,46 @@
-import crypto from 'node:crypto';
 import bcrypt from 'bcryptjs';
 
-// Hash por defecto: bcrypt (para nuevos usuarios)
+/**
+ * Genera hash bcrypt de una contraseña
+ * @param {string} plainPassword - Contraseña en texto plano
+ * @returns {string} Hash bcrypt
+ */
 export const hashPassword = (plainPassword) => {
-  // cost 10 está bien para desarrollo
-  return bcrypt.hashSync(plainPassword, 10);
+  if (!plainPassword) {
+    throw new Error('La contraseña no puede estar vacía');
+  }
+  
+  const salt = bcrypt.genSaltSync(10);
+  const hash = bcrypt.hashSync(plainPassword, salt);
+  
+  console.log('Hash generado:', hash);
+  return hash;
 };
 
-// Verifica tanto bcrypt como el esquema antiguo sha256$...
+/**
+ * Verifica si una contraseña coincide con un hash bcrypt
+ * @param {string} plainPassword - Contraseña en texto plano
+ * @param {string} storedHash - Hash almacenado en BD
+ * @returns {boolean} True si coinciden
+ */
 export const verifyPassword = (plainPassword, storedHash) => {
-  if (!storedHash) return false;
-
-  // Soporte legado: hashes tipo sha256$<salt_hex>$<digest_hex>
-  if (storedHash.startsWith('sha256$')) {
-    const parts = storedHash.split('$');
-    if (parts.length !== 3) return false;
-
-    const [, saltHex, digestHex] = parts;
-
-    const salt = Buffer.from(saltHex, 'hex');
-    const hash = crypto
-      .createHash('sha256')
-      .update(Buffer.concat([salt, Buffer.from(plainPassword)]))
-      .digest('hex');
-
-    return crypto.timingSafeEqual(
-      Buffer.from(hash, 'hex'),
-      Buffer.from(digestHex, 'hex'),
-    );
+  if (!plainPassword || !storedHash) {
+    console.log('Password o hash vacío');
+    return false;
   }
 
-  // bcrypt: $2a$, $2b$, $2y$ ...
-  if (
-    storedHash.startsWith('$2a$') ||
-    storedHash.startsWith('$2b$') ||
-    storedHash.startsWith('$2y$')
-  ) {
-    try {
-      return bcrypt.compareSync(plainPassword, storedHash);
-    } catch {
-      return false;
-    }
+  // Verificar que el hash tenga formato bcrypt válido
+  if (!storedHash.startsWith('$2a$') && !storedHash.startsWith('$2b$') && !storedHash.startsWith('$2y$')) {
+    console.log('Hash no es formato bcrypt válido:', storedHash.substring(0, 20));
+    return false;
   }
 
-  // 3) Formato desconocido
-  return false;
+  try {
+    const isValid = bcrypt.compareSync(plainPassword, storedHash);
+    console.log('Verificación:', isValid ? 'Correcta' : 'Incorrecta');
+    return isValid;
+  } catch (error) {
+    console.error('Error al verificar password:', error.message);
+    return false;
+  }
 };

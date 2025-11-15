@@ -3,6 +3,15 @@ import { supabase } from '../config/supabase.js';
 const TABLE = 'usuarios';
 
 export const UsuarioModel = {
+  async findAll() {
+    const { data, error } = await supabase
+      .from(TABLE)
+      .select('*');
+
+    if (error) throw error;
+    return data;
+  },
+
   async findById(id_usuario) {
     const { data, error } = await supabase
       .from(TABLE)

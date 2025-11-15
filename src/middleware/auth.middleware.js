@@ -27,7 +27,7 @@ export const authMiddleware = (req, res, next) => {
 
 // Middleware opcional para exigir rol admin
 export const isAdmin = (req, res, next) => {
-  if (!req.user || req.user.rol !== 'admin') {
+  if (!req.user || req.user.rol !== 'administrador') {
     return res.status(403).json({
       ok: false,
       message: 'Acceso restringido a administradores',
