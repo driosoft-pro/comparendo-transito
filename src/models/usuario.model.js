@@ -3,7 +3,6 @@ import { supabase } from '../config/supabase.js';
 const TABLE = 'usuarios';
 
 export const UsuarioModel = {
-
   async findAll() {
     const { data, error } = await supabase
       .from(TABLE)

@@ -9,23 +9,10 @@ import { verifyPassword } from '../utils/password.js';
  */
 export const login = async (req, res) => {
   try {
-    // 🔍 LOGS DE DIAGNÓSTICO
-    console.log('\n' + '='.repeat(60));
-    console.log('🔐 INTENTO DE LOGIN');
-    console.log('='.repeat(60));
-    console.log('📥 Headers:', JSON.stringify(req.headers, null, 2));
-    console.log('📦 Body:', JSON.stringify(req.body, null, 2));
-    console.log('📦 Body keys:', Object.keys(req.body));
-
-    // Extraer credenciales
     const { username, password } = req.body;
-
-    console.log('👤 Username:', username);
-    console.log('🔑 Password recibido:', password ? `[${password.length} caracteres]` : 'VACÍO');
 
     // Validación básica
     if (!username || !password) {
-      console.log('❌ Validación fallida - campos vacíos');
       return res.status(400).json({
         ok: false,
         message: 'Username y password son requeridos',
@@ -38,27 +25,17 @@ export const login = async (req, res) => {
     }
 
     // Buscar usuario en Supabase
-    console.log('🔍 Buscando usuario en Supabase...');
     const user = await UsuarioModel.findByUsername(username);
 
     if (!user) {
-      console.log('❌ Usuario no encontrado:', username);
       return res.status(401).json({
         ok: false,
         message: 'Usuario o contraseña incorrectos',
       });
     }
 
-    console.log('✅ Usuario encontrado:', {
-      id: user.id_usuario,
-      username: user.username,
-      rol: user.rol,
-      estado: user.estado
-    });
-
     // Verificar que el usuario esté activo
     if (user.estado !== 1) {
-      console.log('❌ Usuario inactivo');
       return res.status(401).json({
         ok: false,
         message: 'Usuario inactivo. Contacte al administrador.',
@@ -69,28 +46,21 @@ export const login = async (req, res) => {
     const passwordHash = user.contrasena;
 
     if (!passwordHash) {
-      console.log('❌ No hay hash de contraseña en la BD');
       return res.status(500).json({
         ok: false,
         message: 'Error de configuración del usuario',
       });
     }
 
-    console.log('🔐 Hash de BD:', passwordHash.substring(0, 30) + '...');
-    console.log('🔐 Password a verificar:', password);
-
     // Verificar contraseña
     const isValid = verifyPassword(password, passwordHash);
     
     if (!isValid) {
-      console.log('❌ Contraseña incorrecta');
       return res.status(401).json({
         ok: false,
         message: 'Usuario o contraseña incorrectos',
       });
     }
-
-    console.log('✅ Contraseña correcta!');
 
     // Crear payload JWT
     const payload = {
@@ -100,14 +70,10 @@ export const login = async (req, res) => {
       estado: user.estado
     };
 
-    console.log('🎫 Generando token JWT...');
     const token = signToken(payload);
 
     // Preparar respuesta (sin el hash)
     const { contrasena, ...safeUser } = user;
-
-    console.log('✅ Login exitoso para:', username);
-    console.log('='.repeat(60) + '\n');
 
     return res.json({
       ok: true,
@@ -117,13 +83,6 @@ export const login = async (req, res) => {
     });
 
   } catch (error) {
-    console.error('\n' + '='.repeat(60));
-    console.error('❌ ERROR EN LOGIN');
-    console.error('='.repeat(60));
-    console.error('Mensaje:', error.message);
-    console.error('Stack:', error.stack);
-    console.error('='.repeat(60) + '\n');
-
     return res.status(500).json({
       ok: false,
       message: 'Error interno del servidor',

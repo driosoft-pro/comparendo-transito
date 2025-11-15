@@ -13,7 +13,7 @@ export const hashPassword = (plainPassword) => {
   const salt = bcrypt.genSaltSync(10);
   const hash = bcrypt.hashSync(plainPassword, salt);
   
-  console.log('🔐 Hash generado:', hash);
+  console.log('Hash generado:', hash);
   return hash;
 };
 
@@ -25,22 +25,22 @@ export const hashPassword = (plainPassword) => {
  */
 export const verifyPassword = (plainPassword, storedHash) => {
   if (!plainPassword || !storedHash) {
-    console.log('❌ Password o hash vacío');
+    console.log('Password o hash vacío');
     return false;
   }
 
   // Verificar que el hash tenga formato bcrypt válido
   if (!storedHash.startsWith('$2a$') && !storedHash.startsWith('$2b$') && !storedHash.startsWith('$2y$')) {
-    console.log('❌ Hash no es formato bcrypt válido:', storedHash.substring(0, 20));
+    console.log('Hash no es formato bcrypt válido:', storedHash.substring(0, 20));
     return false;
   }
 
   try {
     const isValid = bcrypt.compareSync(plainPassword, storedHash);
-    console.log('🔐 Verificación:', isValid ? '✅ Correcta' : '❌ Incorrecta');
+    console.log('Verificación:', isValid ? 'Correcta' : 'Incorrecta');
     return isValid;
   } catch (error) {
-    console.error('❌ Error al verificar password:', error.message);
+    console.error('Error al verificar password:', error.message);
     return false;
   }
 };
