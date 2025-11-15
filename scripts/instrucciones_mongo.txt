@@ -1,11 +1,11 @@
-// Índices para consultas rápidas colocar despues de crear la tabla.
+// Índices para consultas rápidas colocar despues de crear la colección quejas.
 db.quejas.createIndex({ id_persona_quejosa: 1 });
 db.quejas.createIndex({ id_policia_denunciado: 1 });
 db.quejas.createIndex({ id_comparendo: 1 });
 db.quejas.createIndex({ estado: 1 });
 db.quejas.createIndex({ fecha_radicacion: -1 });
 
-// Índices para consultas rápidas colocar despues de crear la tabla.
+// Índices para consultas rápidas colocar despues de crear la colección auditorias.
 db.auditorias.createIndex({ fecha: -1 });
 db.auditorias.createIndex({ "usuario.id_usuario": 1 });
 db.auditorias.createIndex({ accion: 1 });

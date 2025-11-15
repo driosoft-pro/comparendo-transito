@@ -316,21 +316,21 @@ npm start
 
 | Método | Endpoint            | Descripción               |
 | ------ | ------------------- | ------------------------- |
-| GET    | `/api/personas`     | Listar personas           |
-| GET    | `/api/personas/:id` | Obtener persona por ID    |
-| PUT    | `/api/personas/:id` | Actualizar persona por ID |
-| DELETE | `/api/personas/:id` | Eliminar persona por ID   |
+| GET    | `/api/perfiles`     | Listar perfiles           |
+| GET    | `/api/perfiles/:id` | Obtener persona por ID    |
+| PUT    | `/api/perfiles/:id` | Actualizar persona por ID |
+| DELETE | `/api/perfiles/:id` | Eliminar persona por ID   |
 
 ---
 
 ## CRUD AUTOMOTORES
 
-| Método | Endpoint               | Descripción                 |
-| ------ | ---------------------- | --------------------------- |
-| GET    | `/api/automotores`     | Listar automotores          |
-| GET    | `/api/automotores/:id` | Obtener automotor por ID    |
-| PUT    | `/api/automotores/:id` | Actualizar automotor por ID |
-| DELETE | `/api/automotores/:id` | Eliminar automotor por ID   |
+| Método | Endpoint             | Descripción                 |
+| ------ | -------------------- | --------------------------- |
+| GET    | `/api/vehiculos`     | Listar vehiculos            |
+| GET    | `/api/vehiculos/:id` | Obtener automotor por ID    |
+| PUT    | `/api/vehiculos/:id` | Actualizar automotor por ID |
+| DELETE | `/api/vehiculos/:id` | Eliminar automotor por ID   |
 
 ## CRUD COMPARENDOS
 

@@ -1,0 +1,2568 @@
+type: spec.insomnia.rest/5.0
+name: comparendosTransito
+meta:
+  id: wrk_c65212bc67e74e919d7de2718f44d7fe
+  created: 1763227613688
+  modified: 1763227613688
+  description: ""
+collection:
+  - url: "{{ _['api-comparendos'].url }}auth/login"
+    name: login
+    meta:
+      id: req_003e0977347b407c82f66429a8ba0629
+      created: 1763173448241
+      modified: 1763225584971
+      isPrivate: false
+      description: ""
+      sortKey: -1763173448241
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username": "admin.cali",
+        	"password": "Admin123!"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _['api-comparendos'].url }}ping"
+    name: testApi
+    meta:
+      id: req_5975e61ad703499280dcc1d169af9ea5
+      created: 1763173549598
+      modified: 1763173932647
+      isPrivate: false
+      description: ""
+      sortKey: -1763173549598
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - name: Usuarios
+    meta:
+      id: fld_51f2f68a27284a1c8f4b38a97577ef6a
+      created: 1763182983465
+      modified: 1763183027547
+      sortKey: -1763173448141
+      description: ""
+    children:
+      - url: "{{ _['api-comparendos'].url }}usuarios"
+        name: usuarios
+        meta:
+          id: req_abdbc39505514a4c88f5c2a819a5a52b
+          created: 1763174133153
+          modified: 1763227275369
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006652
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}usuarios"
+        name: usuarioCreate
+        meta:
+          id: req_e69c2bf44bbb42fea543a7678af559e9
+          created: 1763181713043
+          modified: 1763227280329
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006552
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test2",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}usuarios/18"
+        name: usuario
+        meta:
+          id: req_1a5d36fb540241789b0f3270e471b46f
+          created: 1763182104491
+          modified: 1763227260964
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006752
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}usuarios/me"
+        name: miusuario
+        meta:
+          id: req_4894f9ac94d0474e8e274e42750f3eda
+          created: 1763182393676
+          modified: 1763227202691
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006852
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}usuarios/19"
+        name: usuarioDelete
+        meta:
+          id: req_6847165a7d51420c8df404a23a310e27
+          created: 1763182537660
+          modified: 1763227288813
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006352
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}usuarios/18"
+        name: usuarioUpdate
+        meta:
+          id: req_6281285ea24b4696bd4d2729790335d0
+          created: 1763182908822
+          modified: 1763227284290
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006452
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test-pro",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Comparendos
+    meta:
+      id: fld_8fe4581c62904cde92c264a55c9ef05e
+      created: 1763220673008
+      modified: 1763220673008
+      sortKey: -1762861070838
+      description: ""
+    children:
+      - url: "{{ _['api-comparendos'].url }}comparendos"
+        name: comparendos
+        meta:
+          id: req_6f518736bc8e478e83a6a7059a79edb0
+          created: 1763220673008
+          modified: 1763227354880
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006852
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}comparendos"
+        name: comparendoCreate
+        meta:
+          id: req_9d4fff2a6f634ac7b58f1a6d45b8f97f
+          created: 1763220673009
+          modified: 1763227357931
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006552
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test2",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}comparendos/1"
+        name: comparendo
+        meta:
+          id: req_0e4b762d5c2247578b94667ada617806
+          created: 1763220673010
+          modified: 1763227350525
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006952
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}comparendos/1"
+        name: comparendoDelete
+        meta:
+          id: req_f5d0fc944ad247b69721855496a24be9
+          created: 1763220673010
+          modified: 1763227366228
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006352
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}comparendos/1"
+        name: comparendoUpdate
+        meta:
+          id: req_75f3867746f04001ae79179b79597afe
+          created: 1763220673011
+          modified: 1763227360991
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006452
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test-pro",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Perfil
+    meta:
+      id: fld_0ddb4a4f04a348cbbaeb1bd6db12753b
+      created: 1763224265452
+      modified: 1763226095519
+      sortKey: -1763017259489.5
+      description: ""
+    children:
+      - url: "{{ _['api-comparendos'].url }}perfiles"
+        name: perfiles
+        meta:
+          id: req_4032236812dd42cc8e7ce5853ec79802
+          created: 1763224265452
+          modified: 1763227307546
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006652
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}perfiles"
+        name: perfilCreate
+        meta:
+          id: req_66ae305d0d044ea5bc93fee051fc34e9
+          created: 1763224265452
+          modified: 1763227311210
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006552
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test2",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}perfiles/18"
+        name: perfil
+        meta:
+          id: req_0080dac576244f12b82dbf1bdc340d99
+          created: 1763224265453
+          modified: 1763227303052
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006752
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}perfiles/me"
+        name: miperfil
+        meta:
+          id: req_90f8d68401d94f95a38865f82b05fb43
+          created: 1763224265453
+          modified: 1763227299087
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006852
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}perfiles/1"
+        name: perfilDelete
+        meta:
+          id: req_a2dae1a433b74c7683cfbc87ec1fcf87
+          created: 1763224265453
+          modified: 1763227314978
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006352
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}perfiles/1"
+        name: perfilUpdate
+        meta:
+          id: req_3551f0ed54c8413cb4b8437accb9d678
+          created: 1763224265454
+          modified: 1763227318451
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006452
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test-pro",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Quejas
+    meta:
+      id: fld_612f2646ede74e6cb40240787143cd8a
+      created: 1763224498776
+      modified: 1763224498776
+      sortKey: -1762704882186.5
+      description: ""
+    children:
+      - url: "{{ _['api-comparendos'].url }}quejas"
+        name: quejas
+        meta:
+          id: req_9977fb5dce844de9a4eebda39dba19d4
+          created: 1763224498776
+          modified: 1763227385312
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006852
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}quejas"
+        name: quejaCreate
+        meta:
+          id: req_a5958c0110e14748b8b397ac027f2aff
+          created: 1763224498777
+          modified: 1763227388490
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006552
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test2",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}quejas/1"
+        name: quejaDelete
+        meta:
+          id: req_facea213fee846e58c1130517c1b4ed7
+          created: 1763224498777
+          modified: 1763227396377
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006352
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}quejas/1"
+        name: queja
+        meta:
+          id: req_8968df66fa6744b58b86ba24378536b2
+          created: 1763224498778
+          modified: 1763227382166
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006952
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}quejas/1"
+        name: quejaUpdate
+        meta:
+          id: req_5b1e0b9828754683b2f9c803ddbbd563
+          created: 1763224498784
+          modified: 1763227392609
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006452
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test-pro",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Vehiculos
+    meta:
+      id: fld_2142ae9463234efdb223a83abac81e00
+      created: 1763225482448
+      modified: 1763225493874
+      sortKey: -1762939165163.75
+      description: ""
+    children:
+      - url: "{{ _['api-comparendos'].url }}vehiculos/1"
+        name: vehiculoDelete
+        meta:
+          id: req_703ddd7909034e158d6a767bbb2d0b10
+          created: 1763225482449
+          modified: 1763227340827
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006352
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}vehiculos"
+        name: vehiculos
+        meta:
+          id: req_d5868366f9b64fb7b3fc66df7b50df47
+          created: 1763225482449
+          modified: 1763227329548
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006852
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}vehiculos"
+        name: vehiculoCreate
+        meta:
+          id: req_de2fff231a734504950441aa7af3d15c
+          created: 1763225482449
+          modified: 1763227333172
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006552
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test2",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}vehiculos/1"
+        name: vehiculoUpdate
+        meta:
+          id: req_3e5c297fa7df421780b326eb7f37a351
+          created: 1763225482450
+          modified: 1763227336657
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006452
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test-pro",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}vehiculos/1"
+        name: vehiculo
+        meta:
+          id: req_e7b3af6535964293b62b9a02c019db09
+          created: 1763225482450
+          modified: 1763227326284
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006952
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Cargos
+    meta:
+      id: fld_33b46684aaf24f2c9ccdd76d94a34a2e
+      created: 1763226015070
+      modified: 1763226015070
+      sortKey: -1762626787860.75
+      description: ""
+    children:
+      - url: "{{ _['api-comparendos'].url }}infracciones"
+        name: cargos
+        meta:
+          id: req_13fdcc62ec934eaf80f428af6ce9aee5
+          created: 1763226015071
+          modified: 1763227433681
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006852
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}quejas"
+        name: cargoCreate
+        meta:
+          id: req_1c6045292fcd43569147be9a41abaccb
+          created: 1763226015071
+          modified: 1763227438143
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006552
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test2",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}quejas/1"
+        name: cargoDelete
+        meta:
+          id: req_14feab9c2c794edb82580fe8f0c7ffe8
+          created: 1763226015072
+          modified: 1763227445979
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006352
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}quejas/1"
+        name: cargoUpdate
+        meta:
+          id: req_321d4a8c0c844cc5a3d6192aa26f7fff
+          created: 1763226015073
+          modified: 1763227441988
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006452
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test-pro",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}cargos/1"
+        name: cargo
+        meta:
+          id: req_56e827872b8943e5b31ca24440238478
+          created: 1763226015073
+          modified: 1763227429493
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006952
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Licencias
+    meta:
+      id: fld_e3b210cc20da4931a1db7a55a18d32a5
+      created: 1763226026738
+      modified: 1763226026738
+      sortKey: -1762587740697.875
+      description: ""
+    children:
+      - url: "{{ _['api-comparendos'].url }}licencias"
+        name: licenciaCreate
+        meta:
+          id: req_3c187876121b4eb49641a08b339202fe
+          created: 1763226026738
+          modified: 1763227459848
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006552
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test2",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}licencias"
+        name: licencias
+        meta:
+          id: req_a10774648bae416a8e29f3178ee47d5a
+          created: 1763226026738
+          modified: 1763227455977
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006852
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}licencias/1"
+        name: licenciaUpdate
+        meta:
+          id: req_703566233c5e4fb9be698794e70e0bc8
+          created: 1763226026739
+          modified: 1763227464119
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006452
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test-pro",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}licencias/1"
+        name: licenciaDelete
+        meta:
+          id: req_a72dc820145043a38bb429d83b474b55
+          created: 1763226026739
+          modified: 1763227468009
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006352
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}licencias/1"
+        name: licencia
+        meta:
+          id: req_b7efe99cae294994b2972c6236cbc501
+          created: 1763226026739
+          modified: 1763227452037
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006952
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Municipios
+    meta:
+      id: fld_0a20776f744d460eb752594121f0909e
+      created: 1763226115635
+      modified: 1763226186568
+      sortKey: -1762563336221.0781
+      description: ""
+    children:
+      - url: "{{ _['api-comparendos'].url }}municipios"
+        name: municipioCreate
+        meta:
+          id: req_2591e557c3b44f44aa7f029464af9cd2
+          created: 1763226115636
+          modified: 1763227483858
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006552
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test2",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}municipios/1"
+        name: municipioUpdate
+        meta:
+          id: req_194ddcdfd2f84efa8982b6ac49eb044f
+          created: 1763226115637
+          modified: 1763227488508
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006452
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test-pro",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}municipios/1"
+        name: municipio
+        meta:
+          id: req_b67abe928d0b47b6b25b2b64eeaa4ad1
+          created: 1763226115637
+          modified: 1763227475656
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006952
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}municipios"
+        name: municipios
+        meta:
+          id: req_f5a179f33a01484aa4772f8b2f3082ff
+          created: 1763226115637
+          modified: 1763227479743
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006852
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}municipios/1"
+        name: municipioDelete
+        meta:
+          id: req_0261674493454a57af12d1df43412624
+          created: 1763226115638
+          modified: 1763227493469
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006352
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: SecretariasTransito
+    meta:
+      id: fld_1d9e5f1b8f8746a197dca72da4a15a20
+      created: 1763226175282
+      modified: 1763226181940
+      sortKey: -1762558455325.7188
+      description: ""
+    children:
+      - url: "{{ _['api-comparendos'].url }}secretarias/1"
+        name: secretariaUpdate
+        meta:
+          id: req_ae730419f66a4a6987dc6b079111803c
+          created: 1763226175282
+          modified: 1763227513438
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006452
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test-pro",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}secretarias"
+        name: secretariaCreate
+        meta:
+          id: req_d74298bac36b451ba72f0bdc4980114d
+          created: 1763226175282
+          modified: 1763227509159
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006552
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test2",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}secretarias/1"
+        name: secretaria
+        meta:
+          id: req_139a614ac63a4fddb587dde5617e1144
+          created: 1763226175283
+          modified: 1763227501023
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006952
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}secretarias"
+        name: secretarias
+        meta:
+          id: req_271849a26442482db9dd5bf8d0cd1d14
+          created: 1763226175283
+          modified: 1763227504710
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006852
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}secretarias/1"
+        name: secretariaDelete
+        meta:
+          id: req_8cdcd5fa66b54a2faf769e3a60a28e2f
+          created: 1763226175283
+          modified: 1763227519480
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006352
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Infracciones
+    meta:
+      id: fld_72c080fdf6114a4991152c81d7f16792
+      created: 1763226280140
+      modified: 1763226280140
+      sortKey: -1762665835023.625
+      description: ""
+    children:
+      - url: "{{ _['api-comparendos'].url }}infracciones/1"
+        name: infraccioneDelete
+        meta:
+          id: req_575ba66b40724dc6a678417f78e553ef
+          created: 1763226280141
+          modified: 1763227422876
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006352
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}infracciones"
+        name: infraccioneCreate
+        meta:
+          id: req_74575e0fc305428ebbb398e5da8240ec
+          created: 1763226280141
+          modified: 1763227413966
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006552
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test2",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}infracciones"
+        name: infraccione
+        meta:
+          id: req_9ca83c6bbaf74baca1364b5682151061
+          created: 1763226280141
+          modified: 1763227410296
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006852
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}infracciones/1"
+        name: infraccione
+        meta:
+          id: req_d9c6a723c25e449da6e0bd54229eec12
+          created: 1763226280141
+          modified: 1763227406505
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006952
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}infracciones/1"
+        name: infraccioneUpdate
+        meta:
+          id: req_cd1a4717105342a89c27c37065385f06
+          created: 1763226280142
+          modified: 1763227419007
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006452
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "nuevo.test-pro",
+              "password": "Clave123!",
+              "rol": "administrador"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_2045ee60130b3db9552f1057878c9e7e2ed220a9
+    created: 1763227613690
+    modified: 1763227613690
+environments:
+  name: Base Environment
+  meta:
+    id: env_2045ee60130b3db9552f1057878c9e7e2ed220a9
+    created: 1763227613690
+    modified: 1763227613690
+    isPrivate: false
+spec:
+  contents:
+    openapi: 3.0.3
+    info:
+      title: API de Comparendos de Tránsito
+      version: 1.0.0
+      description: Especificación de la API para gestión de comparendos, usuarios y
+        entidades relacionadas.
+    servers:
+      - url: http://localhost:8080/api
+        description: Servidor local de desarrollo
+    tags:
+      - name: Autenticación
+        description: Endpoints de autenticación y verificación
+      - name: Usuarios
+        description: Gestión de usuarios del sistema
+      - name: Perfiles
+        description: Perfiles de ciudadanos
+      - name: Comparendos
+        description: Gestión de comparendos de tránsito
+      - name: Quejas
+        description: Quejas y reclamos ciudadanos
+      - name: Vehículos
+        description: Registro de vehículos
+      - name: Infracciones
+        description: Catálogo de infracciones de tránsito
+      - name: Licencias
+        description: Licencias de conducción
+      - name: Municipios
+        description: Catálogo de municipios
+      - name: Secretarías
+        description: Secretarías de tránsito
+      - name: Cargos
+        description: Cargos de personal
+      - name: Sistema
+        description: Endpoints de sistema y monitoreo
+    paths:
+      /auth/login:
+        post:
+          tags:
+            - Autenticación
+          operationId: login
+          summary: Autenticación de usuario
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/LoginRequest"
+          responses:
+            "200":
+              description: Login exitoso
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                      usuario:
+                        $ref: "#/components/schemas/Usuario"
+      /ping:
+        get:
+          tags:
+            - Sistema
+          operationId: testApi
+          summary: Probar API
+          responses:
+            "200":
+              description: API OK
+      /usuarios:
+        get:
+          tags:
+            - Usuarios
+          operationId: usuarios
+          summary: Listar usuarios
+          responses:
+            "200":
+              description: Listado de usuarios
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Usuario"
+        post:
+          tags:
+            - Usuarios
+          operationId: usuarioCreate
+          summary: Crear usuario
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Usuario"
+          responses:
+            "201":
+              description: Usuario creado
+      /usuarios/{id}:
+        get:
+          tags:
+            - Usuarios
+          operationId: usuario
+          summary: Obtener usuario por id
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            "200":
+              description: Usuario encontrado
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/Usuario"
+        put:
+          tags:
+            - Usuarios
+          operationId: usuarioUpdate
+          summary: Actualizar usuario
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Usuario"
+          responses:
+            "200":
+              description: Usuario actualizado
+        delete:
+          tags:
+            - Usuarios
+          operationId: usuarioDelete
+          summary: Eliminar usuario (soft delete)
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            "204":
+              description: Usuario eliminado
+      /usuarios/me:
+        get:
+          tags:
+            - Usuarios
+          operationId: miusuario
+          summary: Obtener información del usuario autenticado
+          responses:
+            "200":
+              description: Usuario autenticado
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/Usuario"
+      /comparendos:
+        get:
+          tags:
+            - Comparendos
+          operationId: comparendos
+          summary: Listar comparendos
+          responses:
+            "200":
+              description: Listado de comparendos
+        post:
+          tags:
+            - Comparendos
+          operationId: comparendoCreate
+          summary: Crear comparendo
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  additionalProperties: true
+          responses:
+            "201":
+              description: Comparendo creado
+      /comparendos/{id}:
+        get:
+          tags:
+            - Comparendos
+          operationId: comparendo
+          summary: Obtener comparendo por id
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            "200":
+              description: Comparendo encontrado
+        put:
+          tags:
+            - Comparendos
+          operationId: comparendoUpdate
+          summary: Actualizar comparendo
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  additionalProperties: true
+          responses:
+            "200":
+              description: Comparendo actualizado
+        delete:
+          tags:
+            - Comparendos
+          operationId: comparendoDelete
+          summary: Eliminar comparendo
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            "204":
+              description: Comparendo eliminado
+      /perfiles:
+        get:
+          tags:
+            - Perfiles
+          operationId: perfiles
+          summary: Listar perfiles
+          responses:
+            "200":
+              description: Listado de perfiles
+        post:
+          tags:
+            - Perfiles
+          operationId: perfilCreate
+          summary: Crear perfil
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  additionalProperties: true
+          responses:
+            "201":
+              description: Perfil creado
+      /perfiles/{id}:
+        get:
+          tags:
+            - Perfiles
+          operationId: perfil
+          summary: Obtener perfil por id
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            "200":
+              description: Perfil encontrado
+        put:
+          tags:
+            - Perfiles
+          operationId: perfilUpdate
+          summary: Actualizar perfil
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  additionalProperties: true
+          responses:
+            "200":
+              description: Perfil actualizado
+        delete:
+          tags:
+            - Perfiles
+          operationId: perfilDelete
+          summary: Eliminar perfil
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            "204":
+              description: Perfil eliminado
+      /perfiles/me:
+        get:
+          tags:
+            - Perfiles
+          operationId: miperfil
+          summary: Obtener perfil del usuario autenticado
+          responses:
+            "200":
+              description: Perfil del usuario autenticado
+      /quejas:
+        get:
+          tags:
+            - Quejas
+          operationId: quejas
+          summary: Listar quejas
+          responses:
+            "200":
+              description: Listado de quejas
+        post:
+          tags:
+            - Quejas
+          operationId: quejaCreate
+          summary: Crear queja
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  additionalProperties: true
+          responses:
+            "201":
+              description: Queja creada
+      /quejas/{id}:
+        get:
+          tags:
+            - Quejas
+          operationId: queja
+          summary: Obtener queja por id
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            "200":
+              description: Queja encontrada
+        put:
+          tags:
+            - Quejas
+          operationId: quejaUpdate
+          summary: Actualizar queja
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  additionalProperties: true
+          responses:
+            "200":
+              description: Queja actualizada
+        delete:
+          tags:
+            - Quejas
+          operationId: quejaDelete
+          summary: Eliminar queja
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            "204":
+              description: Queja eliminada
+      /vehiculos:
+        get:
+          tags:
+            - Vehículos
+          operationId: vehiculos
+          summary: Listar vehículos
+          responses:
+            "200":
+              description: Listado de vehículos
+        post:
+          tags:
+            - Vehículos
+          operationId: vehiculoCreate
+          summary: Crear vehículo
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  additionalProperties: true
+          responses:
+            "201":
+              description: Vehículo creado
+      /vehiculos/{id}:
+        get:
+          tags:
+            - Vehículos
+          operationId: vehiculo
+          summary: Obtener vehículo por id
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            "200":
+              description: Vehículo encontrado
+        put:
+          tags:
+            - Vehículos
+          operationId: vehiculoUpdate
+          summary: Actualizar vehículo
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  additionalProperties: true
+          responses:
+            "200":
+              description: Vehículo actualizado
+        delete:
+          tags:
+            - Vehículos
+          operationId: vehiculoDelete
+          summary: Eliminar vehículo
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            "204":
+              description: Vehículo eliminado
+      /cargos/{id}:
+        get:
+          tags:
+            - Cargos
+          operationId: cargo
+          summary: Obtener cargo por id
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            "200":
+              description: Cargo encontrado
+      /licencias:
+        get:
+          tags:
+            - Licencias
+          operationId: licencias
+          summary: Listar licencias
+          responses:
+            "200":
+              description: Listado de licencias
+        post:
+          tags:
+            - Licencias
+          operationId: licenciaCreate
+          summary: Crear licencia
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  additionalProperties: true
+          responses:
+            "201":
+              description: Licencia creada
+      /licencias/{id}:
+        get:
+          tags:
+            - Licencias
+          operationId: licencia
+          summary: Obtener licencia por id
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            "200":
+              description: Licencia encontrada
+        put:
+          tags:
+            - Licencias
+          operationId: licenciaUpdate
+          summary: Actualizar licencia
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  additionalProperties: true
+          responses:
+            "200":
+              description: Licencia actualizada
+        delete:
+          tags:
+            - Licencias
+          operationId: licenciaDelete
+          summary: Eliminar licencia
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            "204":
+              description: Licencia eliminada
+      /municipios:
+        get:
+          tags:
+            - Municipios
+          operationId: municipios
+          summary: Listar municipios
+          responses:
+            "200":
+              description: Listado de municipios
+        post:
+          tags:
+            - Municipios
+          operationId: municipioCreate
+          summary: Crear municipio
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  additionalProperties: true
+          responses:
+            "201":
+              description: Municipio creado
+      /municipios/{id}:
+        get:
+          tags:
+            - Municipios
+          operationId: municipio
+          summary: Obtener municipio por id
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            "200":
+              description: Municipio encontrado
+        put:
+          tags:
+            - Municipios
+          operationId: municipioUpdate
+          summary: Actualizar municipio
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  additionalProperties: true
+          responses:
+            "200":
+              description: Municipio actualizado
+        delete:
+          tags:
+            - Municipios
+          operationId: municipioDelete
+          summary: Eliminar municipio
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            "204":
+              description: Municipio eliminado
+      /secretarias:
+        get:
+          tags:
+            - Secretarías
+          operationId: secretarias
+          summary: Listar secretarías de tránsito
+          responses:
+            "200":
+              description: Listado de secretarías
+        post:
+          tags:
+            - Secretarías
+          operationId: secretariaCreate
+          summary: Crear secretaría de tránsito
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  additionalProperties: true
+          responses:
+            "201":
+              description: Secretaría creada
+      /secretarias/{id}:
+        get:
+          tags:
+            - Secretarías
+          operationId: secretaria
+          summary: Obtener secretaría por id
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            "200":
+              description: Secretaría encontrada
+        put:
+          tags:
+            - Secretarías
+          operationId: secretariaUpdate
+          summary: Actualizar secretaría
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  additionalProperties: true
+          responses:
+            "200":
+              description: Secretaría actualizada
+        delete:
+          tags:
+            - Secretarías
+          operationId: secretariaDelete
+          summary: Eliminar secretaría
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            "204":
+              description: Secretaría eliminada
+      /infracciones:
+        get:
+          tags:
+            - Infracciones
+          operationId: infracciones
+          summary: Listar infracciones
+          responses:
+            "200":
+              description: Listado de infracciones
+        post:
+          tags:
+            - Infracciones
+          operationId: infraccioneCreate
+          summary: Crear infracción
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  additionalProperties: true
+          responses:
+            "201":
+              description: Infracción creada
+      /infracciones/{id}:
+        get:
+          tags:
+            - Infracciones
+          operationId: infraccione
+          summary: Obtener infracción por id
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            "200":
+              description: Infracción encontrada
+        put:
+          tags:
+            - Infracciones
+          operationId: infraccioneUpdate
+          summary: Actualizar infracción
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  additionalProperties: true
+          responses:
+            "200":
+              description: Infracción actualizada
+        delete:
+          tags:
+            - Infracciones
+          operationId: infraccioneDelete
+          summary: Eliminar infracción
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            "204":
+              description: Infracción eliminada
+    components:
+      securitySchemes:
+        BearerAuth:
+          type: http
+          scheme: bearer
+          bearerFormat: JWT
+      schemas:
+        LoginRequest:
+          type: object
+          required:
+            - username
+            - password
+          properties:
+            username:
+              type: string
+            password:
+              type: string
+              format: password
+        Usuario:
+          type: object
+          properties:
+            id:
+              type: integer
+            username:
+              type: string
+            rol:
+              type: string
+  meta:
+    id: spc_b76eaf07c9d446f3a347d0b81934d35f
+    created: 1763227963653
+    modified: 1763246452943

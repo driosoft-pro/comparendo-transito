@@ -25,4 +25,3 @@ db.createCollection("auditorias", {
     }
   }
 })
-
