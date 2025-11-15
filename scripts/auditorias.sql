@@ -26,8 +26,3 @@ db.createCollection("auditorias", {
   }
 })
 
-// Índices para consultas rápidas
-db.auditorias.createIndex({ fecha: -1 });
-db.auditorias.createIndex({ "usuario.id_usuario": 1 });
-db.auditorias.createIndex({ accion: 1 });
-db.auditorias.createIndex({ endpoint: 1, metodo: 1 });

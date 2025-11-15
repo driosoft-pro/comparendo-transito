@@ -1,5 +1,3 @@
-use COMPARENDOS_TRANSITO
-
 db.createCollection("quejas", {
   validator: {
     $jsonSchema: {
@@ -43,10 +41,3 @@ db.createCollection("quejas", {
   }
 })
 
-// Índices útiles
-
-db.quejas.createIndex({ id_persona_quejosa: 1 });
-db.quejas.createIndex({ id_policia_denunciado: 1 });
-db.quejas.createIndex({ id_comparendo: 1 });
-db.quejas.createIndex({ estado: 1 });
-db.quejas.createIndex({ fecha_radicacion: -1 });
