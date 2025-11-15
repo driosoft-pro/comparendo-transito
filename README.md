@@ -356,4 +356,3 @@ MIT – Libre para uso académico.
 - **Samuel Izquierdo Bonilla** — samuelizquierdo98@gmail.com
 
   **Año:** 2025
-- **Proyecto académico para formación en desarrollo backend.**
