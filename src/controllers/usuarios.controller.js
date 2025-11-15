@@ -65,7 +65,7 @@ export const getUsuarioById = async (req, res) => {
  */
 export const createUsuario = async (req, res) => {
   try {
-    const { username, password, rol, id_policia = null, id_persona = null } = req.body;
+    const { username, password, rol} = req.body;
 
     if (!username || !password || !rol) {
       return res.status(400).json({
@@ -74,18 +74,16 @@ export const createUsuario = async (req, res) => {
       });
     }
 
-    const password_hash = hashPassword(password);
+    const contrasena = hashPassword(password);
 
     const nuevoUsuario = await UsuarioModel.create({
       username,
-      password_hash,
+      contrasena,
       rol,
-      id_policia,
-      id_persona,
-      activo: true,
+      estado: 1,
     });
 
-    const { password_hash: _, ...safeUser } = nuevoUsuario;
+    const { contrasena: _, ...safeUser } = nuevoUsuario;
 
     return res.status(201).json({
       ok: true,
