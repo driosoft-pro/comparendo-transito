@@ -1,6 +1,6 @@
 import { supabase } from '../config/supabase.js';
 
-const TABLE = 'usuario_sistema';
+const TABLE = 'usuarios';
 
 export const UsuarioModel = {
   async findById(id_usuario) {
