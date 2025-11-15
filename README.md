@@ -246,7 +246,8 @@ npm init -y
 ```
 
 ```bash
-npm install express cors morgan dotenv helmet jsonwebtoken @supabase/supabase-js mongoose winston && npm install -D nodemon jest
+npm install express cors morgan dotenv helmet jsonwebtoken @supabase/supabase-js mongoose bcryptjs
+winston && npm install -D nodemon jest
 ```
 
 # comandos disponibles:

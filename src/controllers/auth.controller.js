@@ -1,29 +1,6 @@
-import crypto from 'node:crypto';
 import { UsuarioModel } from '../models/usuario.model.js';
 import { signToken } from '../config/jwt.js';
-
-/**
- * Verifica un hash tipo:
- * sha256$<salt_hex>$<digest_hex>
- */
-const verifyPassword = (plainPassword, storedHash) => {
-  if (!storedHash || !storedHash.startsWith('sha256$')) {
-    return false;
-  }
-
-  const parts = storedHash.split('$');
-  if (parts.length !== 3) return false;
-
-  const [, saltHex, digestHex] = parts;
-
-  const salt = Buffer.from(saltHex, 'hex');
-  const hash = crypto
-    .createHash('sha256')
-    .update(Buffer.concat([salt, Buffer.from(plainPassword)]))
-    .digest('hex');
-
-  return crypto.timingSafeEqual(Buffer.from(hash, 'hex'), Buffer.from(digestHex, 'hex'));
-};
+import { verifyPassword } from '../utils/password.js';
 
 /**
  * POST /api/auth/login
@@ -50,7 +27,11 @@ export const login = async (req, res) => {
       });
     }
 
-    const passwordHash = user.password_hash || user.passwordHash;
+    // intentamos leer el campo correcto según cómo esté en la tabla
+    const passwordHash =
+      user.password_hash ||
+      user.passwordHash ||
+      user.contrasena; // por si tu columna se llama así
 
     const isValid = verifyPassword(password, passwordHash);
     if (!isValid) {
@@ -70,7 +51,7 @@ export const login = async (req, res) => {
     const token = signToken(payload);
 
     // No devolvemos el hash
-    const { password_hash, ...safeUser } = user;
+    const { password_hash, contrasena, ...safeUser } = user;
 
     return res.json({
       ok: true,

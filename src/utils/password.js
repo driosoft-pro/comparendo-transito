@@ -1,32 +1,48 @@
 import crypto from 'node:crypto';
+import bcrypt from 'bcryptjs';
 
-// Genera hash tipo: sha256$<salt_hex>$<digest_hex>
+// Hash por defecto: bcrypt (para nuevos usuarios)
 export const hashPassword = (plainPassword) => {
-  const salt = crypto.randomBytes(16);
-  const digest = crypto
-    .createHash('sha256')
-    .update(Buffer.concat([salt, Buffer.from(plainPassword)]))
-    .digest('hex');
-
-  return `sha256$${salt.toString('hex')}$${digest}`;
+  // cost 10 está bien para desarrollo
+  return bcrypt.hashSync(plainPassword, 10);
 };
 
-// Verifica hash tipo: sha256$<salt_hex>$<digest_hex>
+// Verifica tanto bcrypt como el esquema antiguo sha256$...
 export const verifyPassword = (plainPassword, storedHash) => {
-  if (!storedHash || !storedHash.startsWith('sha256$')) {
-    return false;
+  if (!storedHash) return false;
+
+  // Soporte legado: hashes tipo sha256$<salt_hex>$<digest_hex>
+  if (storedHash.startsWith('sha256$')) {
+    const parts = storedHash.split('$');
+    if (parts.length !== 3) return false;
+
+    const [, saltHex, digestHex] = parts;
+
+    const salt = Buffer.from(saltHex, 'hex');
+    const hash = crypto
+      .createHash('sha256')
+      .update(Buffer.concat([salt, Buffer.from(plainPassword)]))
+      .digest('hex');
+
+    return crypto.timingSafeEqual(
+      Buffer.from(hash, 'hex'),
+      Buffer.from(digestHex, 'hex'),
+    );
   }
 
-  const parts = storedHash.split('$');
-  if (parts.length !== 3) return false;
+  // bcrypt: $2a$, $2b$, $2y$ ...
+  if (
+    storedHash.startsWith('$2a$') ||
+    storedHash.startsWith('$2b$') ||
+    storedHash.startsWith('$2y$')
+  ) {
+    try {
+      return bcrypt.compareSync(plainPassword, storedHash);
+    } catch {
+      return false;
+    }
+  }
 
-  const [, saltHex, digestHex] = parts;
-
-  const salt = Buffer.from(saltHex, 'hex');
-  const hash = crypto
-    .createHash('sha256')
-    .update(Buffer.concat([salt, Buffer.from(plainPassword)]))
-    .digest('hex');
-
-  return crypto.timingSafeEqual(Buffer.from(hash, 'hex'), Buffer.from(digestHex, 'hex'));
+  // 3) Formato desconocido
+  return false;
 };
