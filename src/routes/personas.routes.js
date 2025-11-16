@@ -1,33 +1,34 @@
-import { Router } from 'express';
+import { Router } from "express";
 import {
+  getMe,
   getPersonas,
   getPersonaById,
   createPersona,
   updatePersona,
   deletePersona,
-} from '../controllers/personas.controller.js';
-import {
-  authMiddleware,
-  isAdmin,
-} from '../middlewares/auth.middleware.js';
+} from "../controllers/personas.controller.js";
+import { authMiddleware, isAdmin } from "../middlewares/auth.middleware.js";
 
 const router = Router();
 
 router.use(authMiddleware);
 
+// Info del usuario autenticado
+router.get("/me", getMe);
+
 // Listar personas - solo admin por defecto
-router.get('/', isAdmin, getPersonas);
+router.get("/", isAdmin, getPersonas);
 
 // Obtener persona por ID
-router.get('/:id', isAdmin, getPersonaById);
+router.get("/:id", isAdmin, getPersonaById);
 
 // Crear persona
-router.post('/', isAdmin, createPersona);
+router.post("/", isAdmin, createPersona);
 
 // Actualizar persona
-router.put('/:id', isAdmin, updatePersona);
+router.put("/:id", isAdmin, updatePersona);
 
 // Eliminar (soft delete) persona
-router.delete('/:id', isAdmin, deletePersona);
+router.delete("/:id", isAdmin, deletePersona);
 
 export default router;

@@ -27,8 +27,8 @@ router.use("/auth", authRoutes);
 // Rutas protegidas (los propios routers aplican authMiddleware)
 router.use("/usuarios", usuariosRoutes);
 router.use("/comparendos", comparendosRoutes);
-router.use("/personas", personasRoutes);
-router.use("/automotores", automotoresRoutes);
+router.use("/perfiles", personasRoutes);
+router.use("/vehiculos", automotoresRoutes);
 router.use("/quejas", quejasRoutes);
 router.use("/municipios", municipiosRoutes);
 router.use("/policias", policiasRoutes);

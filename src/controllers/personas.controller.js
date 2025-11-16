@@ -1,12 +1,40 @@
-import models from '../models/index.js';
+import models from "../models/index.js";
 const { PersonaModel } = models;
+
+/**
+ * GET /api/usuarios/me
+ */
+export const getMe = async (req, res) => {
+  try {
+    const { id_usuario } = req.user;
+    const persona = await PersonaModel.findById(id_usuario);
+
+    if (!persona) {
+      return res.status(404).json({
+        ok: false,
+        message: "Persona no encontrada",
+      });
+    }
+
+    return res.json({
+      ok: true,
+      persona,
+    });
+  } catch (error) {
+    console.error("Error obteniendo persona:", error.message);
+    return res.status(500).json({
+      ok: false,
+      message: "Error obteniendo persona",
+    });
+  }
+};
 
 // GET /api/personas
 export const getPersonas = async (req, res) => {
   try {
     const page = Number(req.query.page || 1);
     const pageSize = Number(req.query.pageSize || 50);
-    const withRelations = req.query.withRelations === 'true';
+    const withRelations = req.query.withRelations === "true";
 
     const result = await PersonaModel.findPage({
       page,
@@ -20,10 +48,10 @@ export const getPersonas = async (req, res) => {
       ...result,
     });
   } catch (error) {
-    console.error('Error listando personas:', error.message);
+    console.error("Error listando personas:", error.message);
     return res.status(500).json({
       ok: false,
-      message: 'Error listando personas',
+      message: "Error listando personas",
     });
   }
 };
@@ -32,14 +60,14 @@ export const getPersonas = async (req, res) => {
 export const getPersonaById = async (req, res) => {
   try {
     const { id } = req.params;
-    const withRelations = req.query.withRelations === 'true';
+    const withRelations = req.query.withRelations === "true";
 
     const persona = await PersonaModel.findById(id, { withRelations });
 
     if (!persona) {
       return res.status(404).json({
         ok: false,
-        message: 'Persona no encontrada',
+        message: "Persona no encontrada",
       });
     }
 
@@ -48,10 +76,10 @@ export const getPersonaById = async (req, res) => {
       persona,
     });
   } catch (error) {
-    console.error('Error obteniendo persona:', error.message);
+    console.error("Error obteniendo persona:", error.message);
     return res.status(500).json({
       ok: false,
-      message: 'Error obteniendo persona',
+      message: "Error obteniendo persona",
     });
   }
 };
@@ -63,14 +91,14 @@ export const createPersona = async (req, res) => {
 
     return res.status(201).json({
       ok: true,
-      message: 'Persona creada correctamente',
+      message: "Persona creada correctamente",
       persona: nueva,
     });
   } catch (error) {
-    console.error('Error creando persona:', error.message);
+    console.error("Error creando persona:", error.message);
     return res.status(500).json({
       ok: false,
-      message: 'Error creando persona',
+      message: "Error creando persona",
     });
   }
 };
@@ -83,14 +111,14 @@ export const updatePersona = async (req, res) => {
 
     return res.json({
       ok: true,
-      message: 'Persona actualizada correctamente',
+      message: "Persona actualizada correctamente",
       persona: actualizada,
     });
   } catch (error) {
-    console.error('Error actualizando persona:', error.message);
+    console.error("Error actualizando persona:", error.message);
     return res.status(500).json({
       ok: false,
-      message: 'Error actualizando persona',
+      message: "Error actualizando persona",
     });
   }
 };
@@ -103,13 +131,13 @@ export const deletePersona = async (req, res) => {
 
     return res.json({
       ok: true,
-      message: 'Persona eliminada (soft delete) correctamente',
+      message: "Persona eliminada (soft delete) correctamente",
     });
   } catch (error) {
-    console.error('Error eliminando persona:', error.message);
+    console.error("Error eliminando persona:", error.message);
     return res.status(500).json({
       ok: false,
-      message: 'Error eliminando persona',
+      message: "Error eliminando persona",
     });
   }
 };

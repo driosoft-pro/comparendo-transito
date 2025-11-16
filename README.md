@@ -294,8 +294,8 @@ npm start
 | POST   | `/api/usuarios`    | Crear usuario       |
 | GET    | `/api/comparendos` | Listar comparendos  |
 | POST   | `/api/comparendos` | Crear comparendo    |
-| GET    | `/api/personas`    | Listar personas     |
-| GET    | `/api/automotores` | Listar automotores  |
+| GET    | `/api/perfiles`    | Listar perfiles     |
+| GET    | `/api/vehiculos`   | Listar vehiculos`   |
 | POST   | `/api/quejas`      | Crear queja (Mongo) |
 | POST   | `/api/auth/login`  | Login de usuario    |
 
@@ -310,27 +310,77 @@ npm start
 | PUT    | `/api/usuarios/:id` | Actualizar usuario por ID |
 | DELETE | `/api/usuarios/:id` | Eliminar usuario por ID   |
 
----
-
 ## CRUD PERSONAS
+
+| Método | Endpoint            | Descripción              |
+| ------ | ------------------- | ------------------------ |
+| GET    | `/api/perfiles`     | Listar perfiles          |
+| GET    | `/api/perfiles/:id` | Obtener perfil por ID    |
+| PUT    | `/api/perfiles/:id` | Actualizar perfil por ID |
+| DELETE | `/api/perfiles/:id` | Eliminar perfil por ID   |
+
+## CRUD POLICIAS
 
 | Método | Endpoint            | Descripción               |
 | ------ | ------------------- | ------------------------- |
-| GET    | `/api/perfiles`     | Listar perfiles           |
-| GET    | `/api/perfiles/:id` | Obtener persona por ID    |
-| PUT    | `/api/perfiles/:id` | Actualizar persona por ID |
-| DELETE | `/api/perfiles/:id` | Eliminar persona por ID   |
-
----
+| GET    | `/api/policias`     | Listar policias           |
+| GET    | `/api/policias/:id` | Obtener policia por ID    |
+| PUT    | `/api/policias/:id` | Actualizar policia por ID |
+| DELETE | `/api/policias/:id` | Eliminar policia por ID   |
 
 ## CRUD AUTOMOTORES
 
-| Método | Endpoint             | Descripción                 |
-| ------ | -------------------- | --------------------------- |
-| GET    | `/api/vehiculos`     | Listar vehiculos            |
-| GET    | `/api/vehiculos/:id` | Obtener automotor por ID    |
-| PUT    | `/api/vehiculos/:id` | Actualizar automotor por ID |
-| DELETE | `/api/vehiculos/:id` | Eliminar automotor por ID   |
+| Método | Endpoint             | Descripción                |
+| ------ | -------------------- | -------------------------- |
+| GET    | `/api/vehiculos`     | Listar vehiculos           |
+| GET    | `/api/vehiculos/:id` | Obtener vehiculo por ID    |
+| PUT    | `/api/vehiculos/:id` | Actualizar vehiculo por ID |
+| DELETE | `/api/vehiculos/:id` | Eliminar vehiculo por ID   |
+
+## CRUD SECRETARIAS
+
+| Método | Endpoint               | Descripción                  |
+| ------ | ---------------------- | ---------------------------- |
+| GET    | `/api/secretarias`     | Listar secretarias           |
+| GET    | `/api/secretarias/:id` | Obtener secretaria por ID    |
+| PUT    | `/api/secretarias/:id` | Actualizar secretaria por ID |
+| DELETE | `/api/secretarias/:id` | Eliminar secretaria por ID   |
+
+## CRUD MUNICIPIOS
+
+| Método | Endpoint              | Descripción                 |
+| ------ | --------------------- | --------------------------- |
+| GET    | `/api/municipios`     | Listar municipios           |
+| GET    | `/api/municipios/:id` | Obtener municipio por ID    |
+| PUT    | `/api/municipios/:id` | Actualizar municipio por ID |
+| DELETE | `/api/municipios/:id` | Eliminar municipio por ID   |
+
+## CRUD LICENCIAS
+
+| Método | Endpoint             | Descripción                |
+| ------ | -------------------- | -------------------------- |
+| GET    | `/api/licencias`     | Listar licencias           |
+| GET    | `/api/licencias/:id` | Obtener licencia por ID    |
+| PUT    | `/api/licencias/:id` | Actualizar licencia por ID |
+| DELETE | `/api/licencias/:id` | Eliminar licencia por ID   |
+
+## CRUD PROPIEDADES
+
+| Método | Endpoint               | Descripción                 |
+| ------ | ---------------------- | --------------------------- |
+| GET    | `/api/propiedades`     | Listar propiedades          |
+| GET    | `/api/propiedades/:id` | Obtener municipio por ID    |
+| PUT    | `/api/propiedades/:id` | Actualizar propiedad por ID |
+| DELETE | `/api/propiedades/:id` | Eliminar propiedad por ID   |
+
+## CRUD PROPIETARIOS
+
+| Método | Endpoint                | Descripción                   |
+| ------ | ----------------------- | ----------------------------- |
+| GET    | `/api/propietarios`     | Listar propietarios           |
+| GET    | `/api/propietarios/:id` | Obtener municipio por ID      |
+| PUT    | `/api/propietarios/:id` | Actualizar propietario por ID |
+| DELETE | `/api/propietarios/:id` | Eliminar propietario por ID   |
 
 ## CRUD COMPARENDOS
 
@@ -340,6 +390,15 @@ npm start
 | GET    | `/api/comparendos/:id` | Obtener comparendo por ID    |
 | PUT    | `/api/comparendos/:id` | Actualizar comparendo por ID |
 | DELETE | `/api/comparendos/:id` | Eliminar comparendo por ID   |
+
+## CRUD INFRACCIONES
+
+| Método | Endpoint                | Descripción                  |
+| ------ | ----------------------- | ---------------------------- |
+| GET    | `/api/infracciones`     | Listar infracciones          |
+| GET    | `/api/infracciones/:id` | Obtener infraccion por ID    |
+| PUT    | `/api/infracciones/:id` | Actualizar infraccion por ID |
+| DELETE | `/api/infracciones/:id` | Eliminar infraccion por ID   |
 
 ## CRUD QUEJAS
 
