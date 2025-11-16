@@ -139,15 +139,15 @@ INSERT INTO licencia_conduccion (numero_licencia, fecha_expedicion, fecha_vencim
 -- =========================================================================
 -- 9. PERSONAS (depende de municipio, licencia_conduccion, usuarios)
 -- =========================================================================
-INSERT INTO personas (tipo_doc, num_doc, primer_nombre, segundo_nombre, primer_apellidos, segundo_apellidos, fecha_nacimiento, genero, direccion, telefono, email, id_municipio, id_licencia_conduccion, id_usuario) VALUES
+INSERT INTO personas (tipo_doc, num_doc, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, genero, direccion, telefono, email, id_municipio, id_licencia_conduccion, id_usuario) VALUES
 ('CC', '1144567890', 'Jorge', 'Luis', 'Pérez', 'González', '1985-05-20', 'Masculino', 'Calle 15 #100-45, Cali', '3201234567', 'jorge.perez@email.com', 1, 1, 5),
 ('CC', '1144567891', 'Diana', 'Carolina', 'López', 'Ramírez', '1992-08-15', 'Femenino', 'Carrera 70 #25-30, Cali', '3209876543', 'diana.lopez@email.com', 1, 2, 6),
 ('CC', '1144567892', 'Roberto', 'Carlos', 'Sánchez', 'Medina', '1988-03-10', 'Masculino', 'Calle 44 #3A-15, Cali', '3156789012', 'roberto.sanchez@email.com', 1, 3, 10),
 ('CC', '1144567893', 'Liliana', '', 'García', 'Torres', '1990-11-25', 'Femenino', 'Carrera 100 #18-50, Cali', '3187654321', 'liliana.garcia@email.com', 1, 4, NULL),
-('CC', '1144567894', 'Mauricio', 'Hernández', 'Ríos', '1987-07-08', 'Masculino', 'Calle 5 #50-20, Cali', '3209871234', 'mauricio.hernandez@email.com', 1, 5, NULL),
-('CC', '1144567895', 'Andrea', 'Velásquez', 'Muñoz', '1995-02-14', 'Femenino', 'Carrera 1 #60-10, Cali', '3145678901', 'andrea.velasquez@email.com', 1, 6, NULL),
-('CC', '1144567896', 'Fernando', 'Patiño', 'Cardona', '1983-09-30', 'Masculino', 'Calle 70 #2B-45, Cali', '3198765432', 'fernando.patino@email.com', 1, 7, NULL),
-('CC', '1144567897', 'Claudia', 'Patricia', '', 'Montoya', 'Silva', '1991-04-18', 'Femenino', 'Carrera 39 #5-80, Cali', '3123456789', 'claudia.montoya@email.com', 1, 8, NULL),
+('CC', '1144567894', 'Mauricio', '' , 'Hernández', 'Ríos', '1987-07-08', 'Masculino', 'Calle 5 #50-20, Cali', '3209871234', 'mauricio.hernandez@email.com', 1, 5, NULL),
+('CC', '1144567895', 'Andrea', '' ,'Velásquez', 'Muñoz', '1995-02-14', 'Femenino', 'Carrera 1 #60-10, Cali', '3145678901', 'andrea.velasquez@email.com', 1, 6, NULL),
+('CC', '1144567896', 'Fernando', '' , 'Patiño', 'Cardona', '1983-09-30', 'Masculino', 'Calle 70 #2B-45, Cali', '3198765432', 'fernando.patino@email.com', 1, 7, NULL),
+('CC', '1144567897', 'Claudia', 'Patricia', 'Montoya', 'Silva', '1991-04-18', 'Femenino', 'Carrera 39 #5-80, Cali', '3123456789', 'claudia.montoya@email.com', 1, 8, NULL),
 ('CC', '1144567898', 'Javier', 'Andrés', 'Ospina', 'Vargas', '1986-12-05', 'Masculino', 'Calle 26 #35-15, Cali', '3176543210', 'javier.ospina@email.com', 1, 9, NULL),
 ('CC', '1144567899', 'María', 'José', 'Cárdenas', 'Ruiz', '1993-06-22', 'Femenino', 'Carrera 8 #40-25, Cali', '3189012345', 'maria.cardenas@email.com', 1, 10, NULL);
 
