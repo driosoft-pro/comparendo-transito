@@ -1,3 +1,4 @@
+// models/usuario.model.js
 import { supabase } from "../config/supabase.js";
 import { createBaseModel } from "./baseModel.js";
 import { validateRequired, validateStringLength } from "../utils/validators.js";
@@ -11,7 +12,8 @@ const baseModel = createBaseModel({
   table: TABLE,
   idColumn: ID_COLUMN,
   requiredOnCreate: ["username", "contrasena", "rol"],
-  requiredOnUpdate: [],
+  requiredOnUpdate: ["username", "rol"],
+  requiredOnDelete: [],
   softDelete: true,
   defaultSelect: DEFAULT_SELECT,
   relationsSelect:
@@ -22,20 +24,17 @@ const baseModel = createBaseModel({
 export const UsuarioModel = {
   ...baseModel,
 
-  /**
-   * Validación adicional para crear/actualizar usuario
-   */
   validatePayload(payload, { isCreate = true } = {}) {
     if (isCreate) {
       validateRequired(payload, ["username", "contrasena", "rol"]);
     } else {
-      // Solo validamos si vienen username y/o rol
+      // Validamos solo si se tocan username/rol
       const campos = {};
       if ("username" in payload) campos.username = payload.username;
       if ("rol" in payload) campos.rol = payload.rol;
 
       if (Object.keys(campos).length > 0) {
-        validateRequired(campos, ["username", "rol"]); // aquí puedes decidir si quieres exigir los dos o permitir parciales
+        validateRequired(campos, ["username", "rol"]);
       }
     }
 
@@ -50,7 +49,6 @@ export const UsuarioModel = {
   },
 
   async update(id_usuario, campos, options = {}) {
-    // Validamos SOLO si se tocan username/rol
     this.validatePayload(campos, { isCreate: false });
     return baseModel.update(id_usuario, campos, options);
   },

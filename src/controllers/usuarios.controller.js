@@ -197,7 +197,7 @@ export const deleteUsuario = async (req, res) => {
     const { id } = req.params;
 
     // Primero desactivar
-    const actualizado = await UsuarioModel.update(id, { estado: 0 });
+    const actualizado = await UsuarioModel.delete(id, { estado: 0 });
     // Luego marcar deleted_at
     await UsuarioModel.delete(id);
 

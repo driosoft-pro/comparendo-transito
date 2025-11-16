@@ -8,6 +8,7 @@ import { validateRequired } from "../utils/validators.js";
  * @param {string} options.idColumn           Nombre de la PK
  * @param {string[]} [options.requiredOnCreate] Campos requeridos en create()
  * @param {string[]} [options.requiredOnUpdate] Campos requeridos en update()
+ * @param {string[]} [options.requiredOnDelete] Campos requeridos en delete()
  * @param {boolean} [options.softDelete]      Si true, delete() marca deleted_at en vez de borrar
  * @param {string} [options.defaultSelect]    Proyección por defecto
  * @param {string|null} [options.relationsSelect] Proyección con relaciones (joins automáticos)
@@ -18,6 +19,7 @@ export const createBaseModel = ({
   idColumn,
   requiredOnCreate = [],
   requiredOnUpdate = [],
+  requiredOnDelete = [],
   softDelete = true,
   defaultSelect = "*",
   relationsSelect = null,
@@ -118,20 +120,29 @@ export const createBaseModel = ({
     },
 
     /**
-     * Soft delete: marca deleted_at
+     * Soft delete: marca deleted_at (y opcionalmente otros campos)
+     * @param {any} id
+     * @param {Object} options
+     * @param {Object|null} options.extra Campos adicionales para actualizar junto con deleted_at (ej: { estado: 0 })
      */
-    async delete(id, { currentUser } = {}) {
+    async delete(id, { currentUser, extra = null } = {}) {
       if (!softDelete) {
-        // Fallback a hard delete si se desactiva softDelete para esta tabla
         const { error } = await supabase.from(table).delete().eq(idColumn, id);
-
         if (error) throw error;
         return true;
       }
 
+      const payload = {
+        deleted_at: new Date().toISOString(),
+        ...(extra || {}),
+      };
+
+      // Validación específica para delete
+      validateRequired(payload, requiredOnDelete);
+
       const { error } = await supabase
         .from(table)
-        .update({ deleted_at: new Date().toISOString() })
+        .update(payload)
         .eq(idColumn, id);
 
       if (error) throw error;
