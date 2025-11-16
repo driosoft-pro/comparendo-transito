@@ -1,246 +1,143 @@
-import { ROLES, hasPermission, PERMISOS } from '../middlewares/auth.middleware.js';
+import models from '../models/index.js';
+const { ComparendoModel } = models;
 
-/**
- * GET /api/comparendos
- * Lista comparendos según permisos del usuario
- */
+// GET /api/comparendos
 export const getComparendos = async (req, res) => {
   try {
-    const { rol, id_usuario } = req.user;
-    const { limit = 50, offset = 0, estado } = req.query;
+    const page = Number(req.query.page || 1);
+    const pageSize = Number(req.query.pageSize || 50);
+    const withRelations = req.query.withRelations === 'true';
 
-    let query = {};
-    
-    // Filtrar según rol
-    if (hasPermission(rol, PERMISOS.COMPARENDO_READ_ALL)) {
-      // Admin, supervisor, operador, auditor: ven todos
-      if (estado) query.estado = estado;
-    } 
-    else if (hasPermission(rol, PERMISOS.COMPARENDO_READ)) {
-      // Policías ven sus propios comparendos
-      if (rol === ROLES.POLICIA) {
-        query.id_policia_transito = id_usuario;
-      }
-      // Ciudadanos ven comparendos donde ellos son la persona
-      else if (rol === ROLES.CIUDADANO) {
-        query.id_persona = id_usuario;
-      }
-    }
-
-    // Aquí irá tu consulta a Supabase
-    // const comparendos = await ComparendoModel.findAll(query, limit, offset);
+    const result = await ComparendoModel.findPage({
+      page,
+      pageSize,
+      withRelations,
+      filters: {},
+    });
 
     return res.json({
       ok: true,
-      total: 0, // comparendos.length
-      comparendos: [],
-      permisos: {
-        puede_crear: hasPermission(rol, PERMISOS.COMPARENDO_CREATE),
-        puede_anular: hasPermission(rol, PERMISOS.COMPARENDO_ANULAR),
-      }
+      ...result,
     });
-
   } catch (error) {
-    console.error('Error obteniendo comparendos:', error);
+    console.error('Error listando comparendos:', error.message);
     return res.status(500).json({
       ok: false,
-      message: 'Error al obtener comparendos'
+      message: 'Error listando comparendos',
     });
   }
 };
 
-/**
- * POST /api/comparendos
- * Crea un nuevo comparendo
- */
-export const createComparendo = async (req, res) => {
-  try {
-    const { rol, id_usuario } = req.user;
-    const datos = req.body;
-
-    // Validaciones básicas
-    if (!datos.placa || !datos.infracciones) {
-      return res.status(400).json({
-        ok: false,
-        message: 'Placa e infracciones son requeridos'
-      });
-    }
-
-    // Asignar el policía que crea el comparendo
-    datos.id_policia_transito = id_usuario;
-    datos.estado = 'PENDIENTE';
-
-    // Aquí irá tu lógica de creación
-    // const nuevoComparendo = await ComparendoModel.create(datos);
-
-    return res.status(201).json({
-      ok: true,
-      message: 'Comparendo creado exitosamente',
-      comparendo: null // nuevoComparendo
-    });
-
-  } catch (error) {
-    console.error('Error creando comparendo:', error);
-    return res.status(500).json({
-      ok: false,
-      message: 'Error al crear comparendo'
-    });
-  }
-};
-
-/**
- * GET /api/comparendos/:id
- * Obtiene un comparendo específico
- */
+// GET /api/comparendos/:id
 export const getComparendoById = async (req, res) => {
   try {
     const { id } = req.params;
-    const { rol, id_usuario } = req.user;
+    const withRelations = req.query.withRelations === 'true';
 
-    // Aquí irá tu consulta
-    // const comparendo = await ComparendoModel.findById(id);
+    const comparendo = await ComparendoModel.findById(id, { withRelations });
 
-    // Verificar propiedad si es necesario
-    if (rol === ROLES.CIUDADANO) {
-      // if (comparendo.id_persona !== id_usuario) {
-      //   return res.status(403).json({
-      //     ok: false,
-      //     message: 'No tienes acceso a este comparendo'
-      //   });
-      // }
+    if (!comparendo) {
+      return res.status(404).json({
+        ok: false,
+        message: 'Comparendo no encontrado',
+      });
     }
 
     return res.json({
       ok: true,
-      comparendo: null // comparendo
+      comparendo,
     });
-
   } catch (error) {
-    console.error('Error obteniendo comparendo:', error);
+    console.error('Error obteniendo comparendo:', error.message);
     return res.status(500).json({
       ok: false,
-      message: 'Error al obtener comparendo'
+      message: 'Error obteniendo comparendo',
     });
   }
 };
 
-/**
- * PUT /api/comparendos/:id
- * Actualiza un comparendo
- */
+// GET /api/comparendos/numero/:numero
+export const getComparendoByNumero = async (req, res) => {
+  try {
+    const { numero } = req.params;
+    const withRelations = req.query.withRelations === 'true';
+
+    const comparendo = await ComparendoModel.findByNumero(numero, { withRelations });
+
+    if (!comparendo) {
+      return res.status(404).json({
+        ok: false,
+        message: 'Comparendo no encontrado',
+      });
+    }
+
+    return res.json({
+      ok: true,
+      comparendo,
+    });
+  } catch (error) {
+    console.error('Error buscando comparendo por número:', error.message);
+    return res.status(500).json({
+      ok: false,
+      message: 'Error buscando comparendo por número',
+    });
+  }
+};
+
+// POST /api/comparendos
+export const createComparendo = async (req, res) => {
+  try {
+    const nuevo = await ComparendoModel.create(req.body);
+
+    return res.status(201).json({
+      ok: true,
+      message: 'Comparendo creado correctamente',
+      comparendo: nuevo,
+    });
+  } catch (error) {
+    console.error('Error creando comparendo:', error.message);
+    return res.status(500).json({
+      ok: false,
+      message: 'Error creando comparendo',
+    });
+  }
+};
+
+// PUT /api/comparendos/:id
 export const updateComparendo = async (req, res) => {
   try {
     const { id } = req.params;
-    const { rol, id_usuario } = req.user;
-    const datos = req.body;
-
-    // Obtener comparendo actual
-    // const comparendo = await ComparendoModel.findById(id);
-
-    // Validaciones de negocio
-    // if (comparendo.estado === 'PAGADO' && rol !== ROLES.ADMINISTRADOR) {
-    //   return res.status(400).json({
-    //     ok: false,
-    //     message: 'No se pueden modificar comparendos pagados'
-    //   });
-    // }
-
-    // Policías solo pueden actualizar sus propios comparendos
-    if (rol === ROLES.POLICIA) {
-      // if (comparendo.id_policia_transito !== id_usuario) {
-      //   return res.status(403).json({
-      //     ok: false,
-      //     message: 'Solo puedes actualizar tus propios comparendos'
-      //   });
-      // }
-    }
-
-    // Actualizar
-    // const actualizado = await ComparendoModel.update(id, datos);
+    const actualizado = await ComparendoModel.update(id, req.body);
 
     return res.json({
       ok: true,
       message: 'Comparendo actualizado correctamente',
-      comparendo: null // actualizado
+      comparendo: actualizado,
     });
-
   } catch (error) {
-    console.error('Error actualizando comparendo:', error);
+    console.error('Error actualizando comparendo:', error.message);
     return res.status(500).json({
       ok: false,
-      message: 'Error al actualizar comparendo'
+      message: 'Error actualizando comparendo',
     });
   }
 };
 
-/**
- * POST /api/comparendos/:id/anular
- * Anula un comparendo
- */
-export const anularComparendo = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { motivo } = req.body;
-
-    if (!motivo) {
-      return res.status(400).json({
-        ok: false,
-        message: 'El motivo de anulación es requerido'
-      });
-    }
-
-    // Obtener comparendo
-    // const comparendo = await ComparendoModel.findById(id);
-
-    // Validar que no esté ya anulado
-    // if (comparendo.estado === 'ANULADO') {
-    //   return res.status(400).json({
-    //     ok: false,
-    //     message: 'El comparendo ya está anulado'
-    //   });
-    // }
-
-    // Anular
-    // const anulado = await ComparendoModel.update(id, {
-    //   estado: 'ANULADO',
-    //   observaciones: motivo
-    // });
-
-    return res.json({
-      ok: true,
-      message: 'Comparendo anulado correctamente',
-      comparendo: null // anulado
-    });
-
-  } catch (error) {
-    console.error('Error anulando comparendo:', error);
-    return res.status(500).json({
-      ok: false,
-      message: 'Error al anular comparendo'
-    });
-  }
-};
-
-/**
- * DELETE /api/comparendos/:id
- * Elimina un comparendo (solo admin)
- */
+// DELETE /api/comparendos/:id
 export const deleteComparendo = async (req, res) => {
   try {
     const { id } = req.params;
-
-    // await ComparendoModel.delete(id);
+    await ComparendoModel.delete(id);
 
     return res.json({
       ok: true,
-      message: 'Comparendo eliminado correctamente'
+      message: 'Comparendo eliminado (soft delete) correctamente',
     });
-
   } catch (error) {
-    console.error('Error eliminando comparendo:', error);
+    console.error('Error eliminando comparendo:', error.message);
     return res.status(500).json({
       ok: false,
-      message: 'Error al eliminar comparendo'
+      message: 'Error eliminando comparendo',
     });
   }
 };

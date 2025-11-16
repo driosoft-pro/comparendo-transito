@@ -7,8 +7,6 @@ import {
 } from '../controllers/auth.controller.js';
 import {
   authMiddleware,
-  requirePermission,
-  PERMISOS,
 } from '../middlewares/auth.middleware.js';
 
 const router = Router();

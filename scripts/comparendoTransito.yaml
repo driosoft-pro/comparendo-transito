@@ -70,7 +70,7 @@ collection:
         meta:
           id: req_abdbc39505514a4c88f5c2a819a5a52b
           created: 1763174133153
-          modified: 1763227275369
+          modified: 1763250940925
           isPrivate: false
           description: ""
           sortKey: -1763183006652
@@ -82,7 +82,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -97,7 +97,7 @@ collection:
         meta:
           id: req_e69c2bf44bbb42fea543a7678af559e9
           created: 1763181713043
-          modified: 1763227280329
+          modified: 1763251080130
           isPrivate: false
           description: ""
           sortKey: -1763183006552
@@ -119,7 +119,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -134,7 +134,7 @@ collection:
         meta:
           id: req_1a5d36fb540241789b0f3270e471b46f
           created: 1763182104491
-          modified: 1763227260964
+          modified: 1763250933735
           isPrivate: false
           description: ""
           sortKey: -1763183006752
@@ -146,7 +146,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -161,7 +161,7 @@ collection:
         meta:
           id: req_4894f9ac94d0474e8e274e42750f3eda
           created: 1763182393676
-          modified: 1763227202691
+          modified: 1763250919424
           isPrivate: false
           description: ""
           sortKey: -1763183006852
@@ -173,7 +173,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -188,7 +188,7 @@ collection:
         meta:
           id: req_6847165a7d51420c8df404a23a310e27
           created: 1763182537660
-          modified: 1763227288813
+          modified: 1763250955246
           isPrivate: false
           description: ""
           sortKey: -1763183006352
@@ -200,7 +200,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -215,7 +215,7 @@ collection:
         meta:
           id: req_6281285ea24b4696bd4d2729790335d0
           created: 1763182908822
-          modified: 1763227284290
+          modified: 1763250946948
           isPrivate: false
           description: ""
           sortKey: -1763183006452
@@ -237,7 +237,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1754,6 +1754,17 @@ environments:
     created: 1763227613690
     modified: 1763227613690
     isPrivate: false
+  subEnvironments:
+    - name: api-comparendos
+      meta:
+        id: env_fa2c73d193674ef6a49b40d7fc54301b
+        created: 1763250040972
+        modified: 1763251056781
+        isPrivate: false
+        sortKey: 1763250040973
+      data:
+        api-comparendos:
+          url: http://localhost:8080/api/
 spec:
   contents:
     openapi: 3.0.3

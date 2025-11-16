@@ -1,68 +1,38 @@
 import { Router } from 'express';
 import {
-  createComparendo,
   getComparendos,
   getComparendoById,
+  getComparendoByNumero,
+  createComparendo,
   updateComparendo,
-  anularComparendo,
   deleteComparendo,
 } from '../controllers/comparendos.controller.js';
 import {
   authMiddleware,
-  requirePermission,
-  requireAnyPermission,
-  requireOwnership,
   isAdmin,
-  isTrafficStaff,
-  PERMISOS,
 } from '../middlewares/auth.middleware.js';
 
 const router = Router();
 
-// Todas las rutas requieren autenticación
+// Todas las rutas de comparendos requieren autenticación
 router.use(authMiddleware);
 
-// Crear comparendo - Solo policías, supervisores y admin
-router.post('/',
-  requirePermission(PERMISOS.COMPARENDO_CREATE),
-  createComparendo
-);
+// Listar comparendos (por ahora solo admin para evitar exponer datos sensibles)
+router.get('/', isAdmin, getComparendos);
 
-// Listar comparendos - Según permisos
-router.get('/',
-  requireAnyPermission(
-    PERMISOS.COMPARENDO_READ_ALL,
-    PERMISOS.COMPARENDO_READ
-  ),
-  getComparendos
-);
+// Obtener comparendo por ID
+router.get('/:id', isAdmin, getComparendoById);
 
-// Ver un comparendo - Verificar propiedad si es ciudadano
-router.get('/:id',
-  requireAnyPermission(
-    PERMISOS.COMPARENDO_READ_ALL,
-    PERMISOS.COMPARENDO_READ
-  ),
-  requireOwnership('id'),
-  getComparendoById
-);
+// Buscar comparendo por número (ej: /api/comparendos/numero/ABC123)
+router.get('/numero/:numero', isAdmin, getComparendoByNumero);
 
-// Actualizar comparendo - Personal autorizado
-router.put('/:id',
-  requirePermission(PERMISOS.COMPARENDO_UPDATE),
-  updateComparendo
-);
+// Crear comparendo - solo admin (o podrías cambiar a rol policía en el futuro)
+router.post('/', isAdmin, createComparendo);
 
-// Anular comparendo - Solo supervisores y admin
-router.post('/:id/anular',
-  requirePermission(PERMISOS.COMPARENDO_ANULAR),
-  anularComparendo
-);
+// Actualizar comparendo
+router.put('/:id', isAdmin, updateComparendo);
 
-// Eliminar comparendo - Solo admin
-router.delete('/:id',
-  isAdmin,
-  deleteComparendo
-);
+// Eliminar (soft delete) comparendo
+router.delete('/:id', isAdmin, deleteComparendo);
 
 export default router;

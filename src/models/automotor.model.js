@@ -1,59 +1,63 @@
-import { supabase } from '../config/supabase.js';
+import { supabase } from "../config/supabase.js";
+import { createBaseModel } from "./baseModel.js";
 
-const TABLE = 'automotor';
+const TABLE = "automotor";
+const ID_COLUMN = "id_automotor";
+
+const baseModel = createBaseModel({
+  table: TABLE,
+  idColumn: ID_COLUMN,
+  requiredOnCreate: [
+    "placa",
+    "tipo_vehiculo",
+    "marca",
+    "linea_modelo",
+    "cilindraje",
+    "modelo_ano",
+    "color",
+    "clase_servicio",
+    "id_municipio",
+  ],
+  requiredOnUpdate: [
+    "tipo_vehiculo",
+    "marca",
+    "linea_modelo",
+    "cilindraje",
+    "modelo_ano",
+    "color",
+    "clase_servicio",
+    "id_municipio",
+  ],
+  softDelete: true,
+  defaultSelect: "*",
+  relationsSelect:
+    "*, municipio(*), propietario_automotor(*), propiedad_automotor(*), comparendo(*)",
+});
 
 export const AutomotorModel = {
-  async findAll({ limit = 50, offset = 0 } = {}) {
-    const { data, error } = await supabase
-      .from(TABLE)
-      .select('*')
-      .range(offset, offset + limit - 1);
+  ...baseModel,
 
+  async findByPlaca(
+    placa,
+    { withDeleted = false, withRelations = false } = {},
+  ) {
+    let query = supabase
+      .from(TABLE)
+      .select(
+        withRelations
+          ? "*, municipio(*), propietario_automotor(*), propiedad_automotor(*), comparendo(*)"
+          : "*",
+      )
+      .eq("placa", placa);
+
+    if (!withDeleted) {
+      query = query.is("deleted_at", null);
+    }
+
+    const { data, error } = await query.single();
     if (error) throw error;
     return data;
-  },
-
-  async findByPlaca(placa) {
-    const { data, error } = await supabase
-      .from(TABLE)
-      .select('*')
-      .eq('placa', placa)
-      .single();
-
-    if (error) throw error;
-    return data;
-  },
-
-  async create(automotor) {
-    const { data, error } = await supabase
-      .from(TABLE)
-      .insert(automotor)
-      .select()
-      .single();
-
-    if (error) throw error;
-    return data;
-  },
-
-  async update(placa, campos) {
-    const { data, error } = await supabase
-      .from(TABLE)
-      .update(campos)
-      .eq('placa', placa)
-      .select()
-      .single();
-
-    if (error) throw error;
-    return data;
-  },
-
-  async delete(placa) {
-    const { error } = await supabase
-      .from(TABLE)
-      .delete()
-      .eq('placa', placa);
-
-    if (error) throw error;
-    return true;
   },
 };
+
+export default AutomotorModel;

@@ -28,19 +28,19 @@ router.get('/', isAdmin, getUsuarios);
 // Ver un usuario - Solo admin
 router.get('/:id', isAdmin, getUsuarioById);
 
-// Crear usuario - Solo admin
-router.post('/', 
+// Crear usuario - Solo admin (permiso granular)
+router.post('/',
   requirePermission(PERMISOS.USUARIO_CREATE),
   createUsuario
 );
 
-// Actualizar usuario - Solo admin
+// Actualizar usuario - Solo admin (permiso granular)
 router.put('/:id',
   requirePermission(PERMISOS.USUARIO_UPDATE),
   updateUsuario
 );
 
-// Eliminar (desactivar) usuario - Solo admin
+// Eliminar (soft delete) usuario - Solo admin (permiso granular)
 router.delete('/:id',
   requirePermission(PERMISOS.USUARIO_DELETE),
   deleteUsuario

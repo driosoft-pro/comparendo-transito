@@ -1,62 +1,77 @@
-import { UsuarioModel } from '../models/usuario.model.js';
-import { hashPassword } from '../utils/password.js';
+import models from "../models/index.js";
+import { hashPassword } from "../utils/password.js";
 
+const { UsuarioModel } = models;
 
 /**
  * GET /api/usuarios/me
- * Devuelve info del usuario autenticado (según token)
  */
 export const getMe = async (req, res) => {
   try {
     const { id_usuario } = req.user;
-
     const user = await UsuarioModel.findById(id_usuario);
+
     if (!user) {
       return res.status(404).json({
         ok: false,
-        message: 'Usuario no encontrado',
+        message: "Usuario no encontrado",
       });
     }
 
-    const { password_hash, ...safeUser } = user;
+    const { contrasena, ...safeUser } = user;
 
     return res.json({
       ok: true,
       usuario: safeUser,
     });
   } catch (error) {
-    console.error('Error en /me:', error.message);
+    console.error("Error en /me usuarios:", error.message);
     return res.status(500).json({
       ok: false,
-      message: 'Error obteniendo información de usuario',
+      message: "Error obteniendo información de usuario",
     });
   }
 };
 
 /**
  * GET /api/usuarios
- * Lista usuarios (opcional: solo admin)
+ * Query: page, pageSize, withDeleted?
  */
 export const getUsuarios = async (req, res) => {
   try {
-    const { limit = 50, offset = 0 } = req.query;
+    const page = Number(req.query.page || 1);
+    const pageSize = Number(req.query.pageSize || req.query.limit || 50);
+    const withDeleted = req.query.withDeleted === "true";
 
-    const usuarios = await UsuarioModel.findAll({
-      limit: Number(limit),
-      offset: Number(offset),
+    const pageResult = await UsuarioModel.findPage({
+      page,
+      pageSize,
+      withRelations: false,
+      filters: {},
     });
 
-    const safe = usuarios.map(({ password_hash, ...rest }) => rest);
+    let usuarios = pageResult.data || [];
+    if (!withDeleted) {
+      usuarios = usuarios.filter(
+        (u) => u.deleted_at === null || u.deleted_at === undefined,
+      );
+    }
+
+    const safe = usuarios.map(({ contrasena, ...rest }) => rest);
 
     return res.json({
       ok: true,
+      page: pageResult.page,
+      pageSize: pageResult.pageSize,
+      total: pageResult.total,
+      totalPages: pageResult.totalPages,
       usuarios: safe,
     });
   } catch (error) {
-    console.error('Error listando usuarios:', error.message);
+    console.error("Error listando usuarios:", error.message);
     return res.status(500).json({
       ok: false,
-      message: 'Error obteniendo usuarios',
+      message: "Error obteniendo usuarios",
     });
   }
 };
@@ -72,37 +87,37 @@ export const getUsuarioById = async (req, res) => {
     if (!user) {
       return res.status(404).json({
         ok: false,
-        message: 'Usuario no encontrado',
+        message: "Usuario no encontrado",
       });
     }
 
-    const { password_hash, ...safeUser } = user;
+    const { contrasena, ...safeUser } = user;
 
     return res.json({
       ok: true,
       usuario: safeUser,
     });
   } catch (error) {
-    console.error('Error obteniendo usuario:', error.message);
+    console.error("Error obteniendo usuario:", error.message);
     return res.status(500).json({
       ok: false,
-      message: 'Error obteniendo usuario',
+      message: "Error obteniendo usuario",
     });
   }
 };
 
 /**
  * POST /api/usuarios
- * body: { username, password, rol, id_policia?, id_persona? }
+ * body: { username, password, rol }
  */
 export const createUsuario = async (req, res) => {
   try {
-    const { username, password, rol} = req.body;
+    const { username, password, rol } = req.body;
 
     if (!username || !password || !rol) {
       return res.status(400).json({
         ok: false,
-        message: 'username, password y rol son requeridos',
+        message: "username, password y rol son requeridos",
       });
     }
 
@@ -119,21 +134,20 @@ export const createUsuario = async (req, res) => {
 
     return res.status(201).json({
       ok: true,
-      message: 'Usuario creado correctamente',
+      message: "Usuario creado correctamente",
       usuario: safeUser,
     });
   } catch (error) {
-    console.error('Error creando usuario:', error.message);
+    console.error("Error creando usuario:", error.message);
     return res.status(500).json({
       ok: false,
-      message: 'Error creando usuario',
+      message: "Error creando usuario",
     });
   }
 };
 
 /**
  * PUT /api/usuarios/:id
- * Permite actualizar datos del usuario, opcionalmente cambiar password
  */
 export const updateUsuario = async (req, res) => {
   try {
@@ -144,57 +158,61 @@ export const updateUsuario = async (req, res) => {
 
     if (username !== undefined) campos.username = username;
     if (rol !== undefined) campos.rol = rol;
-    if (estado !== undefined) campos.estado = 1;
+    if (estado !== undefined) campos.estado = estado;
 
     if (contrasena) {
-      campos.contrasena = hashPassword(password);
+      campos.contrasena = hashPassword(contrasena);
     }
 
     if (Object.keys(campos).length === 0) {
       return res.status(400).json({
         ok: false,
-        message: 'No hay campos para actualizar',
+        message: "No hay campos para actualizar",
       });
     }
 
     const actualizado = await UsuarioModel.update(id, campos);
-    const { password, ...safeUser } = actualizado;
+    const { contrasena: _, ...safeUser } = actualizado;
 
     return res.json({
       ok: true,
-      message: 'Usuario actualizado correctamente',
+      message: "Usuario actualizado correctamente",
       usuario: safeUser,
     });
   } catch (error) {
-    console.error('Error actualizando usuario:', error.message);
+    console.error("Error actualizando usuario:", error.message);
     return res.status(500).json({
       ok: false,
-      message: 'Error actualizando usuario',
+      message: "Error actualizando usuario",
     });
   }
 };
 
 /**
  * DELETE /api/usuarios/:id
- * Soft-delete: marca estado = 0
+ * Soft-delete: estado = 0 + marca deleted_at
  */
 export const deleteUsuario = async (req, res) => {
   try {
     const { id } = req.params;
 
+    // Primero desactivar
     const actualizado = await UsuarioModel.update(id, { estado: 0 });
-    const { password_hash, ...safeUser } = actualizado;
+    // Luego marcar deleted_at
+    await UsuarioModel.delete(id);
+
+    const { contrasena: _, ...safeUser } = actualizado;
 
     return res.json({
       ok: true,
-      message: 'Usuario desactivado correctamente',
+      message: "Usuario desactivado correctamente",
       usuario: safeUser,
     });
   } catch (error) {
-    console.error('Error eliminando usuario:', error.message);
+    console.error("Error eliminando usuario:", error.message);
     return res.status(500).json({
       ok: false,
-      message: 'Error eliminando usuario',
+      message: "Error eliminando usuario",
     });
   }
 };
