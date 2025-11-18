@@ -10,8 +10,10 @@ const baseModel = createBaseModel({
   requiredOnCreate: [
     "numero_comparendo",
     "direccion_infraccion",
+    "coordenadas_gps",
     "estado",
     "id_municipio",
+    "id_persona",
     "id_policia_transito",
     "id_automotor",
   ],

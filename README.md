@@ -31,10 +31,6 @@ Incluye:
 
 ---
 
-![MER_FULL.png](docs/img/MER_FULL.png)
-
----
-
 ## Estructura del Proyecto
 
 ```

@@ -12,6 +12,7 @@ export const LicenciaConduccionModel = createBaseModel({
     "fecha_vencimiento",
     "organismo_transito_expedidor",
     "estado",
+    "id_persona",
   ],
   requiredOnUpdate: [
     "fecha_vencimiento",

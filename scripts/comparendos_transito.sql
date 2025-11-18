@@ -1,6 +1,5 @@
 -- Script de creación de base de datos para PostgreSQL
 -- Sistema de Comparendos de Tránsito
--- Fecha: 2025-11-17
 
 -- Eliminar tablas si existen (en orden inverso por dependencias)
 DROP TABLE IF EXISTS queja CASCADE;

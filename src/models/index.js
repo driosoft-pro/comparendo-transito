@@ -10,7 +10,6 @@ export { LicenciaConduccionModel } from "./licenciaConduccion.model.js";
 export { PoliciaTransitoModel } from "./policiaTransito.model.js";
 export { PersonaModel } from "./persona.model.js";
 export { LicenciaCategoriaModel } from "./licenciaCategoria.model.js";
-export { PropietarioAutomotorModel } from "./propietarioAutomotor.model.js";
 export { PropiedadAutomotorModel } from "./propiedadAutomotor.model.js";
 export { ComparendoModel } from "./comparendo.model.js";
 export { ComparendoInfraccionModel } from "./comparendoInfraccion.model.js";
@@ -28,7 +27,6 @@ import { LicenciaConduccionModel } from "./licenciaConduccion.model.js";
 import { PoliciaTransitoModel } from "./policiaTransito.model.js";
 import { PersonaModel } from "./persona.model.js";
 import { LicenciaCategoriaModel } from "./licenciaCategoria.model.js";
-import { PropietarioAutomotorModel } from "./propietarioAutomotor.model.js";
 import { PropiedadAutomotorModel } from "./propiedadAutomotor.model.js";
 import { ComparendoModel } from "./comparendo.model.js";
 import { ComparendoInfraccionModel } from "./comparendoInfraccion.model.js";
@@ -46,7 +44,6 @@ const models = {
   PoliciaTransitoModel,
   PersonaModel,
   LicenciaCategoriaModel,
-  PropietarioAutomotorModel,
   PropiedadAutomotorModel,
   ComparendoModel,
   ComparendoInfraccionModel,

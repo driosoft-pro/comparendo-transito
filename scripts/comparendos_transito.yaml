@@ -1,15 +1,15 @@
 type: spec.insomnia.rest/5.0
 name: comparendosTransito
 meta:
-  id: wrk_c65212bc67e74e919d7de2718f44d7fe
-  created: 1763227613688
-  modified: 1763227613688
+  id: wrk_2ddbdb0aac4f4a00ae0ad0cb0cf13de4
+  created: 1763431626003
+  modified: 1763431626003
   description: ""
 collection:
   - url: "{{ _['api-comparendos'].url }}auth/login"
     name: login
     meta:
-      id: req_003e0977347b407c82f66429a8ba0629
+      id: req_33c72a21d10a44c8b9386ef00995d1dc
       created: 1763173448241
       modified: 1763256455922
       isPrivate: false
@@ -39,7 +39,7 @@ collection:
   - url: "{{ _['api-comparendos'].url }}ping"
     name: testApi
     meta:
-      id: req_5975e61ad703499280dcc1d169af9ea5
+      id: req_4e2434e1e7e549f58a0ef0da23ab59bf
       created: 1763173549598
       modified: 1763256444284
       isPrivate: false
@@ -59,7 +59,7 @@ collection:
       rebuildPath: true
   - name: Usuarios
     meta:
-      id: fld_51f2f68a27284a1c8f4b38a97577ef6a
+      id: fld_29cd7da28c19416480ff1a82cffce323
       created: 1763182983465
       modified: 1763183027547
       sortKey: -1763173448141
@@ -68,7 +68,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}usuarios"
         name: usuarios
         meta:
-          id: req_abdbc39505514a4c88f5c2a819a5a52b
+          id: req_4f7ed152960348a390ca237ad0d5c9c6
           created: 1763174133153
           modified: 1763250940925
           isPrivate: false
@@ -82,7 +82,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -95,7 +95,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}usuarios"
         name: usuarioCreate
         meta:
-          id: req_e69c2bf44bbb42fea543a7678af559e9
+          id: req_17a20b57e7af4bdc866c1d558bc7efa1
           created: 1763181713043
           modified: 1763251080130
           isPrivate: false
@@ -119,7 +119,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -132,7 +132,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}usuarios/1"
         name: usuario
         meta:
-          id: req_1a5d36fb540241789b0f3270e471b46f
+          id: req_4e594386435043818d3529521b8f1b88
           created: 1763182104491
           modified: 1763260862825
           isPrivate: false
@@ -146,7 +146,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -159,7 +159,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}usuarios/me"
         name: miusuario
         meta:
-          id: req_4894f9ac94d0474e8e274e42750f3eda
+          id: req_fffbedf791204d09882df475adfbb6cf
           created: 1763182393676
           modified: 1763250919424
           isPrivate: false
@@ -173,7 +173,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -186,7 +186,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}usuarios/21"
         name: usuarioDelete
         meta:
-          id: req_6847165a7d51420c8df404a23a310e27
+          id: req_cacbb3054968422ab0ab2b172935b38f
           created: 1763182537660
           modified: 1763260893472
           isPrivate: false
@@ -200,7 +200,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -213,7 +213,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}usuarios/21"
         name: usuarioUpdate
         meta:
-          id: req_6281285ea24b4696bd4d2729790335d0
+          id: req_ed3b1c3680ce4c22954e6ef63c0523d4
           created: 1763182908822
           modified: 1763260906101
           isPrivate: false
@@ -237,7 +237,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -249,7 +249,7 @@ collection:
           rebuildPath: true
   - name: Comparendos
     meta:
-      id: fld_8fe4581c62904cde92c264a55c9ef05e
+      id: fld_544b97aaae3a4a5a8c9210eca850a33c
       created: 1763220673008
       modified: 1763220673008
       sortKey: -1762861070838
@@ -258,7 +258,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}comparendos"
         name: comparendos
         meta:
-          id: req_6f518736bc8e478e83a6a7059a79edb0
+          id: req_7e77c279a67c44eb84e019c5efc11f41
           created: 1763220673008
           modified: 1763263353778
           isPrivate: false
@@ -272,7 +272,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -285,9 +285,9 @@ collection:
       - url: "{{ _['api-comparendos'].url }}comparendos"
         name: comparendoCreate
         meta:
-          id: req_9d4fff2a6f634ac7b58f1a6d45b8f97f
+          id: req_12755878b59241d29f85567ca552b9a0
           created: 1763220673009
-          modified: 1763263360824
+          modified: 1763437477908
           isPrivate: false
           description: ""
           sortKey: -1763183006552
@@ -296,10 +296,18 @@ collection:
           mimeType: application/json
           text: |-
             {
-              "username": "nuevo.test2",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
+            		"numero_comparendo": "COMP-2025-015",
+            		"fecha_hora_registro": "2025-11-01T08:30:00",
+            		"direccion_infraccion": "Calle 5 con Carrera 50, Cali",
+            		"coordenadas_gps": "3.4372,-76.5225",
+            		"observaciones": "Esto es una prueba",
+            		"estado": "PENDIENTE",
+            		"id_municipio": 11,
+            		"id_persona": 11,
+            		"id_licencia_conduccion": 11,
+            		"id_policia_transito": 1,
+            		"id_automotor": 11
+            	}
         headers:
           - name: Content-Type
             value: application/json
@@ -309,7 +317,34 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}comparendos/11"
+        name: comparendoDelete
+        meta:
+          id: req_6132fc683f1c4d68bb72685a97602015
+          created: 1763220673010
+          modified: 1763437848378
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006352
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -322,7 +357,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}comparendos/1"
         name: comparendo
         meta:
-          id: req_0e4b762d5c2247578b94667ada617806
+          id: req_a42a8f9433054a9f9a80fa45c48a20d0
           created: 1763220673010
           modified: 1763263347939
           isPrivate: false
@@ -336,34 +371,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
-            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}comparendos/1"
-        name: comparendoDelete
-        meta:
-          id: req_f5d0fc944ad247b69721855496a24be9
-          created: 1763220673010
-          modified: 1763263376292
-          isPrivate: false
-          description: ""
-          sortKey: -1763183006352
-        method: DELETE
-        headers:
-          - name: User-Agent
-            value: insomnia/11.6.0
-          - name: ""
-            value: ""
-        authentication:
-          type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -376,9 +384,9 @@ collection:
       - url: "{{ _['api-comparendos'].url }}comparendos/1"
         name: comparendoUpdate
         meta:
-          id: req_75f3867746f04001ae79179b79597afe
+          id: req_64301f5f797d4f2ba4ad936952337e0e
           created: 1763220673011
-          modified: 1763263369015
+          modified: 1763437839343
           isPrivate: false
           description: ""
           sortKey: -1763183006452
@@ -387,10 +395,16 @@ collection:
           mimeType: application/json
           text: |-
             {
-              "username": "nuevo.test-pro",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
+            		"direccion_infraccion": "Calle 5 con Carrera 50, Cali",
+            		"coordenadas_gps": "3.4372,-76.5225",
+            		"observaciones": "Esto es una pruebaActu",
+            		"estado": "PENDIENTE",
+            		"id_municipio": 11,
+            		"id_persona": 11,
+            		"id_licencia_conduccion": 11,
+            		"id_policia_transito": 1,
+            		"id_automotor": 11
+            	}
         headers:
           - name: Content-Type
             value: application/json
@@ -400,7 +414,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -412,16 +426,62 @@ collection:
           rebuildPath: true
   - name: Perfiles
     meta:
-      id: fld_0ddb4a4f04a348cbbaeb1bd6db12753b
+      id: fld_068a2ad74f8d4f7b86d5d24b9e2033a8
       created: 1763224265452
       modified: 1763264322524
       sortKey: -1763017259489.5
       description: ""
     children:
       - url: "{{ _['api-comparendos'].url }}perfiles"
+        name: perfilCreate
+        meta:
+          id: req_02985f53a8b147e3bbd63f0d92470485
+          created: 1763224265452
+          modified: 1763434589255
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006552
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            	{
+            			"tipo_doc": "CC",
+            			"num_doc": "1226581430",
+            			"primer_nombre": "Prueba",
+            			"segundo_nombre": "Si",
+            			"primer_apellido": "Esto",
+            			"segundo_apellido": "Prueba",
+            			"fecha_nacimiento": "1985-05-22",
+            			"genero": "Masculino",
+            			"direccion": "Calle 4 prie #100-45, Cali",
+            			"telefono": "3153771435",
+            			"email": "jorge.perez12@email.com",
+            			"id_municipio": 1
+            		}
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}perfiles"
         name: perfiles
         meta:
-          id: req_4032236812dd42cc8e7ce5853ec79802
+          id: req_b704131884a14adf907ee12a722bcf43
           created: 1763224265452
           modified: 1763259700803
           isPrivate: false
@@ -435,7 +495,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -445,34 +505,24 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}perfiles"
-        name: perfilCreate
+      - url: "{{ _['api-comparendos'].url }}perfiles/11"
+        name: perfilDelete
         meta:
-          id: req_66ae305d0d044ea5bc93fee051fc34e9
-          created: 1763224265452
-          modified: 1763227311210
+          id: req_14cbadb008f74c19a4d6b5316937bc69
+          created: 1763224265453
+          modified: 1763434851083
           isPrivate: false
           description: ""
-          sortKey: -1763183006552
-        method: POST
-        body:
-          mimeType: application/json
-          text: |-
-            {
-              "username": "nuevo.test2",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
+          sortKey: -1763183006352
+        method: DELETE
         headers:
-          - name: Content-Type
-            value: application/json
           - name: User-Agent
             value: insomnia/11.6.0
           - name: ""
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_6d78a28805c543a8acd82219ba6c900c',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -485,7 +535,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}perfiles/1"
         name: perfil
         meta:
-          id: req_0080dac576244f12b82dbf1bdc340d99
+          id: req_a2662d2e33fc4efe94069219dda7a958
           created: 1763224265453
           modified: 1763262939000
           isPrivate: false
@@ -499,7 +549,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -512,7 +562,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}perfiles/me"
         name: miperfil
         meta:
-          id: req_90f8d68401d94f95a38865f82b05fb43
+          id: req_ee2f19d7ebe8423491ab1e8795e34a46
           created: 1763224265453
           modified: 1763262942952
           isPrivate: false
@@ -526,7 +576,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -536,51 +586,33 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}perfiles/1"
-        name: perfilDelete
-        meta:
-          id: req_a2dae1a433b74c7683cfbc87ec1fcf87
-          created: 1763224265453
-          modified: 1763259719409
-          isPrivate: false
-          description: ""
-          sortKey: -1763183006352
-        method: DELETE
-        headers:
-          - name: User-Agent
-            value: insomnia/11.6.0
-          - name: ""
-            value: ""
-        authentication:
-          type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
-            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}perfiles/1"
+      - url: "{{ _['api-comparendos'].url }}perfiles/11"
         name: perfilUpdate
         meta:
-          id: req_3551f0ed54c8413cb4b8437accb9d678
+          id: req_22bfe281cb684365904ae5e72f466ece
           created: 1763224265454
-          modified: 1763260152941
+          modified: 1763434759225
           isPrivate: false
           description: ""
-          sortKey: -1763183006252
+          sortKey: -1763183006452
         method: PUT
         body:
           mimeType: application/json
           text: |-
-            {
-              "username": "nuevo.test-pro",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
+            		{
+            			"tipo_doc": "CC",
+            			"num_doc": "1226581430",
+            			"primer_nombre": "PruebaEditada",
+            			"segundo_nombre": "Si",
+            			"primer_apellido": "Esto",
+            			"segundo_apellido": "Prueba",
+            			"fecha_nacimiento": "1985-05-22",
+            			"genero": "Masculino",
+            			"direccion": "Calle 4 prie #100-45, Cali",
+            			"telefono": "3153771435",
+            			"email": "jorge.perez12@email.com",
+            			"id_municipio": 1
+            		}
         headers:
           - name: Content-Type
             value: application/json
@@ -590,7 +622,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -602,7 +634,7 @@ collection:
           rebuildPath: true
   - name: Quejas
     meta:
-      id: fld_612f2646ede74e6cb40240787143cd8a
+      id: fld_f61bab1d781f42d5a55fff12383d7f13
       created: 1763224498776
       modified: 1763264207580
       sortKey: -1762646311442.1875
@@ -611,7 +643,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}quejas"
         name: quejas
         meta:
-          id: req_9977fb5dce844de9a4eebda39dba19d4
+          id: req_9dcaa4a659fb46549850d01c1321a28a
           created: 1763224498776
           modified: 1763263296026
           isPrivate: false
@@ -625,44 +657,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
-            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}quejas"
-        name: quejaCreate
-        meta:
-          id: req_a5958c0110e14748b8b397ac027f2aff
-          created: 1763224498777
-          modified: 1763263306853
-          isPrivate: false
-          description: ""
-          sortKey: -1763183006552
-        method: POST
-        body:
-          mimeType: application/json
-          text: |-
-            {
-              "username": "nuevo.test2",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
-        headers:
-          - name: Content-Type
-            value: application/json
-          - name: User-Agent
-            value: insomnia/11.6.0
-          - name: ""
-            value: ""
-        authentication:
-          type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -675,7 +670,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}quejas/1"
         name: quejaDelete
         meta:
-          id: req_facea213fee846e58c1130517c1b4ed7
+          id: req_17c411dbb1464d05a475ef887381c61e
           created: 1763224498777
           modified: 1763263319107
           isPrivate: false
@@ -689,7 +684,48 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}quejas"
+        name: quejaCreate
+        meta:
+          id: req_faed9aa63eae4c28b8c3fb6a3c7348be
+          created: 1763224498777
+          modified: 1763445112390
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006552
+        method: POST
+        body:
+          mimeType: application/json
+          text: >-
+            	{
+            		"texto_queja": "El agente fue grosero y no explicó correctamente la infracción2",
+            		"estado": "RADICADA",
+            		"medio_radicacion": "web",
+            		"respuesta": null,
+            		"fecha_respuesta": null,
+            		"id_comparendo": 1,
+            		"id_persona": 1
+            	}
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -702,7 +738,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}quejas/1"
         name: queja
         meta:
-          id: req_8968df66fa6744b58b86ba24378536b2
+          id: req_b21c931d6fa84afc8703decf449eef00
           created: 1763224498778
           modified: 1763263282321
           isPrivate: false
@@ -716,7 +752,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -729,21 +765,25 @@ collection:
       - url: "{{ _['api-comparendos'].url }}quejas/1"
         name: quejaUpdate
         meta:
-          id: req_5b1e0b9828754683b2f9c803ddbbd563
+          id: req_381c80263942409c9b7202a9d5fccf1f
           created: 1763224498784
-          modified: 1763263313380
+          modified: 1763445198614
           isPrivate: false
           description: ""
           sortKey: -1763183006452
         method: PUT
         body:
           mimeType: application/json
-          text: |-
-            {
-              "username": "nuevo.test-pro",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
+          text: >-
+            	{
+            		"texto_queja": "El agente fue grosero y no explicó correctamente la infracciónUpdate",
+            		"estado": "RADICADA",
+            		"medio_radicacion": "web",
+            		"respuesta": "si",
+            		"fecha_respuesta": "2025-11-22T05:51:59.368938",
+            		"id_comparendo": 1,
+            		"id_persona": 1
+            	}
         headers:
           - name: Content-Type
             value: application/json
@@ -753,7 +793,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -765,18 +805,18 @@ collection:
           rebuildPath: true
   - name: Vehiculos
     meta:
-      id: fld_2142ae9463234efdb223a83abac81e00
+      id: fld_d7f0560cc76542d189f3cef7d8f1c240
       created: 1763225482448
       modified: 1763225493874
       sortKey: -1762939165163.75
       description: ""
     children:
-      - url: "{{ _['api-comparendos'].url }}vehiculos/1"
+      - url: "{{ _['api-comparendos'].url }}vehiculos/11"
         name: vehiculoDelete
         meta:
-          id: req_703ddd7909034e158d6a767bbb2d0b10
+          id: req_1d4b697609ac465b9891f60ffd14f370
           created: 1763225482449
-          modified: 1763263250762
+          modified: 1763435236256
           isPrivate: false
           description: ""
           sortKey: -1763183006352
@@ -788,7 +828,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -801,7 +841,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}vehiculos"
         name: vehiculos
         meta:
-          id: req_d5868366f9b64fb7b3fc66df7b50df47
+          id: req_f4cf1024e33d4e91bf1cf09198407c5b
           created: 1763225482449
           modified: 1763263229623
           isPrivate: false
@@ -815,7 +855,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -828,9 +868,9 @@ collection:
       - url: "{{ _['api-comparendos'].url }}vehiculos"
         name: vehiculoCreate
         meta:
-          id: req_de2fff231a734504950441aa7af3d15c
+          id: req_fff0bc6c40024298b7c6cb885bdb4333
           created: 1763225482449
-          modified: 1763263236887
+          modified: 1763435090093
           isPrivate: false
           description: ""
           sortKey: -1763183006552
@@ -838,11 +878,17 @@ collection:
         body:
           mimeType: application/json
           text: |-
-            {
-              "username": "nuevo.test2",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
+            	{
+            			"placa": "CWR536",
+            			"tipo_vehiculo": "Carro",
+            			"marca": "Kia",
+            			"linea_modelo": "Picanto",
+            			"cilindraje": "1000",
+            			"modelo_ano": 2010,
+            			"color": "Blanco",
+            			"clase_servicio": "Particular",
+            			"id_municipio": 1
+            		}
         headers:
           - name: Content-Type
             value: application/json
@@ -852,7 +898,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -862,49 +908,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}vehiculos/1"
-        name: vehiculoUpdate
-        meta:
-          id: req_3e5c297fa7df421780b326eb7f37a351
-          created: 1763225482450
-          modified: 1763263242791
-          isPrivate: false
-          description: ""
-          sortKey: -1763183006452
-        method: PUT
-        body:
-          mimeType: application/json
-          text: |-
-            {
-              "username": "nuevo.test-pro",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
-        headers:
-          - name: Content-Type
-            value: application/json
-          - name: User-Agent
-            value: insomnia/11.6.0
-          - name: ""
-            value: ""
-        authentication:
-          type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
-            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}vehiculos/1"
+      - url: "{{ _['api-comparendos'].url }}vehiculos/11"
         name: vehiculo
         meta:
-          id: req_e7b3af6535964293b62b9a02c019db09
+          id: req_6fa8c2dd32cb4525a55dccddceacc5db
           created: 1763225482450
-          modified: 1763263220942
+          modified: 1763435108604
           isPrivate: false
           description: ""
           sortKey: -1763183006952
@@ -916,7 +925,49 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}vehiculos/11"
+        name: vehiculoUpdate
+        meta:
+          id: req_ea518d7e744344bfa92a9d143b95cd70
+          created: 1763225482450
+          modified: 1763435181991
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006452
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            		"tipo_vehiculo": "CarroActualiza",
+            		"marca": "Kia",
+            		"linea_modelo": "Picanto",
+            		"cilindraje": "1000",
+            		"modelo_ano": 2010,
+            		"color": "Blanco",
+            		"clase_servicio": "Particular",
+            		"id_municipio": 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -928,16 +979,60 @@ collection:
           rebuildPath: true
   - name: Policias
     meta:
-      id: fld_33b46684aaf24f2c9ccdd76d94a34a2e
+      id: fld_429d3728986e4b00920fe3001f691bd1
       created: 1763226015070
       modified: 1763264326303
       sortKey: -1762656073232.9062
       description: ""
     children:
       - url: "{{ _['api-comparendos'].url }}policias"
+        name: policiaCreate
+        meta:
+          id: req_7f90d5ab653c4404a5badf19405c40f2
+          created: 1763226015071
+          modified: 1763440221098
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006552
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            		{
+            			"codigo_policia": "PT-200",
+            			"nombres": "Esto",
+            			"apellidos": "Rodríguez Méndez",
+            			"genero": "Masculino",
+            			"fecha_nacimiento": "1985-03-15",
+            			"fecha_vinculacion": "2010-01-10",
+            			"salario": 3500000,
+            			"id_secretaria_transito": 1,
+            			"id_cargo_policial": 5,
+            			"id_usuario": 17
+            		}
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}policias"
         name: policias
         meta:
-          id: req_13fdcc62ec934eaf80f428af6ce9aee5
+          id: req_dfb7c552f95b45ff90dd3426540d1c7a
           created: 1763226015071
           modified: 1763264336875
           isPrivate: false
@@ -951,7 +1046,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -961,49 +1056,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}policias"
-        name: policiaCreate
-        meta:
-          id: req_1c6045292fcd43569147be9a41abaccb
-          created: 1763226015071
-          modified: 1763264362587
-          isPrivate: false
-          description: ""
-          sortKey: -1763183006552
-        method: POST
-        body:
-          mimeType: application/json
-          text: |-
-            {
-              "username": "nuevo.test2",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
-        headers:
-          - name: Content-Type
-            value: application/json
-          - name: User-Agent
-            value: insomnia/11.6.0
-          - name: ""
-            value: ""
-        authentication:
-          type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
-            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}policias/1"
+      - url: "{{ _['api-comparendos'].url }}policias/13"
         name: policiaDelete
         meta:
-          id: req_14feab9c2c794edb82580fe8f0c7ffe8
+          id: req_a58c5ffab46d45c4a078955d5bc15581
           created: 1763226015072
-          modified: 1763264369776
+          modified: 1763440299666
           isPrivate: false
           description: ""
           sortKey: -1763183006352
@@ -1015,7 +1073,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1025,12 +1083,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}policias/1"
+      - url: "{{ _['api-comparendos'].url }}policias/13"
         name: policiaUpdate
         meta:
-          id: req_321d4a8c0c844cc5a3d6192aa26f7fff
+          id: req_03b9a1677ec046e984a67b187f5f95d1
           created: 1763226015073
-          modified: 1763264366719
+          modified: 1763440273416
           isPrivate: false
           description: ""
           sortKey: -1763183006452
@@ -1038,11 +1096,18 @@ collection:
         body:
           mimeType: application/json
           text: |-
-            {
-              "username": "nuevo.test-pro",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
+            		{
+            			"codigo_policia": "PT-200",
+            			"nombres": "Esto",
+            			"apellidos": "Rodríguez Actu",
+            			"genero": "Masculino",
+            			"fecha_nacimiento": "1985-03-15",
+            			"fecha_vinculacion": "2010-01-10",
+            			"salario": 3500000,
+            			"id_secretaria_transito": 1,
+            			"id_cargo_policial": 5,
+            			"id_usuario": 17
+            		}
         headers:
           - name: Content-Type
             value: application/json
@@ -1052,7 +1117,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1065,7 +1130,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}policias/1"
         name: policia
         meta:
-          id: req_56e827872b8943e5b31ca24440238478
+          id: req_0fea50dc40014597bd30dae882fb8b7c
           created: 1763226015073
           modified: 1763264332002
           isPrivate: false
@@ -1079,7 +1144,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1091,7 +1156,7 @@ collection:
           rebuildPath: true
   - name: Licencias
     meta:
-      id: fld_e3b210cc20da4931a1db7a55a18d32a5
+      id: fld_26cedd183d484cacb8755e83a94aa1b4
       created: 1763226026738
       modified: 1763263443987
       sortKey: -1762900118000.875
@@ -1100,9 +1165,9 @@ collection:
       - url: "{{ _['api-comparendos'].url }}licencias"
         name: licenciaCreate
         meta:
-          id: req_3c187876121b4eb49641a08b339202fe
+          id: req_304aadba7b3a47d99d137e5b51d28fed
           created: 1763226026738
-          modified: 1763263472941
+          modified: 1763435933625
           isPrivate: false
           description: ""
           sortKey: -1763183006552
@@ -1111,10 +1176,14 @@ collection:
           mimeType: application/json
           text: |-
             {
-              "username": "nuevo.test2",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
+            		"numero_licencia": "1126591530",
+            		"fecha_expedicion": "2020-01-15",
+            		"fecha_vencimiento": "2030-01-15",
+            		"organismo_transito_expedidor": "Secretaría de Movilidad de Cali",
+            		"estado": "ACTIVA",
+            		"id_persona": 11,
+            		"deleted_at": null
+            	}
         headers:
           - name: Content-Type
             value: application/json
@@ -1124,7 +1193,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1137,7 +1206,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}licencias"
         name: licencias
         meta:
-          id: req_a10774648bae416a8e29f3178ee47d5a
+          id: req_54fccd616bcf4773a5c54970ad72b389
           created: 1763226026738
           modified: 1763263465515
           isPrivate: false
@@ -1151,7 +1220,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1161,23 +1230,24 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}licencias/1"
+      - url: "{{ _['api-comparendos'].url }}licencias/11"
         name: licenciaUpdate
         meta:
-          id: req_703566233c5e4fb9be698794e70e0bc8
+          id: req_72ed973700524a67b67819b23df5fba6
           created: 1763226026739
-          modified: 1763263478331
+          modified: 1763436127643
           isPrivate: false
           description: ""
           sortKey: -1763183006452
         method: PUT
         body:
           mimeType: application/json
-          text: |-
+          text: >-
             {
-              "username": "nuevo.test-pro",
-              "password": "Clave123!",
-              "rol": "administrador"
+
+            		"fecha_vencimiento": "2030-01-15",
+            		"organismo_transito_expedidor": "Secretaría de Movilidad de CaliActu",
+            		"estado": "ACTIVA"
             }
         headers:
           - name: Content-Type
@@ -1188,34 +1258,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
-            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}licencias/1"
-        name: licenciaDelete
-        meta:
-          id: req_a72dc820145043a38bb429d83b474b55
-          created: 1763226026739
-          modified: 1763263483390
-          isPrivate: false
-          description: ""
-          sortKey: -1763183006352
-        method: DELETE
-        headers:
-          - name: User-Agent
-            value: insomnia/11.6.0
-          - name: ""
-            value: ""
-        authentication:
-          type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1228,7 +1271,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}licencias/1"
         name: licencia
         meta:
-          id: req_b7efe99cae294994b2972c6236cbc501
+          id: req_c7e1df73dd074d4d82deaccf7091388a
           created: 1763226026739
           modified: 1763263456449
           isPrivate: false
@@ -1242,7 +1285,34 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}licencias/11"
+        name: licenciaDelete
+        meta:
+          id: req_d299487e7c7041d1bde314dd62eb7c23
+          created: 1763226026739
+          modified: 1763436136202
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006352
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1254,7 +1324,7 @@ collection:
           rebuildPath: true
   - name: Municipios
     meta:
-      id: fld_0a20776f744d460eb752594121f0909e
+      id: fld_7baee4f32e00460abe977d2c56d5659e
       created: 1763226115635
       modified: 1763263510625
       sortKey: -1762880594419.4375
@@ -1263,9 +1333,9 @@ collection:
       - url: "{{ _['api-comparendos'].url }}municipios"
         name: municipioCreate
         meta:
-          id: req_2591e557c3b44f44aa7f029464af9cd2
+          id: req_b6a6492e2faf4bfaa7a2f3787245e6da
           created: 1763226115636
-          modified: 1763263532018
+          modified: 1763444623818
           isPrivate: false
           description: ""
           sortKey: -1763183006552
@@ -1273,11 +1343,12 @@ collection:
         body:
           mimeType: application/json
           text: |-
-            {
-              "username": "nuevo.test2",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
+            		{
+            			"nombre_municipio": "Santander",
+            			"departamento": "Valle del Cauca",
+            			"codigo_dane": "76003",
+            			"direccion_oficina_principal": "Calle 5 #32-50, Santander"
+            		}
         headers:
           - name: Content-Type
             value: application/json
@@ -1287,7 +1358,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1297,12 +1368,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}municipios/1"
+      - url: "{{ _['api-comparendos'].url }}municipios/11"
         name: municipioUpdate
         meta:
-          id: req_194ddcdfd2f84efa8982b6ac49eb044f
+          id: req_cca6cac73fa74ee8b6be072b8b7a527d
           created: 1763226115637
-          modified: 1763263536891
+          modified: 1763444712518
           isPrivate: false
           description: ""
           sortKey: -1763183006452
@@ -1310,11 +1381,12 @@ collection:
         body:
           mimeType: application/json
           text: |-
-            {
-              "username": "nuevo.test-pro",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
+            		{
+            			"nombre_municipio": "SantanderAct",
+            			"departamento": "Valle del Cauca",
+            			"codigo_dane": "76003",
+            			"direccion_oficina_principal": "Calle 5 #32-50, Santanderdsa"
+            		}	
         headers:
           - name: Content-Type
             value: application/json
@@ -1324,7 +1396,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1337,7 +1409,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}municipios/1"
         name: municipio
         meta:
-          id: req_b67abe928d0b47b6b25b2b64eeaa4ad1
+          id: req_cff584d2334641bbbdcba62f3ef2d205
           created: 1763226115637
           modified: 1763263520385
           isPrivate: false
@@ -1351,7 +1423,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1364,7 +1436,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}municipios"
         name: municipios
         meta:
-          id: req_f5a179f33a01484aa4772f8b2f3082ff
+          id: req_d778402805ad49b88f3a81454df9e2d9
           created: 1763226115637
           modified: 1763263526177
           isPrivate: false
@@ -1378,7 +1450,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1388,12 +1460,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}municipios/1"
+      - url: "{{ _['api-comparendos'].url }}municipios/11"
         name: municipioDelete
         meta:
-          id: req_0261674493454a57af12d1df43412624
+          id: req_e8bec1f41adf43d08093acb07d2fa427
           created: 1763226115638
-          modified: 1763263541753
+          modified: 1763437117971
           isPrivate: false
           description: ""
           sortKey: -1763183006352
@@ -1405,7 +1477,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1417,18 +1489,18 @@ collection:
           rebuildPath: true
   - name: Secretarias
     meta:
-      id: fld_1d9e5f1b8f8746a197dca72da4a15a20
+      id: fld_826b6900a6ed4824ae53c82338218846
       created: 1763226175282
-      modified: 1763263576268
-      sortKey: -1762870832628.7188
+      modified: 1763436450818
+      sortKey: -1762890356210.1562
       description: ""
     children:
-      - url: "{{ _['api-comparendos'].url }}secretarias/1"
+      - url: "{{ _['api-comparendos'].url }}secretarias/11"
         name: secretariaUpdate
         meta:
-          id: req_ae730419f66a4a6987dc6b079111803c
+          id: req_307a377b911b44d3bc31566a75495f11
           created: 1763226175282
-          modified: 1763263605919
+          modified: 1763444892347
           isPrivate: false
           description: ""
           sortKey: -1763183006452
@@ -1437,10 +1509,12 @@ collection:
           mimeType: application/json
           text: |-
             {
-              "username": "nuevo.test-pro",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
+            		"nombre_secretaria": "Secretaría de Movilidad de SantanderActu",
+            		"direccion": "Calle 5 #32-50, Santander",
+            		"telefono": "3153771435",
+            		"email": "prueba@movilidadcali.gov.co",
+            	"id_municipio": 11
+            	}
         headers:
           - name: Content-Type
             value: application/json
@@ -1450,7 +1524,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1463,9 +1537,9 @@ collection:
       - url: "{{ _['api-comparendos'].url }}secretarias"
         name: secretariaCreate
         meta:
-          id: req_d74298bac36b451ba72f0bdc4980114d
+          id: req_edbdcdf7d7bd4ef7a62b0f4b18de9f16
           created: 1763226175282
-          modified: 1763263600705
+          modified: 1763444762214
           isPrivate: false
           description: ""
           sortKey: -1763183006552
@@ -1474,10 +1548,12 @@ collection:
           mimeType: application/json
           text: |-
             {
-              "username": "nuevo.test2",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
+            		"nombre_secretaria": "Secretaría de Movilidad de Santander",
+            		"direccion": "Calle 5 #32-50, Santander",
+            		"telefono": "3153771435",
+            		"email": "prueba@movilidadcali.gov.co",
+            	"id_municipio": 11
+            	}
         headers:
           - name: Content-Type
             value: application/json
@@ -1487,7 +1563,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1500,7 +1576,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}secretarias/1"
         name: secretaria
         meta:
-          id: req_139a614ac63a4fddb587dde5617e1144
+          id: req_0722668bdad44e46ba7a83631c37b8df
           created: 1763226175283
           modified: 1763263591846
           isPrivate: false
@@ -1514,7 +1590,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1527,7 +1603,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}secretarias"
         name: secretarias
         meta:
-          id: req_271849a26442482db9dd5bf8d0cd1d14
+          id: req_67c754de5b654fc49329998431596fcf
           created: 1763226175283
           modified: 1763263596167
           isPrivate: false
@@ -1541,7 +1617,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1551,12 +1627,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}secretarias/1"
+      - url: "{{ _['api-comparendos'].url }}secretarias/11"
         name: secretariaDelete
         meta:
-          id: req_8cdcd5fa66b54a2faf769e3a60a28e2f
+          id: req_eeb1aec4b0d140df8c5a989d9426ca8a
           created: 1763226175283
-          modified: 1763263611241
+          modified: 1763436950558
           isPrivate: false
           description: ""
           sortKey: -1763183006352
@@ -1568,7 +1644,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1580,18 +1656,57 @@ collection:
           rebuildPath: true
   - name: Infracciones
     meta:
-      id: fld_72c080fdf6114a4991152c81d7f16792
+      id: fld_87015ffcb37345b480a2a192ee095db1
       created: 1763226280140
       modified: 1763226280140
       sortKey: -1762665835023.625
       description: ""
     children:
-      - url: "{{ _['api-comparendos'].url }}infracciones/1"
+      - url: "{{ _['api-comparendos'].url }}infracciones"
+        name: infraccioneCreate
+        meta:
+          id: req_24ed578fa4e54c3a8e902d846a5dff3d
+          created: 1763226280141
+          modified: 1763438212525
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006552
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            		{
+            			"codigo_infraccion": "C11",
+            			"descripcion": "Exceso de pruebas",
+            			"tipo_infraccion": "Grave",
+            			"valor_base": 234000,
+            			"puntos_descuento": 0
+            		}
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}infracciones/11"
         name: infraccioneDelete
         meta:
-          id: req_575ba66b40724dc6a678417f78e553ef
+          id: req_76b67e76ce7a4cdeb3bc85097163ebc0
           created: 1763226280141
-          modified: 1763263769657
+          modified: 1763438721908
           isPrivate: false
           description: ""
           sortKey: -1763183006352
@@ -1603,71 +1718,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
-            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}infracciones"
-        name: infraccioneCreate
-        meta:
-          id: req_74575e0fc305428ebbb398e5da8240ec
-          created: 1763226280141
-          modified: 1763263755229
-          isPrivate: false
-          description: ""
-          sortKey: -1763183006552
-        method: POST
-        body:
-          mimeType: application/json
-          text: |-
-            {
-              "username": "nuevo.test2",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
-        headers:
-          - name: Content-Type
-            value: application/json
-          - name: User-Agent
-            value: insomnia/11.6.0
-          - name: ""
-            value: ""
-        authentication:
-          type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
-            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}infracciones"
-        name: infraccione
-        meta:
-          id: req_9ca83c6bbaf74baca1364b5682151061
-          created: 1763226280141
-          modified: 1763263750021
-          isPrivate: false
-          description: ""
-          sortKey: -1763183006852
-        method: GET
-        headers:
-          - name: User-Agent
-            value: insomnia/11.6.0
-          - name: ""
-            value: ""
-        authentication:
-          type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1680,7 +1731,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}infracciones/1"
         name: infraccione
         meta:
-          id: req_d9c6a723c25e449da6e0bd54229eec12
+          id: req_e968e682eb774e32a69c6efb9f39dad3
           created: 1763226280141
           modified: 1763263743867
           isPrivate: false
@@ -1694,7 +1745,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1704,12 +1755,39 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}infracciones/1"
+      - url: "{{ _['api-comparendos'].url }}infracciones"
+        name: infraccione
+        meta:
+          id: req_f2aac95700204487b8182b473fe7347c
+          created: 1763226280141
+          modified: 1763263750021
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006852
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}infracciones/11"
         name: infraccioneUpdate
         meta:
-          id: req_cd1a4717105342a89c27c37065385f06
+          id: req_b6617b6322a14289bfb385d6610494b4
           created: 1763226280142
-          modified: 1763263762652
+          modified: 1763438665145
           isPrivate: false
           description: ""
           sortKey: -1763183006452
@@ -1717,11 +1795,11 @@ collection:
         body:
           mimeType: application/json
           text: |-
-            {
-              "username": "nuevo.test-pro",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
+            		{
+            			"descripcion": "Exceso de pruebasAct",
+            			"tipo_infraccion": "Grave",
+            			"valor_base": 234000
+            		}
         headers:
           - name: Content-Type
             value: application/json
@@ -1731,7 +1809,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1743,53 +1821,16 @@ collection:
           rebuildPath: true
   - name: Propiedades
     meta:
-      id: fld_f1a92f82519d43049453d36aa02db487
+      id: fld_d49765aa966c4bcbbb9269b24993984a
       created: 1763264448046
       modified: 1763264500221
       sortKey: -1762651192337.5469
       description: ""
     children:
       - url: "{{ _['api-comparendos'].url }}Propiedades"
-        name: PropiedadCreate
-        meta:
-          id: req_935d5093873c41e787fb19c849996a54
-          created: 1763264448046
-          modified: 1763264546549
-          isPrivate: false
-          description: ""
-          sortKey: -1763183006552
-        method: POST
-        body:
-          mimeType: application/json
-          text: |-
-            {
-              "username": "nuevo.test2",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
-        headers:
-          - name: Content-Type
-            value: application/json
-          - name: User-Agent
-            value: insomnia/11.6.0
-          - name: ""
-            value: ""
-        authentication:
-          type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
-            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}Propiedades"
         name: Propiedades
         meta:
-          id: req_949de2d4926c4316bd5826a290be8154
+          id: req_059737062a1c42bcb6747b352972d5ac
           created: 1763264448046
           modified: 1763264542961
           isPrivate: false
@@ -1803,7 +1844,47 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _['api-comparendos'].url }}Propiedades"
+        name: PropiedadCreate
+        meta:
+          id: req_e1a1989414304f5382d14ccd8698156c
+          created: 1763264448046
+          modified: 1763440899763
+          isPrivate: false
+          description: ""
+          sortKey: -1763183006552
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            		{
+            			"id_automotor": 11,
+            			"id_persona": 11,
+            			"fecha_inicio": "2020-05-15",
+            			"fecha_fin": null,
+            			"es_propietario_principal": 1,
+            			"responsable_impuestos": 1
+            		}
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.0
+          - name: ""
+            value: ""
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1816,7 +1897,7 @@ collection:
       - url: "{{ _['api-comparendos'].url }}Propiedades/1"
         name: Propiedad
         meta:
-          id: req_55c50f430a92426ba8ca3f727b3b71b0
+          id: req_1d23b14675e04a3387946dbabe00c941
           created: 1763264448047
           modified: 1763264539355
           isPrivate: false
@@ -1830,7 +1911,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1840,12 +1921,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}Propiedades/1"
+      - url: "{{ _['api-comparendos'].url }}Propiedades/11"
         name: PropiedadDelete
         meta:
-          id: req_d73a3435163d49759cfd2d089df58be3
+          id: req_87f24e7447b249238129d35b9439aff7
           created: 1763264448047
-          modified: 1763264553563
+          modified: 1763441055961
           isPrivate: false
           description: ""
           sortKey: -1763183006352
@@ -1857,7 +1938,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -1870,9 +1951,9 @@ collection:
       - url: "{{ _['api-comparendos'].url }}Propiedades/1"
         name: PropiedadUpdate
         meta:
-          id: req_e626c8ebd477446f8d9e72a763e3edd5
+          id: req_9520f37ba9fd4021b44ad49a4bffe821
           created: 1763264448047
-          modified: 1763264550538
+          modified: 1763441006761
           isPrivate: false
           description: ""
           sortKey: -1763183006452
@@ -1880,11 +1961,12 @@ collection:
         body:
           mimeType: application/json
           text: |-
-            {
-              "username": "nuevo.test-pro",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
+            		{
+            			"fecha_inicio": "2020-05-15",
+            			"fecha_fin": "2020-05-20",
+            			"es_propietario_principal": 1,
+            			"responsable_impuestos": 1
+            		}
         headers:
           - name: Content-Type
             value: application/json
@@ -1894,170 +1976,7 @@ collection:
             value: ""
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
-            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-  - name: Propietarios
-    meta:
-      id: fld_1c59c6a8416743e0a815d3e3e54c33e9
-      created: 1763264489150
-      modified: 1763264489150
-      sortKey: -1762648751889.8672
-      description: ""
-    children:
-      - url: "{{ _['api-comparendos'].url }}Propietarios"
-        name: PropietarioCreate
-        meta:
-          id: req_4352548cbe0d4f05b54407fc7655ff43
-          created: 1763264489150
-          modified: 1763264865786
-          isPrivate: false
-          description: ""
-          sortKey: -1763183006552
-        method: POST
-        body:
-          mimeType: application/json
-          text: |-
-            {
-              "username": "nuevo.test2",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
-        headers:
-          - name: Content-Type
-            value: application/json
-          - name: User-Agent
-            value: insomnia/11.6.0
-          - name: ""
-            value: ""
-        authentication:
-          type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
-            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}Propietarios"
-        name: Propietarios
-        meta:
-          id: req_2636c73b4d734ea6bd205790bd60ad88
-          created: 1763264489151
-          modified: 1763264859303
-          isPrivate: false
-          description: ""
-          sortKey: -1763183006852
-        method: GET
-        headers:
-          - name: User-Agent
-            value: insomnia/11.6.0
-          - name: ""
-            value: ""
-        authentication:
-          type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
-            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}Propietarios/1"
-        name: Propietario
-        meta:
-          id: req_548dbeafd7ad40ff97d5795b53e601a2
-          created: 1763264489151
-          modified: 1763264803566
-          isPrivate: false
-          description: ""
-          sortKey: -1763183006952
-        method: GET
-        headers:
-          - name: User-Agent
-            value: insomnia/11.6.0
-          - name: ""
-            value: ""
-        authentication:
-          type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
-            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}Propietarios/1"
-        name: PropietarioUpdate
-        meta:
-          id: req_9f5680db86b64388877aad3794d2a6a4
-          created: 1763264489151
-          modified: 1763264868731
-          isPrivate: false
-          description: ""
-          sortKey: -1763183006452
-        method: PUT
-        body:
-          mimeType: application/json
-          text: |-
-            {
-              "username": "nuevo.test-pro",
-              "password": "Clave123!",
-              "rol": "administrador"
-            }
-        headers:
-          - name: Content-Type
-            value: application/json
-          - name: User-Agent
-            value: insomnia/11.6.0
-          - name: ""
-            value: ""
-        authentication:
-          type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
-            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}Propietarios/1"
-        name: PropietarioDelete
-        meta:
-          id: req_c6408cda57d14a4fb81686afcc85ef5a
-          created: 1763264489151
-          modified: 1763264875253
-          isPrivate: false
-          description: ""
-          sortKey: -1763183006352
-        method: DELETE
-        headers:
-          - name: User-Agent
-            value: insomnia/11.6.0
-          - name: ""
-            value: ""
-        authentication:
-          type: bearer
-          token: "{% response 'body', 'req_003e0977347b407c82f66429a8ba0629',
+          token: "{% response 'body', 'req_33c72a21d10a44c8b9386ef00995d1dc',
             'b64::JC50b2tlbg==::46b', 'never', 60 %}"
         settings:
           renderRequestBody: true
@@ -2070,20 +1989,20 @@ collection:
 cookieJar:
   name: Default Jar
   meta:
-    id: jar_2045ee60130b3db9552f1057878c9e7e2ed220a9
+    id: jar_2f47ee4aa70f43c2ad02b349258f206a
     created: 1763227613690
     modified: 1763227613690
 environments:
   name: Base Environment
   meta:
-    id: env_2045ee60130b3db9552f1057878c9e7e2ed220a9
+    id: env_d0b12e5f7bbf400c829f4d280ac9fd97
     created: 1763227613690
     modified: 1763227613690
     isPrivate: false
   subEnvironments:
     - name: api-comparendos
       meta:
-        id: env_fa2c73d193674ef6a49b40d7fc54301b
+        id: env_c802f867cacd4269b7e01df96584f481
         created: 1763250040972
         modified: 1763251056781
         isPrivate: false
@@ -3035,6 +2954,6 @@ spec:
             rol:
               type: string
   meta:
-    id: spc_b76eaf07c9d446f3a347d0b81934d35f
-    created: 1763227963653
-    modified: 1763271202035
+    id: spc_edfc952a63224beea667f78dfd3c0a0c
+    created: 1763431626006
+    modified: 1763431626007

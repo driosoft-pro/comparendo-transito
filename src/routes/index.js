@@ -11,8 +11,9 @@ import policiasRoutes from "./policias.routes.js";
 import licenciasRoutes from "./licencias.routes.js";
 import infraccionesRoutes from "./infracciones.routes.js";
 import secretariasRoutes from "./secretarias.routes.js";
-import propietariosRoutes from "./propietarios.routes.js";
 import propiedadesRoutes from "./propiedades.routes.js";
+import cargosPolicialesRoutes from "./cargosPoliciales.routes.js";
+import categoriasLicenciaRoutes from "./categoriasLicencia.routes.js";
 
 const router = Router();
 
@@ -24,7 +25,7 @@ router.get("/ping", (req, res) => {
 // Rutas públicas
 router.use("/auth", authRoutes);
 
-// Rutas protegidas (los propios routers aplican authMiddleware)
+// Rutas protegidas
 router.use("/usuarios", usuariosRoutes);
 router.use("/comparendos", comparendosRoutes);
 router.use("/perfiles", personasRoutes);
@@ -35,7 +36,8 @@ router.use("/policias", policiasRoutes);
 router.use("/licencias", licenciasRoutes);
 router.use("/infracciones", infraccionesRoutes);
 router.use("/secretarias", secretariasRoutes);
-router.use("/propietarios", propietariosRoutes);
 router.use("/propiedades", propiedadesRoutes);
+router.use("/cargos-policiales", cargosPolicialesRoutes);
+router.use("/categorias-licencia", categoriasLicenciaRoutes);
 
 export default router;
