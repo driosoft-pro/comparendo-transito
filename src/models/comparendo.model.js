@@ -21,6 +21,7 @@ const baseModel = createBaseModel({
     "observaciones",
     "estado",
   ],
+  requiredOnDelete: [],
   softDelete: true,
   defaultSelect: "*",
   relationsSelect:

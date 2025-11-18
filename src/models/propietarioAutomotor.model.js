@@ -8,6 +8,7 @@ export const PropietarioAutomotorModel = createBaseModel({
   idColumn: ID_COLUMN,
   requiredOnCreate: ["id_persona", "id_automotor"],
   requiredOnUpdate: ["id_persona", "id_automotor", "es_principal"],
+  requiredOnDelete: [],
   softDelete: true,
   defaultSelect: "*",
   relationsSelect: "*, persona:personas(*), automotor(*)",

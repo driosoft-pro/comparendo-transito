@@ -20,6 +20,7 @@ export const MunicipioModel = createBaseModel({
     "direccion_oficina_principal",
     "id_secretaria_transito",
   ],
+  requiredOnDelete: [],
   softDelete: true,
   defaultSelect: "*",
   relationsSelect:

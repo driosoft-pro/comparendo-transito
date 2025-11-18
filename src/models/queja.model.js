@@ -15,6 +15,7 @@ const baseModel = createBaseModel({
     "id_persona",
   ],
   requiredOnUpdate: ["texto_queja", "estado", "respuesta", "fecha_respuesta"],
+  requiredOnDelete: [],
   softDelete: true,
   defaultSelect: "*",
   relationsSelect: "*, comparendo(*), persona:personas(*)",

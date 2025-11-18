@@ -13,6 +13,7 @@ export const PropiedadAutomotorModel = createBaseModel({
     "es_propietario_principal",
     "responsable_impuestos",
   ],
+  requiredOnDelete: [],
   softDelete: true,
   defaultSelect: "*",
   relationsSelect: "*, automotor(*), persona:personas(*)",

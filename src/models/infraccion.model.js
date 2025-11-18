@@ -15,6 +15,7 @@ const baseModel = createBaseModel({
     "valor_base",
   ],
   requiredOnUpdate: ["descripcion", "tipo_infraccion", "valor_base"],
+  requiredOnDelete: [],
   softDelete: true,
   defaultSelect: "*",
   relationsSelect: "*, comparendo_infraccion(id_comparendo, valor_calculado)",

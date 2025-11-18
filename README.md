@@ -149,7 +149,7 @@ Usado para:
 ### 1. Clonar repositorio
 
 ```
-git clone https://github.com/driosoft-pro/comparendo-transito.git
+git clone https://github.com/driosoft-pro/comparendo-transito-backend.git
 ```
 
 ```

@@ -28,6 +28,7 @@ export const PoliciaTransitoModel = createBaseModel({
     "id_secretaria_transito",
     "id_cargo_policial",
   ],
+  requiredOnDelete: [],
   softDelete: true,
   defaultSelect: "*",
   relationsSelect:

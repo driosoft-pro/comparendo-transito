@@ -8,6 +8,7 @@ export const SecretariaTransitoModel = createBaseModel({
   idColumn: ID_COLUMN,
   requiredOnCreate: ["nombre_secretaria", "direccion", "telefono"],
   requiredOnUpdate: ["nombre_secretaria", "direccion", "telefono"],
+  requiredOnDelete: [],
   softDelete: true,
   defaultSelect: "*",
   relationsSelect: "*, municipio(*), policia_transito(*)",

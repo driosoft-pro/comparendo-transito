@@ -7,6 +7,7 @@ export const ComparendoInfraccionModel = createBaseModel({
   idColumn: "id_comparendo", // PK compuesta, usamos id_comparendo como base
   requiredOnCreate: ["id_comparendo", "id_infraccion", "valor_calculado"],
   requiredOnUpdate: ["valor_calculado", "observaciones"],
+  requiredOnDelete: [],
   softDelete: true,
   defaultSelect: "*",
   relationsSelect: "*, comparendo(*), infraccion(*)",

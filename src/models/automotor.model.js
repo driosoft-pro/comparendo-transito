@@ -28,6 +28,7 @@ const baseModel = createBaseModel({
     "clase_servicio",
     "id_municipio",
   ],
+  requiredOnDelete: [],
   softDelete: true,
   defaultSelect: "*",
   relationsSelect:

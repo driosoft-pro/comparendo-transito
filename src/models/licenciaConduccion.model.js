@@ -18,6 +18,7 @@ export const LicenciaConduccionModel = createBaseModel({
     "organismo_transito_expedidor",
     "estado",
   ],
+  requiredOnDelete: [],
   softDelete: true,
   defaultSelect: "*",
   relationsSelect: "*, licencia_categoria(*), personas(*), comparendo(*)",
