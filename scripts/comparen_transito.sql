@@ -1,7 +1,6 @@
 -- Script de creación de base de datos para PostgreSQL
 -- Sistema de Comparendos de Tránsito
--- Fecha: 2025-11-14
--- Creación de tablas y dependencias
+-- Fecha: 2025-11-17
 
 -- Eliminar tablas si existen (en orden inverso por dependencias)
 DROP TABLE IF EXISTS queja CASCADE;
@@ -9,13 +8,12 @@ DROP TABLE IF EXISTS comparendo_infraccion CASCADE;
 DROP TABLE IF EXISTS comparendo CASCADE;
 DROP TABLE IF EXISTS licencia_categoria CASCADE;
 DROP TABLE IF EXISTS propiedad_automotor CASCADE;
-DROP TABLE IF EXISTS propietario_automotor CASCADE;
 DROP TABLE IF EXISTS personas CASCADE;
 DROP TABLE IF EXISTS licencia_conduccion CASCADE;
 DROP TABLE IF EXISTS automotor CASCADE;
 DROP TABLE IF EXISTS policia_transito CASCADE;
-DROP TABLE IF EXISTS municipio CASCADE;
 DROP TABLE IF EXISTS secretaria_transito CASCADE;
+DROP TABLE IF EXISTS municipio CASCADE;
 DROP TABLE IF EXISTS usuarios CASCADE;
 DROP TABLE IF EXISTS infraccion CASCADE;
 DROP TABLE IF EXISTS categoria_licencia CASCADE;
@@ -60,33 +58,33 @@ CREATE TABLE usuarios (
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Tabla: secretaria_transito
-CREATE TABLE secretaria_transito (
-    id_secretaria SERIAL PRIMARY KEY,
-    nombre_secretaria VARCHAR(100) NOT NULL,
-    direccion VARCHAR(150) NOT NULL,
-    telefono VARCHAR(20) NOT NULL,
-    email VARCHAR(100)
+-- Tabla: municipio (ahora sin dependencias)
+CREATE TABLE municipio (
+    id_municipio SERIAL PRIMARY KEY,
+    nombre_municipio VARCHAR(100) NOT NULL,
+    departamento VARCHAR(100) NOT NULL,
+    codigo_dane VARCHAR(20) NOT NULL UNIQUE,
+    direccion_oficina_principal VARCHAR(150) NOT NULL
 );
 
 -- =========================================================================
 -- TABLAS CON DEPENDENCIAS DE NIVEL 1
 -- =========================================================================
 
--- Tabla: municipio (depende de secretaria_transito)
-CREATE TABLE municipio (
-    id_municipio SERIAL PRIMARY KEY,
-    nombre_municipio VARCHAR(100) NOT NULL,
-    departamento VARCHAR(100) NOT NULL,
-    codigo_dane VARCHAR(20) NOT NULL UNIQUE,
-    direccion_oficina_principal VARCHAR(150) NOT NULL,
-    id_secretaria_transito INTEGER NOT NULL,
-    CONSTRAINT fk_municipio_secretaria FOREIGN KEY (id_secretaria_transito)
-        REFERENCES secretaria_transito(id_secretaria)
+-- Tabla: secretaria_transito (ahora depende de municipio)
+CREATE TABLE secretaria_transito (
+    id_secretaria SERIAL PRIMARY KEY,
+    nombre_secretaria VARCHAR(100) NOT NULL,
+    direccion VARCHAR(150) NOT NULL,
+    telefono VARCHAR(20) NOT NULL,
+    email VARCHAR(100),
+    id_municipio INTEGER NOT NULL,
+    CONSTRAINT fk_secretaria_municipio FOREIGN KEY (id_municipio)
+        REFERENCES municipio(id_municipio)
 );
 
--- Índice único para relación 1:1 entre municipio y secretaría
-CREATE UNIQUE INDEX idx_municipio_secretaria ON municipio(id_secretaria_transito);
+-- Índice único para relación 1:1 entre secretaría y municipio
+CREATE UNIQUE INDEX idx_secretaria_municipio ON secretaria_transito(id_municipio);
 
 -- Tabla: automotor (depende de municipio)
 CREATE TABLE automotor (
@@ -112,30 +110,6 @@ CREATE TABLE licencia_conduccion (
     fecha_vencimiento DATE NOT NULL,
     organismo_transito_expedidor VARCHAR(100) NOT NULL,
     estado VARCHAR(20) NOT NULL DEFAULT 'ACTIVA'
-);
-
--- Tabla: policia_transito (depende de usuarios, secretaria_transito, cargo_policial)
-CREATE TABLE policia_transito (
-    id_policia SERIAL PRIMARY KEY,
-    codigo_policia VARCHAR(20) NOT NULL UNIQUE,
-    nombres VARCHAR(50) NOT NULL,
-    apellidos VARCHAR(50) NOT NULL,
-    genero VARCHAR(10) NOT NULL,
-    fecha_nacimiento DATE NOT NULL,
-    fecha_vinculacion DATE NOT NULL,
-    salario NUMERIC(12,2) NOT NULL,
-    id_secretaria_transito INTEGER NOT NULL,
-    id_cargo_policial INTEGER NOT NULL,
-    id_supervisor INTEGER,
-    id_usuario INTEGER NOT NULL UNIQUE,
-    CONSTRAINT fk_policia_secretaria FOREIGN KEY (id_secretaria_transito)
-        REFERENCES secretaria_transito(id_secretaria),
-    CONSTRAINT fk_policia_cargo FOREIGN KEY (id_cargo_policial)
-        REFERENCES cargo_policial(id_cargo),
-    CONSTRAINT fk_policia_supervisor FOREIGN KEY (id_supervisor)
-        REFERENCES policia_transito(id_policia),
-    CONSTRAINT fk_policia_usuario FOREIGN KEY (id_usuario)
-        REFERENCES usuarios(id_usuario)
 );
 
 -- =========================================================================
@@ -174,6 +148,32 @@ ALTER TABLE licencia_conduccion ADD CONSTRAINT fk_licencia_persona
     FOREIGN KEY (id_persona) REFERENCES personas(id_persona);
 CREATE UNIQUE INDEX idx_licencia_persona ON licencia_conduccion(id_persona);
 
+-- Tabla: policia_transito (depende de usuarios, secretaria_transito, cargo_policial, personas)
+CREATE TABLE policia_transito (
+    id_policia SERIAL PRIMARY KEY,
+    codigo_policia VARCHAR(20) NOT NULL UNIQUE,
+    fecha_vinculacion DATE NOT NULL,
+    salario NUMERIC(12,2) NOT NULL,
+    id_secretaria_transito INTEGER NOT NULL,
+    id_cargo_policial INTEGER NOT NULL,
+    id_supervisor INTEGER,
+    id_usuario INTEGER NOT NULL UNIQUE,
+    id_persona INTEGER NOT NULL UNIQUE,
+    CONSTRAINT fk_policia_secretaria FOREIGN KEY (id_secretaria_transito)
+        REFERENCES secretaria_transito(id_secretaria),
+    CONSTRAINT fk_policia_cargo FOREIGN KEY (id_cargo_policial)
+        REFERENCES cargo_policial(id_cargo),
+    CONSTRAINT fk_policia_supervisor FOREIGN KEY (id_supervisor)
+        REFERENCES policia_transito(id_policia),
+    CONSTRAINT fk_policia_usuario FOREIGN KEY (id_usuario)
+        REFERENCES usuarios(id_usuario),
+    CONSTRAINT fk_policia_persona FOREIGN KEY (id_persona)
+        REFERENCES personas(id_persona)
+);
+
+-- Índice para mejorar rendimiento
+CREATE INDEX idx_policia_persona ON policia_transito(id_persona);
+
 -- Tabla: licencia_categoria (depende de licencia_conduccion y categoria_licencia)
 CREATE TABLE licencia_categoria (
     id_licencia_conduccion INTEGER NOT NULL,
@@ -184,19 +184,6 @@ CREATE TABLE licencia_categoria (
         REFERENCES licencia_conduccion(id_licencia),
     CONSTRAINT fk_lic_cat_categoria FOREIGN KEY (id_categoria_licencia)
         REFERENCES categoria_licencia(id_categoria)
-);
-
--- Tabla: propietario_automotor (depende de personas y automotor)
-CREATE TABLE propietario_automotor (
-    id_propietario SERIAL PRIMARY KEY,
-    id_persona INTEGER NOT NULL,
-    id_automotor INTEGER NOT NULL,
-    es_principal SMALLINT NOT NULL DEFAULT 0,
-    fecha_registro DATE DEFAULT CURRENT_DATE,
-    CONSTRAINT fk_propietario_persona FOREIGN KEY (id_persona)
-        REFERENCES personas(id_persona),
-    CONSTRAINT fk_propietario_automotor FOREIGN KEY (id_automotor)
-        REFERENCES automotor(id_automotor)
 );
 
 -- Tabla: propiedad_automotor (depende de automotor y personas)
@@ -295,7 +282,6 @@ ALTER TABLE infraccion ADD COLUMN IF NOT EXISTS deleted_at TIMESTAMP NULL;
 ALTER TABLE secretaria_transito ADD COLUMN IF NOT EXISTS deleted_at TIMESTAMP NULL;
 ALTER TABLE municipio ADD COLUMN IF NOT EXISTS deleted_at TIMESTAMP NULL;
 ALTER TABLE licencia_categoria ADD COLUMN IF NOT EXISTS deleted_at TIMESTAMP NULL;
-ALTER TABLE propietario_automotor ADD COLUMN IF NOT EXISTS deleted_at TIMESTAMP NULL;
 ALTER TABLE propiedad_automotor ADD COLUMN IF NOT EXISTS deleted_at TIMESTAMP NULL;
 ALTER TABLE comparendo_infraccion ADD COLUMN IF NOT EXISTS deleted_at TIMESTAMP NULL;
 
@@ -312,6 +298,72 @@ CREATE INDEX idx_automotor_placa ON automotor(placa);
 CREATE INDEX idx_licencia_estado ON licencia_conduccion(estado);
 CREATE INDEX idx_queja_estado ON queja(estado);
 CREATE INDEX idx_queja_comparendo ON queja(id_comparendo);
+CREATE INDEX idx_secretaria_municipio_lookup ON secretaria_transito(id_municipio);
+
+-- =========================================================================
+-- VISTAS ÚTILES
+-- =========================================================================
+
+-- Vista para obtener información completa de policías
+CREATE OR REPLACE VIEW v_policia_completo AS
+SELECT
+    pt.id_policia,
+    pt.codigo_policia,
+    pt.fecha_vinculacion,
+    pt.salario,
+    -- Datos de la persona vinculada
+    p.primer_nombre,
+    p.segundo_nombre,
+    p.primer_apellido,
+    p.segundo_apellido,
+    CONCAT_WS(' ', p.primer_nombre, p.segundo_nombre, p.primer_apellido, p.segundo_apellido) as nombre_completo,
+    p.fecha_nacimiento,
+    p.genero,
+    p.tipo_doc,
+    p.num_doc,
+    p.direccion,
+    p.telefono,
+    p.email,
+    -- Relaciones
+    pt.id_secretaria_transito,
+    st.nombre_secretaria,
+    st.id_municipio as municipio_secretaria_id,
+    mst.nombre_municipio as municipio_secretaria,
+    mst.departamento as departamento_secretaria,
+    pt.id_cargo_policial,
+    cp.nombre_cargo,
+    cp.grado,
+    pt.id_supervisor,
+    pt.id_usuario,
+    pt.id_persona,
+    -- Municipio de residencia del policía
+    p.id_municipio as municipio_residencia_id,
+    mp.nombre_municipio as municipio_residencia,
+    mp.departamento as departamento_residencia
+FROM policia_transito pt
+INNER JOIN personas p ON pt.id_persona = p.id_persona
+LEFT JOIN secretaria_transito st ON pt.id_secretaria_transito = st.id_secretaria
+LEFT JOIN municipio mst ON st.id_municipio = mst.id_municipio
+LEFT JOIN cargo_policial cp ON pt.id_cargo_policial = cp.id_cargo
+LEFT JOIN municipio mp ON p.id_municipio = mp.id_municipio
+WHERE pt.deleted_at IS NULL AND p.deleted_at IS NULL;
+
+-- Vista para secretarías con su municipio
+CREATE OR REPLACE VIEW v_secretaria_completa AS
+SELECT
+    st.id_secretaria,
+    st.nombre_secretaria,
+    st.direccion,
+    st.telefono,
+    st.email,
+    st.id_municipio,
+    m.nombre_municipio,
+    m.departamento,
+    m.codigo_dane,
+    m.direccion_oficina_principal
+FROM secretaria_transito st
+INNER JOIN municipio m ON st.id_municipio = m.id_municipio
+WHERE st.deleted_at IS NULL AND m.deleted_at IS NULL;
 
 -- =========================================================================
 -- COMENTARIOS EN TABLAS PRINCIPALES
@@ -320,19 +372,21 @@ CREATE INDEX idx_queja_comparendo ON queja(id_comparendo);
 COMMENT ON TABLE cargo_policial IS 'Catálogo de cargos policiales disponibles';
 COMMENT ON TABLE categoria_licencia IS 'Categorías de licencias de conducción';
 COMMENT ON TABLE infraccion IS 'Catálogo de infracciones de tránsito';
-COMMENT ON TABLE secretaria_transito IS 'Secretarías de tránsito por región';
-COMMENT ON TABLE municipio IS 'Municipios con su secretaría de tránsito';
+COMMENT ON TABLE municipio IS 'Municipios del país';
+COMMENT ON TABLE secretaria_transito IS 'Secretarías de tránsito ubicadas en municipios';
 COMMENT ON TABLE usuarios IS 'Usuarios del sistema (policías, ciudadanos, administrador, supervisor, operador, auditor)';
-COMMENT ON TABLE policia_transito IS 'Agentes de policía de tránsito';
+COMMENT ON TABLE policia_transito IS 'Agentes de policía de tránsito - vinculados con personas';
 COMMENT ON TABLE licencia_conduccion IS 'Licencias de conducción expedidas';
-COMMENT ON TABLE personas IS 'Información de personas (conductores y propietarios)';
+COMMENT ON TABLE personas IS 'Información de personas (conductores, propietarios y policías)';
 COMMENT ON TABLE licencia_categoria IS 'Relación de categorías por licencia';
 COMMENT ON TABLE automotor IS 'Registro de vehículos automotores';
-COMMENT ON TABLE propietario_automotor IS 'Propietarios de vehículos';
 COMMENT ON TABLE propiedad_automotor IS 'Historial de propiedad de vehículos';
 COMMENT ON TABLE comparendo IS 'Registro de comparendos de tránsito';
 COMMENT ON TABLE comparendo_infraccion IS 'Infracciones por comparendo';
 COMMENT ON TABLE queja IS 'Quejas ciudadanas sobre comparendos';
+
+COMMENT ON COLUMN policia_transito.id_persona IS 'Vincula al policía con personas - trae nombre, apellido, fecha_nacimiento';
+COMMENT ON COLUMN secretaria_transito.id_municipio IS 'Municipio donde está ubicada la secretaría de tránsito';
 
 -- =========================================================================
 -- SCRIPT COMPLETADO EXITOSAMENTE
@@ -344,13 +398,26 @@ BASE DE DATOS CREADA EXITOSAMENTE
 ========================================
 Sistema: Comparendos de Tránsito
 DBMS: PostgreSQL
-Fecha: 2025-11-14
+Fecha: 2025-11-17
+Versión: 2.1
 
-Total de tablas creadas: 16
+CAMBIOS APLICADOS:
+✓ policia_transito vinculada con personas
+✓ id_persona agregado (obligatorio y único)
+✓ Eliminados: nombres, apellidos, genero, fecha_nacimiento
+✓ Tabla propietario_automotor ELIMINADA
+✓ RELACIÓN CORREGIDA: secretaria_transito ahora tiene id_municipio
+✓ Vista v_policia_completo creada
+✓ Vista v_secretaria_completa creada
+
+RELACIÓN CORRECTA:
+  Municipio (1) <---- (1) Secretaría de Tránsito
+
+Total de tablas creadas: 15
 - Tablas de catálogo: 3
 - Tablas de configuración: 2
 - Tablas de entidades: 5
-- Tablas de relaciones: 4
+- Tablas de relaciones: 3
 - Tablas transaccionales: 2
 
 Estado: LISTO PARA INSERTS

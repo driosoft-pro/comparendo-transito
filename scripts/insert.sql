@@ -1,6 +1,7 @@
 -- =========================================================================
 -- Script de Inserción de Datos de Prueba
 -- Sistema de Comparendos de Tránsito - Santiago de Cali
+-- Versión: 2.1 - Compatible con nueva estructura
 -- =========================================================================
 
 -- =========================================================================
@@ -49,34 +50,34 @@ INSERT INTO infraccion (codigo_infraccion, descripcion, tipo_infraccion, valor_b
 ('C10', 'Usar celular mientras conduce', 'Grave', 468000, 3);
 
 -- =========================================================================
--- 4. SECRETARIA_TRANSITO (sin dependencias)
+-- 4. MUNICIPIO (sin dependencias - orden corregido)
 -- =========================================================================
-INSERT INTO secretaria_transito (nombre_secretaria, direccion, telefono, email) VALUES
-('Secretaría de Movilidad de Cali', 'Calle 5 #32-50, Cali', '6023337700', 'contacto@movilidadcali.gov.co'),
-('Departamento Administrativo de Tránsito', 'Carrera 4 #10-55, Cali', '6023334500', 'transito@cali.gov.co'),
-('Secretaría de Transporte del Valle', 'Avenida 6N #25-80, Cali', '6023335000', 'transporte@valledelcauca.gov.co'),
-('Centro de Movilidad Sur', 'Calle 25 #70-15, Cali', '6023336200', 'movilidadsur@cali.gov.co'),
-('Centro de Movilidad Norte', 'Carrera 1 #70-50, Cali', '6023336300', 'movilidadnorte@cali.gov.co'),
-('Oficina de Tránsito Oriente', 'Calle 44 #5A-30, Cali', '6023336400', 'oriente@movilidadcali.gov.co'),
-('Oficina de Tránsito Occidente', 'Carrera 100 #11-50, Cali', '6023336500', 'occidente@movilidadcali.gov.co'),
-('Centro Integrado de Movilidad', 'Avenida Simón Bolívar #35-20', '6023337800', 'cim@cali.gov.co'),
-('Punto de Atención Ciudad Jardín', 'Calle 5D #38-95, Cali', '6023337900', 'ciudadjardin@movilidadcali.gov.co'),
-('Punto de Atención Menga', 'Carrera 28 #1A-60, Cali', '6023338000', 'menga@movilidadcali.gov.co');
+INSERT INTO municipio (nombre_municipio, departamento, codigo_dane, direccion_oficina_principal) VALUES
+('Santiago de Cali', 'Valle del Cauca', '76001', 'Calle 5 #32-50, Cali'),
+('Yumbo', 'Valle del Cauca', '76892', 'Carrera 3 #8-45, Yumbo'),
+('Palmira', 'Valle del Cauca', '76520', 'Calle 30 #29-39, Palmira'),
+('Jamundí', 'Valle del Cauca', '76364', 'Carrera 4 #5-20, Jamundí'),
+('Candelaria', 'Valle del Cauca', '76126', 'Calle 7 #4-10, Candelaria'),
+('Florida', 'Valle del Cauca', '76275', 'Carrera 5 #6-30, Florida'),
+('Pradera', 'Valle del Cauca', '76563', 'Calle 4 #5-15, Pradera'),
+('Buenaventura', 'Valle del Cauca', '76109', 'Calle 2 #3A-25, Buenaventura'),
+('Tuluá', 'Valle del Cauca', '76834', 'Carrera 26 #25-40, Tuluá'),
+('Buga', 'Valle del Cauca', '76111', 'Calle 4 #13-45, Buga');
 
 -- =========================================================================
--- 5. MUNICIPIO (depende de secretaria_transito)
+-- 5. SECRETARIA_TRANSITO (depende de municipio)
 -- =========================================================================
-INSERT INTO municipio (nombre_municipio, departamento, codigo_dane, direccion_oficina_principal, id_secretaria_transito) VALUES
-('Santiago de Cali', 'Valle del Cauca', '76001', 'Calle 5 #32-50, Cali', 1),
-('Yumbo', 'Valle del Cauca', '76892', 'Carrera 3 #8-45, Yumbo', 2),
-('Palmira', 'Valle del Cauca', '76520', 'Calle 30 #29-39, Palmira', 3),
-('Jamundí', 'Valle del Cauca', '76364', 'Carrera 4 #5-20, Jamundí', 4),
-('Candelaria', 'Valle del Cauca', '76126', 'Calle 7 #4-10, Candelaria', 5),
-('Florida', 'Valle del Cauca', '76275', 'Carrera 5 #6-30, Florida', 6),
-('Pradera', 'Valle del Cauca', '76563', 'Calle 4 #5-15, Pradera', 7),
-('Buenaventura', 'Valle del Cauca', '76109', 'Calle 2 #3A-25, Buenaventura', 8),
-('Tuluá', 'Valle del Cauca', '76834', 'Carrera 26 #25-40, Tuluá', 9),
-('Buga', 'Valle del Cauca', '76111', 'Calle 4 #13-45, Buga', 10);
+INSERT INTO secretaria_transito (nombre_secretaria, direccion, telefono, email, id_municipio) VALUES
+('Secretaría de Movilidad de Cali', 'Calle 5 #32-50, Cali', '6023337700', 'contacto@movilidadcali.gov.co', 1),
+('Departamento Administrativo de Tránsito Yumbo', 'Carrera 3 #8-45, Yumbo', '6023334500', 'transito@yumbo.gov.co', 2),
+('Secretaría de Transporte Palmira', 'Calle 30 #29-39, Palmira', '6023335000', 'transporte@palmira.gov.co', 3),
+('Centro de Movilidad Jamundí', 'Carrera 4 #5-20, Jamundí', '6023336200', 'movilidad@jamundi.gov.co', 4),
+('Oficina de Tránsito Candelaria', 'Calle 7 #4-10, Candelaria', '6023336300', 'transito@candelaria.gov.co', 5),
+('Secretaría de Tránsito Florida', 'Carrera 5 #6-30, Florida', '6023336400', 'transito@florida.gov.co', 6),
+('Oficina de Movilidad Pradera', 'Calle 4 #5-15, Pradera', '6023336500', 'movilidad@pradera.gov.co', 7),
+('Departamento de Tránsito Buenaventura', 'Calle 2 #3A-25, Buenaventura', '6023337800', 'transito@buenaventura.gov.co', 8),
+('Secretaría de Movilidad Tuluá', 'Carrera 26 #25-40, Tuluá', '6023337900', 'movilidad@tulua.gov.co', 9),
+('Centro de Tránsito Buga', 'Calle 4 #13-45, Buga', '6023338000', 'transito@buga.gov.co', 10);
 
 -- =========================================================================
 -- 6. USUARIOS (sin dependencias)
@@ -90,11 +91,12 @@ INSERT INTO usuarios (username, contrasena, rol, estado) VALUES
 ('policia.martinez', '$2b$10$zE7sG4L8TVNmA5xVLLCdPO1drP.FePQmpIQ8WSz.B0fKt3ajS3vBi', 'policia_transito', 1),
 ('policia.gomez', '$2b$10$zE7sG4L8TVNmA5xVLLCdPO1drP.FePQmpIQ8WSz.B0fKt3ajS3vBi', 'policia_transito', 1),
 ('policia.castro', '$2b$10$zE7sG4L8TVNmA5xVLLCdPO1drP.FePQmpIQ8WSz.B0fKt3ajS3vBi', 'policia_transito', 1),
-('policia.torres.p', '$2b$10$zE7sG4L8TVNmA5xVLLCdPO1drP.FePQmpIQ8WSz.B0fKt3ajS3vBi', 'policia_transito', 1),
+('policia.torres', '$2b$10$zE7sG4L8TVNmA5xVLLCdPO1drP.FePQmpIQ8WSz.B0fKt3ajS3vBi', 'policia_transito', 1),
 ('policia.munoz', '$2b$10$zE7sG4L8TVNmA5xVLLCdPO1drP.FePQmpIQ8WSz.B0fKt3ajS3vBi', 'policia_transito', 1),
 ('policia.valencia', '$2b$10$zE7sG4L8TVNmA5xVLLCdPO1drP.FePQmpIQ8WSz.B0fKt3ajS3vBi', 'policia_transito', 1),
 ('policia.herrera', '$2b$10$zE7sG4L8TVNmA5xVLLCdPO1drP.FePQmpIQ8WSz.B0fKt3ajS3vBi', 'policia_transito', 1),
 ('policia.morales', '$2b$10$zE7sG4L8TVNmA5xVLLCdPO1drP.FePQmpIQ8WSz.B0fKt3ajS3vBi', 'policia_transito', 1),
+('policia.ramirez', '$2b$10$zE7sG4L8TVNmA5xVLLCdPO1drP.FePQmpIQ8WSz.B0fKt3ajS3vBi', 'policia_transito', 1),
 
 -- Ciudadanos (contraseña: Ciudadano123!)
 ('ciudadano.perez', '$2b$10$2UoHF7xy/3faHkmnl25n7O3NpmRfxE50HMskE0Epo2ujmtNYoL7HO', 'ciudadano', 1),
@@ -107,22 +109,7 @@ INSERT INTO usuarios (username, contrasena, rol, estado) VALUES
 ('auditor.torres', '$2b$10$IWRffB3zDUgixbI1Fjbg2.5n/z4igsBszUNiJ4ZbyA6/eP.fkvEPK', 'auditor', 1);
 
 -- =========================================================================
--- 7. POLICIA_TRANSITO (depende de usuarios, secretaria_transito, cargo_policial)
--- =========================================================================
-INSERT INTO policia_transito (codigo_policia, nombres, apellidos, genero, fecha_nacimiento, fecha_vinculacion, salario, id_secretaria_transito, id_cargo_policial, id_supervisor, id_usuario) VALUES
-('PT-001', 'Carlos Alberto', 'Rodríguez Méndez', 'Masculino', '1985-03-15', '2010-01-10', 3500000, 1, 5, NULL, 2),
-('PT-002', 'María Fernanda', 'Martínez López', 'Femenino', '1990-07-22', '2015-03-15', 2800000, 1, 3, 1, 3),
-('PT-003', 'Juan Pablo', 'Gómez Vargas', 'Masculino', '1988-11-05', '2012-06-20', 3000000, 1, 4, 1, 4),
-('PT-004', 'Ana Lucía', 'Ramírez Soto', 'Femenino', '1992-05-18', '2016-08-10', 2600000, 1, 2, 3, 7),
-('PT-005', 'Diego Fernando', 'Castro Jiménez', 'Masculino', '1987-09-30', '2011-04-05', 3200000, 2, 4, 1, 11),
-('PT-006', 'Sandra Milena', 'Torres Pérez', 'Femenino', '1991-02-14', '2017-01-12', 2700000, 2, 2, 5, 12),
-('PT-007', 'Andrés Felipe', 'Muñoz Díaz', 'Masculino', '1989-12-08', '2013-09-18', 2900000, 3, 3, 1, 13),
-('PT-008', 'Carolina', 'Valencia Ríos', 'Femenino', '1993-06-25', '2018-02-22', 2500000, 3, 1, 7, 14),
-('PT-009', 'Luis Eduardo', 'Herrera Cardona', 'Masculino', '1986-04-12', '2010-11-30', 3400000, 4, 5, NULL, 15),
-('PT-010', 'Patricia', 'Morales Aguilar', 'Femenino', '1994-08-19', '2019-05-15', 2400000, 4, 1, 9, 16);
-
--- =========================================================================
--- 8. LICENCIA_CONDUCCION (sin dependencias inicialmente)
+-- 7. LICENCIA_CONDUCCION (sin dependencias inicialmente)
 -- =========================================================================
 INSERT INTO licencia_conduccion (numero_licencia, fecha_expedicion, fecha_vencimiento, organismo_transito_expedidor, estado) VALUES
 ('76001234567890', '2020-01-15', '2030-01-15', 'Secretaría de Movilidad de Cali', 'ACTIVA'),
@@ -134,25 +121,50 @@ INSERT INTO licencia_conduccion (numero_licencia, fecha_expedicion, fecha_vencim
 ('76001234567896', '2023-05-18', '2033-05-18', 'Secretaría de Movilidad de Cali', 'ACTIVA'),
 ('76001234567897', '2020-08-22', '2030-08-22', 'Departamento Administrativo de Tránsito', 'ACTIVA'),
 ('76001234567898', '2019-12-30', '2029-12-30', 'Departamento Administrativo de Tránsito', 'ACTIVA'),
-('76001234567899', '2021-07-15', '2031-07-15', 'Secretaría de Movilidad de Cali', 'ACTIVA');
+('76001234567899', '2021-07-15', '2031-07-15', 'Secretaría de Movilidad de Cali', 'ACTIVA'),
+-- Licencias adicionales para los policías (sin licencia inicial)
+('76001234567900', '2015-03-10', '2025-03-10', 'Secretaría de Movilidad de Cali', 'ACTIVA'),
+('76001234567901', '2016-05-20', '2026-05-20', 'Secretaría de Movilidad de Cali', 'ACTIVA'),
+('76001234567902', '2014-08-15', '2024-08-15', 'Secretaría de Movilidad de Cali', 'ACTIVA'),
+('76001234567903', '2017-02-28', '2027-02-28', 'Secretaría de Movilidad de Cali', 'ACTIVA'),
+('76001234567904', '2015-11-10', '2025-11-10', 'Secretaría de Movilidad de Cali', 'ACTIVA'),
+('76001234567905', '2016-07-05', '2026-07-05', 'Secretaría de Movilidad de Cali', 'ACTIVA'),
+('76001234567906', '2014-12-20', '2024-12-20', 'Secretaría de Movilidad de Cali', 'ACTIVA'),
+('76001234567907', '2018-04-15', '2028-04-15', 'Secretaría de Movilidad de Cali', 'ACTIVA'),
+('76001234567908', '2013-09-30', '2023-09-30', 'Secretaría de Movilidad de Cali', 'ACTIVA'),
+('76001234567909', '2019-01-25', '2029-01-25', 'Secretaría de Movilidad de Cali', 'ACTIVA');
 
 -- =========================================================================
--- 9. PERSONAS (depende de municipio, licencia_conduccion, usuarios)
+-- 8. PERSONAS (depende de municipio, licencia_conduccion, usuarios)
 -- =========================================================================
+-- Primero: Ciudadanos/Conductores
 INSERT INTO personas (tipo_doc, num_doc, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, genero, direccion, telefono, email, id_municipio, id_licencia_conduccion, id_usuario) VALUES
-('CC', '1144567890', 'Jorge', 'Luis', 'Pérez', 'González', '1985-05-20', 'Masculino', 'Calle 15 #100-45, Cali', '3201234567', 'jorge.perez@email.com', 1, 1, 5),
-('CC', '1144567891', 'Diana', 'Carolina', 'López', 'Ramírez', '1992-08-15', 'Femenino', 'Carrera 70 #25-30, Cali', '3209876543', 'diana.lopez@email.com', 1, 2, 6),
-('CC', '1144567892', 'Roberto', 'Carlos', 'Sánchez', 'Medina', '1988-03-10', 'Masculino', 'Calle 44 #3A-15, Cali', '3156789012', 'roberto.sanchez@email.com', 1, 3, 10),
-('CC', '1144567893', 'Liliana', '', 'García', 'Torres', '1990-11-25', 'Femenino', 'Carrera 100 #18-50, Cali', '3187654321', 'liliana.garcia@email.com', 1, 4, NULL),
-('CC', '1144567894', 'Mauricio', '' , 'Hernández', 'Ríos', '1987-07-08', 'Masculino', 'Calle 5 #50-20, Cali', '3209871234', 'mauricio.hernandez@email.com', 1, 5, NULL),
-('CC', '1144567895', 'Andrea', '' ,'Velásquez', 'Muñoz', '1995-02-14', 'Femenino', 'Carrera 1 #60-10, Cali', '3145678901', 'andrea.velasquez@email.com', 1, 6, NULL),
-('CC', '1144567896', 'Fernando', '' , 'Patiño', 'Cardona', '1983-09-30', 'Masculino', 'Calle 70 #2B-45, Cali', '3198765432', 'fernando.patino@email.com', 1, 7, NULL),
+('CC', '1144567890', 'Jorge', 'Luis', 'Pérez', 'González', '1985-05-20', 'Masculino', 'Calle 15 #100-45, Cali', '3201234567', 'jorge.perez@email.com', 1, 1, 12),
+('CC', '1144567891', 'Diana', 'Carolina', 'López', 'Ramírez', '1992-08-15', 'Femenino', 'Carrera 70 #25-30, Cali', '3209876543', 'diana.lopez@email.com', 1, 2, 13),
+('CC', '1144567892', 'Roberto', 'Carlos', 'Sánchez', 'Medina', '1988-03-10', 'Masculino', 'Calle 44 #3A-15, Cali', '3156789012', 'roberto.sanchez@email.com', 1, 3, 14),
+('CC', '1144567893', 'Liliana', NULL, 'García', 'Torres', '1990-11-25', 'Femenino', 'Carrera 100 #18-50, Cali', '3187654321', 'liliana.garcia@email.com', 1, 4, NULL),
+('CC', '1144567894', 'Mauricio', NULL, 'Hernández', 'Ríos', '1987-07-08', 'Masculino', 'Calle 5 #50-20, Cali', '3209871234', 'mauricio.hernandez@email.com', 1, 5, NULL),
+('CC', '1144567895', 'Andrea', NULL, 'Velásquez', 'Muñoz', '1995-02-14', 'Femenino', 'Carrera 1 #60-10, Cali', '3145678901', 'andrea.velasquez@email.com', 1, 6, NULL),
+('CC', '1144567896', 'Fernando', NULL, 'Patiño', 'Cardona', '1983-09-30', 'Masculino', 'Calle 70 #2B-45, Cali', '3198765432', 'fernando.patino@email.com', 1, 7, NULL),
 ('CC', '1144567897', 'Claudia', 'Patricia', 'Montoya', 'Silva', '1991-04-18', 'Femenino', 'Carrera 39 #5-80, Cali', '3123456789', 'claudia.montoya@email.com', 1, 8, NULL),
 ('CC', '1144567898', 'Javier', 'Andrés', 'Ospina', 'Vargas', '1986-12-05', 'Masculino', 'Calle 26 #35-15, Cali', '3176543210', 'javier.ospina@email.com', 1, 9, NULL),
 ('CC', '1144567899', 'María', 'José', 'Cárdenas', 'Ruiz', '1993-06-22', 'Femenino', 'Carrera 8 #40-25, Cali', '3189012345', 'maria.cardenas@email.com', 1, 10, NULL);
 
+-- Segundo: Policías (datos personales vinculados)
+INSERT INTO personas (tipo_doc, num_doc, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, genero, direccion, telefono, email, id_municipio, id_licencia_conduccion, id_usuario) VALUES
+('CC', 'PT001', 'Carlos', 'Alberto', 'Rodríguez', 'Méndez', '1985-03-15', 'Masculino', 'Calle 10 #50-20, Cali', '3101234567', 'carlos.rodriguez@transito.gov.co', 1, 11, 2),
+('CC', 'PT002', 'María', 'Fernanda', 'Martínez', 'López', '1990-07-22', 'Femenino', 'Carrera 15 #30-45, Cali', '3102345678', 'maria.martinez@transito.gov.co', 1, 12, 3),
+('CC', 'PT003', 'Juan', 'Pablo', 'Gómez', 'Vargas', '1988-11-05', 'Masculino', 'Calle 25 #40-15, Cali', '3103456789', 'juan.gomez@transito.gov.co', 1, 13, 4),
+('CC', 'PT004', 'Ana', 'Lucía', 'Ramírez', 'Soto', '1992-05-18', 'Femenino', 'Carrera 20 #35-50, Cali', '3104567890', 'ana.ramirez@transito.gov.co', 1, 14, 15),
+('CC', 'PT005', 'Diego', 'Fernando', 'Castro', 'Jiménez', '1987-09-30', 'Masculino', 'Calle 30 #25-30, Cali', '3105678901', 'diego.castro@transito.gov.co', 1, 15, 5),
+('CC', 'PT006', 'Sandra', 'Milena', 'Torres', 'Pérez', '1991-02-14', 'Femenino', 'Carrera 35 #20-40, Cali', '3106789012', 'sandra.torres@transito.gov.co', 1, 16, 6),
+('CC', 'PT007', 'Andrés', 'Felipe', 'Muñoz', 'Díaz', '1989-12-08', 'Masculino', 'Calle 40 #15-25, Cali', '3107890123', 'andres.munoz@transito.gov.co', 1, 17, 7),
+('CC', 'PT008', 'Carolina', NULL, 'Valencia', 'Ríos', '1993-06-25', 'Femenino', 'Carrera 45 #10-35, Cali', '3108901234', 'carolina.valencia@transito.gov.co', 1, 18, 8),
+('CC', 'PT009', 'Luis', 'Eduardo', 'Herrera', 'Cardona', '1986-04-12', 'Masculino', 'Calle 50 #5-20, Cali', '3109012345', 'luis.herrera@transito.gov.co', 1, 19, 9),
+('CC', 'PT010', 'Patricia', NULL, 'Morales', 'Aguilar', '1994-08-19', 'Femenino', 'Carrera 55 #12-45, Cali', '3100123456', 'patricia.morales@transito.gov.co', 1, 20, 10);
+
 -- =========================================================================
--- 10. Actualizar relación inversa de licencias con personas
+-- 9. Actualizar relación inversa de licencias con personas
 -- =========================================================================
 UPDATE licencia_conduccion SET id_persona = 1 WHERE id_licencia = 1;
 UPDATE licencia_conduccion SET id_persona = 2 WHERE id_licencia = 2;
@@ -164,6 +176,31 @@ UPDATE licencia_conduccion SET id_persona = 7 WHERE id_licencia = 7;
 UPDATE licencia_conduccion SET id_persona = 8 WHERE id_licencia = 8;
 UPDATE licencia_conduccion SET id_persona = 9 WHERE id_licencia = 9;
 UPDATE licencia_conduccion SET id_persona = 10 WHERE id_licencia = 10;
+UPDATE licencia_conduccion SET id_persona = 11 WHERE id_licencia = 11;
+UPDATE licencia_conduccion SET id_persona = 12 WHERE id_licencia = 12;
+UPDATE licencia_conduccion SET id_persona = 13 WHERE id_licencia = 13;
+UPDATE licencia_conduccion SET id_persona = 14 WHERE id_licencia = 14;
+UPDATE licencia_conduccion SET id_persona = 15 WHERE id_licencia = 15;
+UPDATE licencia_conduccion SET id_persona = 16 WHERE id_licencia = 16;
+UPDATE licencia_conduccion SET id_persona = 17 WHERE id_licencia = 17;
+UPDATE licencia_conduccion SET id_persona = 18 WHERE id_licencia = 18;
+UPDATE licencia_conduccion SET id_persona = 19 WHERE id_licencia = 19;
+UPDATE licencia_conduccion SET id_persona = 20 WHERE id_licencia = 20;
+
+-- =========================================================================
+-- 10. POLICIA_TRANSITO (depende de personas, usuarios, secretaria_transito, cargo_policial)
+-- =========================================================================
+INSERT INTO policia_transito (codigo_policia, fecha_vinculacion, salario, id_secretaria_transito, id_cargo_policial, id_supervisor, id_usuario, id_persona) VALUES
+('PT-001', '2010-01-10', 3500000, 1, 5, NULL, 2, 11),
+('PT-002', '2015-03-15', 2800000, 1, 3, 1, 3, 12),
+('PT-003', '2012-06-20', 3000000, 1, 4, 1, 4, 13),
+('PT-004', '2016-08-10', 2600000, 1, 2, 3, 15, 14),
+('PT-005', '2011-04-05', 3200000, 2, 4, 1, 5, 15),
+('PT-006', '2017-01-12', 2700000, 2, 2, 5, 6, 16),
+('PT-007', '2013-09-18', 2900000, 3, 3, 1, 7, 17),
+('PT-008', '2018-02-22', 2500000, 3, 1, 7, 8, 18),
+('PT-009', '2010-11-30', 3400000, 4, 5, NULL, 9, 19),
+('PT-010', '2019-05-15', 2400000, 4, 1, 9, 10, 20);
 
 -- =========================================================================
 -- 11. LICENCIA_CATEGORIA (depende de licencia_conduccion y categoria_licencia)
@@ -196,22 +233,7 @@ INSERT INTO automotor (placa, tipo_vehiculo, marca, linea_modelo, cilindraje, mo
 ('BCD890', 'Camioneta', 'Nissan', 'Frontier', '2500', 2020, 'Gris', 'Particular', 1);
 
 -- =========================================================================
--- 13. PROPIETARIO_AUTOMOTOR (depende de personas y automotor)
--- =========================================================================
-INSERT INTO propietario_automotor (id_persona, id_automotor, es_principal) VALUES
-(1, 1, 1),
-(2, 2, 1),
-(3, 3, 1),
-(4, 4, 1),
-(5, 5, 1),
-(6, 6, 1),
-(7, 7, 1),
-(8, 8, 1),
-(9, 9, 1),
-(10, 10, 1);
-
--- =========================================================================
--- 14. PROPIEDAD_AUTOMOTOR (depende de automotor y personas)
+-- 13. PROPIEDAD_AUTOMOTOR (depende de automotor y personas)
 -- =========================================================================
 INSERT INTO propiedad_automotor (id_automotor, id_persona, fecha_inicio, fecha_fin, es_propietario_principal, responsable_impuestos) VALUES
 (1, 1, '2020-05-15', NULL, 1, 1),
@@ -226,7 +248,7 @@ INSERT INTO propiedad_automotor (id_automotor, id_persona, fecha_inicio, fecha_f
 (10, 10, '2020-12-20', NULL, 1, 1);
 
 -- =========================================================================
--- 15. COMPARENDO (depende de municipio, personas, licencia_conduccion, policia_transito, automotor)
+-- 14. COMPARENDO (depende de municipio, personas, licencia_conduccion, policia_transito, automotor)
 -- =========================================================================
 INSERT INTO comparendo (numero_comparendo, fecha_hora_registro, direccion_infraccion, coordenadas_gps, observaciones, estado, id_municipio, id_persona, id_licencia_conduccion, id_policia_transito, id_automotor) VALUES
 ('COMP-2025-001', '2025-11-01 08:30:00', 'Calle 5 con Carrera 50, Cali', '3.4372,-76.5225', 'Conductor excedió velocidad permitida en zona escolar', 'PENDIENTE', 1, 1, 1, 1, 1),
@@ -241,7 +263,7 @@ INSERT INTO comparendo (numero_comparendo, fecha_hora_registro, direccion_infrac
 ('COMP-2025-010', '2025-11-10 13:25:00', 'Carrera 1 con Calle 25, Cali', '3.4195,-76.5123', 'Múltiples infracciones detectadas', 'PENDIENTE', 1, 10, 10, 2, 10);
 
 -- =========================================================================
--- 16. COMPARENDO_INFRACCION (depende de comparendo e infraccion)
+-- 15. COMPARENDO_INFRACCION (depende de comparendo e infraccion)
 -- =========================================================================
 INSERT INTO comparendo_infraccion (id_comparendo, id_infraccion, valor_calculado, observaciones) VALUES
 (1, 1, 234000, 'Exceso de velocidad 15 km/h sobre límite'),
@@ -257,7 +279,7 @@ INSERT INTO comparendo_infraccion (id_comparendo, id_infraccion, valor_calculado
 (10, 10, 468000, 'Uso de celular simultáneo');
 
 -- =========================================================================
--- 17. QUEJA (depende de comparendo y personas)
+-- 16. QUEJA (depende de comparendo y personas)
 -- =========================================================================
 INSERT INTO queja (fecha_radicacion, texto_queja, estado, medio_radicacion, id_comparendo, id_persona) VALUES
 ('2025-11-05 16:00:00', 'El agente fue grosero y no explicó correctamente la infracción', 'RADICADA', 'web', 1, 1),
@@ -281,23 +303,21 @@ SELECT 'categoria_licencia', COUNT(*) FROM categoria_licencia
 UNION ALL
 SELECT 'infraccion', COUNT(*) FROM infraccion
 UNION ALL
-SELECT 'secretaria_transito', COUNT(*) FROM secretaria_transito
-UNION ALL
 SELECT 'municipio', COUNT(*) FROM municipio
 UNION ALL
-SELECT 'usuarios', COUNT(*) FROM usuarios
+SELECT 'secretaria_transito', COUNT(*) FROM secretaria_transito
 UNION ALL
-SELECT 'policia_transito', COUNT(*) FROM policia_transito
+SELECT 'usuarios', COUNT(*) FROM usuarios
 UNION ALL
 SELECT 'licencia_conduccion', COUNT(*) FROM licencia_conduccion
 UNION ALL
 SELECT 'personas', COUNT(*) FROM personas
 UNION ALL
+SELECT 'policia_transito', COUNT(*) FROM policia_transito
+UNION ALL
 SELECT 'licencia_categoria', COUNT(*) FROM licencia_categoria
 UNION ALL
 SELECT 'automotor', COUNT(*) FROM automotor
-UNION ALL
-SELECT 'propietario_automotor', COUNT(*) FROM propietario_automotor
 UNION ALL
 SELECT 'propiedad_automotor', COUNT(*) FROM propiedad_automotor
 UNION ALL
@@ -308,6 +328,35 @@ UNION ALL
 SELECT 'queja', COUNT(*) FROM queja
 ORDER BY tabla;
 
+-- =========================================================================
+-- CONSULTAS DE VALIDACIÓN
+-- =========================================================================
+
+-- Validar que todos los policías tienen persona asignada
+SELECT
+    'Policías con persona asignada' as validacion,
+    COUNT(*) as cantidad
+FROM policia_transito
+WHERE id_persona IS NOT NULL;
+
+-- Verificar jerarquía de supervisores
+SELECT
+    pt.codigo_policia,
+    CONCAT(p.primer_nombre, ' ', p.primer_apellido) as policia_nombre,
+    s.codigo_policia as supervisor_codigo,
+    CONCAT(ps.primer_nombre, ' ', ps.primer_apellido) as supervisor_nombre
+FROM policia_transito pt
+INNER JOIN personas p ON pt.id_persona = p.id_persona
+LEFT JOIN policia_transito s ON pt.id_supervisor = s.id_policia
+LEFT JOIN personas ps ON s.id_persona = ps.id_persona;
+
+-- Validar secretarías con municipio
+SELECT
+    st.nombre_secretaria,
+    m.nombre_municipio,
+    m.departamento
+FROM secretaria_transito st
+INNER JOIN municipio m ON st.id_municipio = m.id_municipio;
 
 -- =========================================================================
 -- SCRIPT COMPLETADO EXITOSAMENTE
@@ -319,27 +368,36 @@ SELECT '
 ========================================
 Base de datos: PostgreSQL
 Municipio principal: Santiago de Cali
-Total de tablas con datos: 16
+Versión: 2.1 - Estructura actualizada
+
+CAMBIOS APLICADOS:
+✓ Tabla propietario_automotor ELIMINADA
+✓ Policías vinculados con personas
+✓ Secretarías vinculadas a municipios
+✓ 10 registros por tabla
 
 Resumen de registros:
 - 10 Cargos policiales
 - 10 Categorías de licencia
 - 10 Infracciones
+- 10 Municipios (Valle del Cauca)
 - 10 Secretarías de tránsito
-- 10 Municipios (centrado en Cali)
-- 10 Usuarios del sistema
+- 17 Usuarios del sistema
+- 20 Licencias de conducción
+- 20 Personas (10 conductores + 10 policías)
 - 10 Policías de tránsito
-- 10 Licencias de conducción
-- 10 Personas/Conductores
-- 10+ Categorías por licencia
+- 18 Categorías por licencia
 - 10 Vehículos automotores
-- 10 Propietarios de vehículos
 - 10 Registros de propiedad
 - 10 Comparendos de tránsito
 - 11 Infracciones en comparendos
 - 10 Quejas ciudadanas
 
-Datos listos para pruebas de API
-Municipio: Santiago de Cali, Valle del Cauca
+ESTRUCTURA CORRECTA:
+✓ Municipio (1) <---- (1) Secretaría
+✓ Personas (1) <---- (1) Policía
+✓ Sin duplicación de datos personales
+
+Estado: DATOS LISTOS PARA PRUEBAS
 ========================================
 ' AS mensaje;

@@ -1,6 +1,21 @@
 # Sistema de Comparendos – Backend API
 
-Backend oficial del proyecto académico basado en **Comparendos de Tránsito**, desarrollado con:
+Sistema backend modular para la gestión de usuarios, comparendos, automotores, personas, infracciones y quejas, basado en Node.js + Express + Supabase + MongoDB.
+
+Incluye:
+
+✔ Autenticación JWT
+✔ Control de roles y permisos
+✔ Soft Delete
+✔ Modelos modulares por archivo
+✔ Validación de datos
+✔ Logs centralizados
+✔ Manejo global de errores
+✔ Scripts SQL
+✔ Estructura limpia para escalar a microservicios
+✔ Documentación y diagramas incluidos
+
+**Comparendos de Tránsito**, desarrollado con:
 
 - **Node.js + Express (JavaScript)**
 - **Supabase (PostgreSQL en la nube)**
@@ -76,10 +91,6 @@ Backend oficial del proyecto académico basado en **Comparendos de Tránsito**, 
 │   └── app.js                     # Configuración express
 │
 ├── test                           # Pruebas unitarias e integración
-│   └── db
-│       ├── quejas.sql
-│       ├── auditoria.sql
-│       └── supabase.sql
 │
 ├── .env.example                   # Variables necesarias
 ├── .gitignore                     # Ignorar archivos sensibles
