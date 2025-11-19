@@ -1,6 +1,8 @@
-// controllers/quejas.controller.js
 import { QuejaService } from "../services/queja.service.js";
 
+/**
+ * GET /api/quejas
+ */
 export const getQuejas = async (req, res) => {
   try {
     const page = Number(req.query.page || 1);
@@ -13,10 +15,11 @@ export const getQuejas = async (req, res) => {
       filters: {},
     });
 
-    // Si se piden relaciones las procesamos
     if (withRelations) {
       const dataRel = await Promise.all(
-        result.data.map((q) => QuejaService.findById(q._id, { withRelations: true }))
+        result.data.map((q) =>
+          QuejaService.findById(q._id, { withRelations: true }),
+        ),
       );
       result.data = dataRel;
     }
@@ -34,6 +37,9 @@ export const getQuejas = async (req, res) => {
   }
 };
 
+/**
+ * GET /api/quejas/:id
+ */
 export const getQuejaById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -61,6 +67,9 @@ export const getQuejaById = async (req, res) => {
   }
 };
 
+/**
+ * GET /api/quejas/persona/:id_persona
+ */
 export const getQuejasByPersona = async (req, res) => {
   try {
     const { id_persona } = req.params;
@@ -73,7 +82,9 @@ export const getQuejasByPersona = async (req, res) => {
     let result = quejas;
     if (withRelations) {
       result = await Promise.all(
-        quejas.map((q) => QuejaService.findById(q._id, { withRelations: true }))
+        quejas.map((q) =>
+          QuejaService.findById(q._id, { withRelations: true }),
+        ),
       );
     }
 
@@ -90,6 +101,7 @@ export const getQuejasByPersona = async (req, res) => {
   }
 };
 
+// GET /api/personas/:id
 export const getQuejasByComparendo = async (req, res) => {
   try {
     const { id_comparendo } = req.params;
@@ -102,7 +114,9 @@ export const getQuejasByComparendo = async (req, res) => {
     let result = quejas;
     if (withRelations) {
       result = await Promise.all(
-        quejas.map((q) => QuejaService.findById(q._id, { withRelations: true }))
+        quejas.map((q) =>
+          QuejaService.findById(q._id, { withRelations: true }),
+        ),
       );
     }
 
@@ -119,6 +133,7 @@ export const getQuejasByComparendo = async (req, res) => {
   }
 };
 
+// POST /api/personas
 export const createQueja = async (req, res) => {
   try {
     const nueva = await QuejaService.create(req.body);
@@ -137,6 +152,7 @@ export const createQueja = async (req, res) => {
   }
 };
 
+// PUT /api/quejas/:id
 export const updateQueja = async (req, res) => {
   try {
     const { id } = req.params;
@@ -163,6 +179,7 @@ export const updateQueja = async (req, res) => {
   }
 };
 
+// DELETE /api/quejas/:id
 export const deleteQueja = async (req, res) => {
   try {
     const { id } = req.params;

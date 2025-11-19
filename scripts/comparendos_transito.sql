@@ -2,7 +2,6 @@
 -- Sistema de Comparendos de Tránsito
 
 -- Eliminar tablas si existen (en orden inverso por dependencias)
-DROP TABLE IF EXISTS queja CASCADE;
 DROP TABLE IF EXISTS comparendo_infraccion CASCADE;
 DROP TABLE IF EXISTS comparendo CASCADE;
 DROP TABLE IF EXISTS licencia_categoria CASCADE;
@@ -248,23 +247,6 @@ CREATE TABLE comparendo_infraccion (
         REFERENCES infraccion(id_infraccion)
 );
 
--- Tabla: queja (depende de comparendo y personas)
-CREATE TABLE queja (
-    id_queja SERIAL PRIMARY KEY,
-    fecha_radicacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    texto_queja TEXT NOT NULL,
-    estado VARCHAR(50) NOT NULL DEFAULT 'RADICADA',
-    medio_radicacion VARCHAR(50) NOT NULL,
-    respuesta TEXT,
-    fecha_respuesta TIMESTAMP,
-    id_comparendo INTEGER NOT NULL,
-    id_persona INTEGER NOT NULL,
-    CONSTRAINT fk_queja_comparendo FOREIGN KEY (id_comparendo)
-        REFERENCES comparendo(id_comparendo),
-    CONSTRAINT fk_queja_persona FOREIGN KEY (id_persona)
-        REFERENCES personas(id_persona)
-);
-
 -- =========================================================================
 -- CAMPO DE AUDITORÍA
 -- =========================================================================
@@ -275,7 +257,6 @@ ALTER TABLE automotor ADD COLUMN IF NOT EXISTS deleted_at TIMESTAMP NULL;
 ALTER TABLE policia_transito ADD COLUMN IF NOT EXISTS deleted_at TIMESTAMP NULL;
 ALTER TABLE licencia_conduccion ADD COLUMN IF NOT EXISTS deleted_at TIMESTAMP NULL;
 ALTER TABLE comparendo ADD COLUMN IF NOT EXISTS deleted_at TIMESTAMP NULL;
-ALTER TABLE queja ADD COLUMN IF NOT EXISTS deleted_at TIMESTAMP NULL;
 ALTER TABLE cargo_policial ADD COLUMN IF NOT EXISTS deleted_at TIMESTAMP NULL;
 ALTER TABLE categoria_licencia ADD COLUMN IF NOT EXISTS deleted_at TIMESTAMP NULL;
 ALTER TABLE infraccion ADD COLUMN IF NOT EXISTS deleted_at TIMESTAMP NULL;
@@ -296,8 +277,6 @@ CREATE INDEX idx_comparendo_policia ON comparendo(id_policia_transito);
 CREATE INDEX idx_personas_documento ON personas(tipo_doc, num_doc);
 CREATE INDEX idx_automotor_placa ON automotor(placa);
 CREATE INDEX idx_licencia_estado ON licencia_conduccion(estado);
-CREATE INDEX idx_queja_estado ON queja(estado);
-CREATE INDEX idx_queja_comparendo ON queja(id_comparendo);
 CREATE INDEX idx_secretaria_municipio_lookup ON secretaria_transito(id_municipio);
 
 -- =========================================================================
@@ -383,7 +362,6 @@ COMMENT ON TABLE automotor IS 'Registro de vehículos automotores';
 COMMENT ON TABLE propiedad_automotor IS 'Historial de propiedad de vehículos';
 COMMENT ON TABLE comparendo IS 'Registro de comparendos de tránsito';
 COMMENT ON TABLE comparendo_infraccion IS 'Infracciones por comparendo';
-COMMENT ON TABLE queja IS 'Quejas ciudadanas sobre comparendos';
 
 COMMENT ON COLUMN policia_transito.id_persona IS 'Vincula al policía con personas - trae nombre, apellido, fecha_nacimiento';
 COMMENT ON COLUMN secretaria_transito.id_municipio IS 'Municipio donde está ubicada la secretaría de tránsito';

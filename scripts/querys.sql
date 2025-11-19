@@ -3,7 +3,7 @@
 -- =========================================================================
 
 -- 1. Ver comparendos de Santiago de Cali con información completa
-SELECT 
+SELECT
     c.numero_comparendo,
     c.fecha_hora_registro,
     c.direccion_infraccion,
@@ -23,7 +23,7 @@ WHERE m.nombre_municipio = 'Santiago de Cali'
 ORDER BY c.fecha_hora_registro DESC;
 
 -- 2. Ver infracciones por comparendo con valores
-SELECT 
+SELECT
     c.numero_comparendo,
     c.fecha_hora_registro,
     i.codigo_infraccion,
@@ -38,7 +38,7 @@ JOIN personas p ON c.id_persona = p.id_persona
 ORDER BY c.fecha_hora_registro DESC;
 
 -- 3. Ver conductores con sus licencias y categorías
-SELECT 
+SELECT
     p.nombre || ' ' || p.apellidos AS conductor,
     p.num_doc AS documento,
     lc.numero_licencia,
@@ -51,7 +51,7 @@ JOIN categoria_licencia cl ON lcat.id_categoria_licencia = cl.id_categoria
 GROUP BY p.id_persona, p.nombre, p.apellidos, p.num_doc, lc.numero_licencia, lc.estado;
 
 -- 4. Ver vehículos con sus propietarios
-SELECT 
+SELECT
     a.placa,
     a.marca || ' ' || a.linea_modelo AS vehiculo,
     a.modelo_ano,
@@ -66,7 +66,7 @@ JOIN municipio m ON a.id_municipio = m.id_municipio
 WHERE pa.es_principal = 1;
 
 -- 5. Ver quejas radicadas con información del comparendo
-SELECT 
+SELECT
     q.id_queja,
     q.fecha_radicacion,
     q.estado,
@@ -82,7 +82,7 @@ LEFT JOIN policia_transito pol ON c.id_policia_transito = pol.id_policia
 ORDER BY q.fecha_radicacion DESC;
 
 -- 6. Estadísticas de comparendos por estado
-SELECT 
+SELECT
     estado,
     COUNT(*) AS cantidad,
     SUM(CASE WHEN fecha_hora_registro >= CURRENT_DATE - INTERVAL '7 days' THEN 1 ELSE 0 END) AS ultima_semana
@@ -91,7 +91,7 @@ GROUP BY estado
 ORDER BY cantidad DESC;
 
 -- 7. Top infracciones más comunes
-SELECT 
+SELECT
     i.codigo_infraccion,
     i.descripcion,
     i.tipo_infraccion,
@@ -103,7 +103,7 @@ GROUP BY i.id_infraccion, i.codigo_infraccion, i.descripcion, i.tipo_infraccion
 ORDER BY veces_aplicada DESC;
 
 -- 8. Ver agentes de policía activos en Cali
-SELECT 
+SELECT
     pol.codigo_policia,
     pol.nombres || ' ' || pol.apellidos AS agente,
     cp.nombre_cargo,
@@ -117,12 +117,12 @@ JOIN secretaria_transito st ON pol.id_secretaria_transito = st.id_secretaria
 JOIN usuarios u ON pol.id_usuario = u.id_usuario
 LEFT JOIN comparendo c ON pol.id_policia = c.id_policia_transito
 WHERE u.estado = 1
-GROUP BY pol.id_policia, pol.codigo_policia, pol.nombres, pol.apellidos, 
+GROUP BY pol.id_policia, pol.codigo_policia, pol.nombres, pol.apellidos,
          cp.nombre_cargo, cp.grado, st.nombre_secretaria, u.username
 ORDER BY comparendos_impuestos DESC;
 
 -- 9. Resumen financiero de comparendos
-SELECT 
+SELECT
     DATE_TRUNC('month', c.fecha_hora_registro) AS mes,
     COUNT(c.id_comparendo) AS total_comparendos,
     SUM(ci.valor_calculado) AS valor_total,
@@ -135,7 +135,7 @@ GROUP BY DATE_TRUNC('month', c.fecha_hora_registro)
 ORDER BY mes DESC;
 
 -- 10. Conductores con múltiples comparendos
-SELECT 
+SELECT
     p.nombre || ' ' || p.apellidos AS conductor,
     p.num_doc,
     p.telefono,
