@@ -13,8 +13,7 @@ export { LicenciaCategoriaModel } from "./licenciaCategoria.model.js";
 export { PropiedadAutomotorModel } from "./propiedadAutomotor.model.js";
 export { ComparendoModel } from "./comparendo.model.js";
 export { ComparendoInfraccionModel } from "./comparendoInfraccion.model.js";
-export { QuejaModel } from "./queja.model.js";
-
+export { Queja } from "./queja.model.js";
 
 // Export por defecto como objeto único
 import { UsuarioModel } from "./usuario.model.js";
@@ -31,7 +30,7 @@ import { LicenciaCategoriaModel } from "./licenciaCategoria.model.js";
 import { PropiedadAutomotorModel } from "./propiedadAutomotor.model.js";
 import { ComparendoModel } from "./comparendo.model.js";
 import { ComparendoInfraccionModel } from "./comparendoInfraccion.model.js";
-import { QuejaModel } from "./queja.model.js";
+import { Queja } from "./queja.model.js";
 
 const models = {
   UsuarioModel,
@@ -48,7 +47,7 @@ const models = {
   PropiedadAutomotorModel,
   ComparendoModel,
   ComparendoInfraccionModel,
-  QuejaModel,
+  Queja,
 };
 
 export default models;

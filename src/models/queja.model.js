@@ -1,52 +1,30 @@
-import { supabase } from "../config/supabase.js";
-import { createBaseModel } from "./baseModel.js";
+import mongoose from "mongoose";
 
-const TABLE = "queja";
-const ID_COLUMN = "id_queja";
+const QuejaModel = new mongoose.Schema(
+  {
+    fecha_radicacion: { type: Date, required: true },
+    texto_queja: { type: String, required: true },
+    estado: { type: String, required: true },
+    medio_radicacion: { type: String, required: true },
 
-const baseModel = createBaseModel({
-  table: TABLE,
-  idColumn: ID_COLUMN,
-  requiredOnCreate: [
-    "texto_queja",
-    "estado",
-    "medio_radicacion",
-    "id_comparendo",
-    "id_persona",
-  ],
-  requiredOnUpdate: ["texto_queja", "estado", "respuesta", "fecha_respuesta"],
-  requiredOnDelete: [],
-  softDelete: true,
-  defaultSelect: "*",
-  relationsSelect: "*, comparendo(*), persona:personas(*)",
-});
+    // IDs que vienen de Supabase (no son ObjectId de Mongo)
+    id_comparendo: { type: Number, required: true },
+    id_persona: { type: Number, required: true },
 
-export const QuejaModel = {
-  ...baseModel,
+    respuesta: { type: String, default: null },
+    fecha_respuesta: { type: Date, default: null },
 
-  async listByPersona(id_persona, { withRelations = false } = {}) {
-    let query = supabase
-      .from(TABLE)
-      .select(withRelations ? "*, comparendo(*), persona:personas(*)" : "*")
-      .eq("id_persona", id_persona)
-      .is("deleted_at", null);
-
-    const { data, error } = await query;
-    if (error) throw error;
-    return data;
+    // Manejo de soft delete
+    deleted_at: { type: Date, default: null },
   },
+  {
+    timestamps: true, // Crea createdAt y updatedAt automáticamente
+    versionKey: false,
+  }
+);
 
-  async listByComparendo(id_comparendo, { withRelations = false } = {}) {
-    let query = supabase
-      .from(TABLE)
-      .select(withRelations ? "*, comparendo(*), persona:personas(*)" : "*")
-      .eq("id_comparendo", id_comparendo)
-      .is("deleted_at", null);
+// Opcional: índice para acelerar búsquedas por persona y comparendo
+QuejaModel.index({ id_persona: 1 });
+QuejaModel.index({ id_comparendo: 1 });
 
-    const { data, error } = await query;
-    if (error) throw error;
-    return data;
-  },
-};
-
-export default QuejaModel;
+export const Queja = mongoose.model("Queja", QuejaModel);

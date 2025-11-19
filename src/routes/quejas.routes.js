@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router } from "express";
 import {
   getQuejas,
   getQuejaById,
@@ -7,35 +7,34 @@ import {
   createQueja,
   updateQueja,
   deleteQueja,
-} from '../controllers/quejas.controller.js';
+} from "../controllers/quejas.controller.js";
 import {
   authMiddleware,
   isAdmin,
-} from '../middlewares/auth.middleware.js';
+} from "../middlewares/auth.middleware.js";
 
 const router = Router();
 
+// 🔐 Todas requieren autenticación
 router.use(authMiddleware);
 
-// Listar todas las quejas - admin
-router.get('/', isAdmin, getQuejas);
+// 📌 Listar todas — admin
+router.get("/", isAdmin, getQuejas);
 
-// Obtener una queja por ID
-router.get('/:id', isAdmin, getQuejaById);
+// ⚠️ IMPORTANTE: primero rutas específicas
+router.get("/persona/:id_persona", isAdmin, getQuejasByPersona);
+router.get("/comparendo/:id_comparendo", isAdmin, getQuejasByComparendo);
 
-// Quejas por persona
-router.get('/persona/:id_persona', isAdmin, getQuejasByPersona);
+// 📌 Obtener por ID
+router.get("/:id", isAdmin, getQuejaById);
 
-// Quejas por comparendo
-router.get('/comparendo/:id_comparendo', isAdmin, getQuejasByComparendo);
+// 📌 Crear queja — cualquier usuario autenticado
+router.post("/", createQueja);
 
-// Crear queja
-router.post('/', createQueja);
+// 📌 Actualizar queja — admin
+router.put("/:id", isAdmin, updateQueja);
 
-// Actualizar queja
-router.put('/:id', isAdmin, updateQueja);
-
-// Eliminar (soft delete) queja
-router.delete('/:id', isAdmin, deleteQueja);
+// 📌 Eliminar queja (soft delete) — admin
+router.delete("/:id", isAdmin, deleteQueja);
 
 export default router;

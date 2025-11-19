@@ -672,7 +672,7 @@ collection:
         meta:
           id: req_322e45b0c8c54f3985ea7a4e7f5d0c09
           created: 1763224498777
-          modified: 1763445112390
+          modified: 1763516586755
           isPrivate: false
           description: ""
           sortKey: -1763183006552
@@ -680,15 +680,14 @@ collection:
         body:
           mimeType: application/json
           text: >-
-            	{
-            		"texto_queja": "El agente fue grosero y no explicó correctamente la infracción2",
-            		"estado": "RADICADA",
-            		"medio_radicacion": "web",
-            		"respuesta": null,
-            		"fecha_respuesta": null,
-            		"id_comparendo": 1,
-            		"id_persona": 1
-            	}
+            		{
+            			"fecha_radicacion": "2025-01-12T10:15:00.000Z",
+            			"texto_queja": "El agente de tránsito impuso un comparendo sin explicación y no permitió la defensa del ciudadano.",
+            			"estado": "RADICADA",
+            			"medio_radicacion": "PRESENCIAL",
+            			"id_comparendo": 7,
+            			"id_persona": 7
+            		}
         headers:
           - name: Content-Type
             value: application/json
@@ -735,12 +734,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}quejas/1"
+      - url: "{{ _['api-comparendos'].url }}quejas/691d1c974c319c4e7e645602"
         name: queja
         meta:
           id: req_dacd87fcbde041ba8dbc7d7d085cf99d
           created: 1763224498778
-          modified: 1763263282321
+          modified: 1763515674857
           isPrivate: false
           description: ""
           sortKey: -1763183006952
@@ -762,12 +761,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _['api-comparendos'].url }}quejas/1"
+      - url: "{{ _['api-comparendos'].url }}quejas/691d23ebbfb34596818c64d6"
         name: quejaUpdate
         meta:
           id: req_ee44d4cdf47b406a9da31d348f8d9f73
           created: 1763224498784
-          modified: 1763445198614
+          modified: 1763517510521
           isPrivate: false
           description: ""
           sortKey: -1763183006452
@@ -775,15 +774,14 @@ collection:
         body:
           mimeType: application/json
           text: >-
-            	{
-            		"texto_queja": "El agente fue grosero y no explicó correctamente la infracciónUpdate",
-            		"estado": "RADICADA",
-            		"medio_radicacion": "web",
-            		"respuesta": "si",
-            		"fecha_respuesta": "2025-11-22T05:51:59.368938",
-            		"id_comparendo": 1,
-            		"id_persona": 1
-            	}
+            		{
+            			"fecha_radicacion": "2025-01-12T10:15:00.000Z",
+            			"texto_queja": "El agente de tránsito impuso un comparendo sin explicación y no permitió la defensa del ciudadanoupdate.",
+            			"estado": "RADICADA",
+            			"medio_radicacion": "PRESENCIAL",
+            			"id_comparendo": 7,
+            			"id_persona": 7
+            		}
         headers:
           - name: Content-Type
             value: application/json
