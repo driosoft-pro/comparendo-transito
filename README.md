@@ -37,19 +37,20 @@ Incluye:
 /api-comparendos-backend
 │
 ├── docs/                                   # Documentación y diagramas del sistema
-│   └── db/
-│       ├── EntidadesComparendoTransito.pdf
-│       └── RequerimientosComparendoTrancito.pdf
-│
-├── scripts/                                # Scripts útiles (BD / auditoría)
-│   └── db/
-│       ├── quejas.sql
-│       ├── auditoria.sql
-│       └── supabase.sql
+│   ├── EntidadesComparendoTransito.pdf
+│   └── RequerimientosComparendoTrancito.pdf
+│ 
+│├── scripts/                                # Scripts útiles (BD / auditoría)
+│   ├── comparendos_transito.sql             # Creacion inicial de las tablas de SQL
+│   ├── comparendos_transito.yaml            
+│   ├── insert.sql                           # Inserts de prueba para SQL 
+│   ├── insertMongo.sql                      # Inserts de prueba para Mongo
+│   ├── instrucciones_mongo.txt
+│   ├── quejas.sql                           #Validaciones para la base de datos de Mongo
+│   └── querys.sql
 │
 ├── src/
 │   ├── app.js                               # Configuración principal de Express
-│   ├── server.js                            # Punto de entrada HTTP del servidor
 │
 │   ├── config/                              # Configuración de proveedores externos
 │   │   ├── supabase.js                      # Conexión PostgreSQL (Supabase)
@@ -115,6 +116,7 @@ Incluye:
 │   │   ├── secretariaTransito.model.js
 │   │   ├── usuario.model.js
 │   │   └── index.js                         # Export central de todos los modelos
+│   │   └── server.js                        # Punto de entrada HTTP del servidor
 │
 │   ├── services/                            # Servicios reusables o integraciones
 │   │   └── queja.service.js                 # Servicio avanzado para quejas
@@ -185,8 +187,6 @@ Usado para:
 Usado para:
 
 - Quejas ciudadanas
-- Auditoría de acciones
-- Datos no estructurados o históricos
 
 ---
 
@@ -542,10 +542,9 @@ rm -rf node_modules package-lock.json
 npm install
 ```
 
-Justificación:
+Justificación uso de MongoDB:
 
 - Excelente para almacenar documentos de quejas (texto largo, adjuntos, historial)
-- Permite auditorías JSON flexibles
 - Complementa al SQL estructurado de Supabase
 
 ---
