@@ -24,7 +24,7 @@ db.createCollection("quejas", {
           bsonType: 'string',
           'enum': [
             'RADICADA',
-            'EN TRÁMITE',
+            'EN_TRAMITE',
             'RESUELTA',
             'ARCHIVADA'
           ],
